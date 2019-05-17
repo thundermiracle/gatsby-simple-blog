@@ -13,8 +13,6 @@ import { rhythm } from '../utils/typography';
 class BlogIndexTemplate extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title');
-    const langKey = this.props.pageContext.langKey;
-
     const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
     return (
@@ -24,20 +22,6 @@ class BlogIndexTemplate extends React.Component {
           <Bio />
         </aside>
         <main>
-          {langKey !== 'en' && langKey !== 'ru' && (
-            <Panel>
-              These articles have been{' '}
-              <a
-                href="https://github.com/gaearon/overreacted.io#contributing-translations"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                translated by the community
-              </a>
-              .
-            </Panel>
-          )}
-
           {posts.map(({ node }) => {
             const title = get(node, 'frontmatter.title') || node.fields.slug;
             return (
@@ -55,7 +39,7 @@ class BlogIndexTemplate extends React.Component {
                     </Link>
                   </h3>
                   <small>
-                    {formatPostDate(node.frontmatter.date, langKey)}
+                    {post.frontmatter.date}
                     {` • ${formatReadingTime(node.timeToRead)}`}
                   </small>
                 </header>
