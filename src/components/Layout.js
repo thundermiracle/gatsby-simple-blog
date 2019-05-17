@@ -112,6 +112,7 @@ class Layout extends React.Component {
                       src={moon}
                       width="16"
                       height="16"
+                      alt="night"
                       role="presentation"
                       style={{ pointerEvents: 'none' }}
                     />
@@ -121,6 +122,7 @@ class Layout extends React.Component {
                       src={sun}
                       width="16"
                       height="16"
+                      alt="day"
                       role="presentation"
                       style={{ pointerEvents: 'none' }}
                     />
