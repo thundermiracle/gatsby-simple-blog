@@ -1,6 +1,7 @@
-import React from 'React';
+import React from 'react';
 
 import { Link } from 'gatsby';
+
 import { scale } from '../../utils/typography';
 
 function Header({ location, title }) {
