@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './Header';
 import ReadModeToggle from './ReadModeToggle';
+
 import { rhythm } from '../../utils/typography';
 
 function Layout({ children, location, title }) {
