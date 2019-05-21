@@ -1,13 +1,14 @@
+import React from 'react';
 import { Link, graphql } from 'gatsby';
-import { formatPostDate, formatReadingTime } from '../utils/helpers';
+import get from 'lodash/get';
 
 import Bio from '../components/Bio';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
-import React from 'react';
 import SEO from '../components/SEO';
-import get from 'lodash/get';
+
 import { rhythm } from '../utils/typography';
+import { formatReadingTime } from '../utils/helpers';
 
 class BlogIndexTemplate extends React.Component {
   render() {
