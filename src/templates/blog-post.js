@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby';
 import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
+import TagList from '../components/TagList';
 
 import { formatReadingTime } from '../utils/helpers';
 import { rhythm, scale } from '../utils/typography';
@@ -13,6 +14,11 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
     const { previous, next } = this.props.pageContext;
+
+    let tags;
+    if (post.frontmatter.tags) {
+      tags = <TagList tags={post.frontmatter.tags} baseUrl="/tags" />;
+    }
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -32,6 +38,7 @@ class BlogPostTemplate extends React.Component {
           {post.frontmatter.date}
           {` • ${formatReadingTime(post.timeToRead)}`}
         </p>
+        {tags}
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
           style={{
@@ -88,6 +95,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
       }
     }
   }
