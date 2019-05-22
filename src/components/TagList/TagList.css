@@ -1,0 +1,10 @@
+.tag-ul {
+  margin: -1.25rem 0 0.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+.tag-ul li {
+  display: inline-block;
+  margin: 0 0 0.3em 1.5em;
+  padding: 0;
+}
