@@ -22,7 +22,7 @@ class BlogIndexTemplate extends React.Component {
           <Bio />
         </aside>
         <main>
-          {posts.map(({ node }) => {
+          {posts.map(({ frontmatter, node }) => {
             const title = get(node, 'frontmatter.title') || node.fields.slug;
             return (
               <article key={node.fields.slug}>
@@ -39,7 +39,7 @@ class BlogIndexTemplate extends React.Component {
                     </Link>
                   </h3>
                   <small>
-                    {post.frontmatter.date}
+                    {frontmatter.date}
                     {` • ${formatReadingTime(node.timeToRead)}`}
                   </small>
                 </header>
@@ -57,7 +57,7 @@ class BlogIndexTemplate extends React.Component {
 export default BlogIndexTemplate;
 
 export const pageQuery = graphql`
-  query($langKey: String!) {
+  query {
     site {
       siteMetadata {
         title
