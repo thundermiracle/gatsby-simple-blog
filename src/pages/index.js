@@ -15,6 +15,7 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
+        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} lang="chs" />
         <Bio />
         {posts.map(({ node }) => {
@@ -54,6 +55,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
       edges {
         node {
           excerpt
