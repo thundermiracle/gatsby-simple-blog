@@ -2,36 +2,46 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
+import PostAbbrev from '../components/PostAbbrev';
+import Bio from '../components/Bio';
 
-const TagsTemplate = ({ pageContext, data }) => {
+const TagPageTemplate = ({ pageContext, data }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
+  const siteTitle = data.site.siteMetadata.title;
   const tagHeader = `${totalCount} post${totalCount === 1 ? '' : 's'} tagged with "${tag}"`;
-  const siteTitle = `Tag -- ${tag}`;
 
   return (
-    <Layout location={'location'} title={siteTitle}>
+    <Layout location="location" title={siteTitle}>
+      <aside>
+        <Bio />
+      </aside>
+      <SEO title={tagHeader} description={tagHeader} />
       <h1>{tagHeader}</h1>
-      <ul>
+      <main>
         {edges.map(({ node }) => {
-          const { slug } = node.fields;
-          const { title } = node.frontmatter;
+          const title = node.frontmatter.title || node.fields.slug;
           return (
-            <li key={slug}>
-              <Link to={slug}>{title}</Link>
-            </li>
+            <PostAbbrev
+              key={node.fields.slug}
+              slug={node.fields.slug}
+              date={node.frontmatter.date}
+              timeToRead={node.timeToRead}
+              title={title}
+            />
           );
         })}
-      </ul>
-      <Link to="/tags">All tags</Link>
+      </main>
+      <div style={{ marginTop: 50 }} />
     </Layout>
   );
 };
 
-TagsTemplate.propTypes = {
+TagPageTemplate.propTypes = {
   pageContext: PropTypes.shape({
     tag: PropTypes.string.isRequired,
   }),
@@ -54,10 +64,16 @@ TagsTemplate.propTypes = {
   }),
 };
 
-export default TagsTemplate;
+export default TagPageTemplate;
 
 export const pageQuery = graphql`
   query($tag: String) {
+    site {
+      siteMetadata {
+        title
+        author
+      }
+    }
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
@@ -66,11 +82,13 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
+          timeToRead
           fields {
             slug
           }
           frontmatter {
             title
+            date(formatString: "MMMM DD, YYYY")
           }
         }
       }

@@ -19,9 +19,9 @@
   height: 30px;
   line-height: 30px;
   padding: 0 1em 0 0.75em;
-  background-color: #3498db;
+  background-color: var(--tag-bg, #3498db);
   border-radius: 0 3px 3px 0;
-  color: #fff;
+  color: var(--tag-color, #fff);
   font-size: 13px;
   text-decoration: none;
   -webkit-transition: 0.2s;
@@ -34,7 +34,7 @@
   content: '';
   width: 15px;
   height: 30px;
-  background-color: #3498db;
+  background-color: var(--tag-bg, #3498db);
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
   -webkit-transition: 0.2s;
@@ -50,12 +50,12 @@
   width: 6px;
   height: 6px;
   margin-top: -3px;
-  background-color: #fff;
+  background-color: var(--tag-color, #fff);
   border-radius: 100%;
 }
 .link:hover {
   background-color: #555;
-  color: #fff;
+  color: var(--tag-color, #fff);
 }
 .link:hover::before {
   background-color: #555;
