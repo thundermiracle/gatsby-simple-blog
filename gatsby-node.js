@@ -5,14 +5,8 @@ const _ = require('lodash');
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  // Create index page
-  createPage({
-    path: '/',
-    component: path.resolve('./src/templates/blog-index.js'),
-  });
-
   const blogPost = path.resolve('./src/templates/blog-post.js');
-  const tagTemplate = path.resolve('src/templates/tags.js');
+  const tagPage = path.resolve('src/templates/tag-page.js');
   return graphql(
     `
       {
@@ -69,7 +63,7 @@ exports.createPages = ({ graphql, actions }) => {
     tags.forEach(tag => {
       createPage({
         path: `/tags/${_.kebabCase(tag)}/`,
-        component: tagTemplate,
+        component: tagPage,
         context: {
           tag,
         },
