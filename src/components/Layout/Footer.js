@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { rhythm } from '../utils/typography';
+import { rhythm } from '../../utils/typography';
 
 class Footer extends React.Component {
   render() {

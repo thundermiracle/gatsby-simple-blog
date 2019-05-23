@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-
-import { rhythm } from '../utils/typography';
+import PostAbbrev from '../components/PostAbbrev';
 
 class BlogIndex extends React.Component {
   render() {
@@ -15,29 +14,23 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} lang="chs" />
-        <Bio />
+        <aside>
+          <Bio />
+        </aside>
+        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
-            <div key={node.fields.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </div>
+            <PostAbbrev
+              key={node.fields.slug}
+              slug={node.fields.slug}
+              date={node.frontmatter.date}
+              timeToRead={node.timeToRead}
+              title={title}
+              excerpt={node.frontmatter.description || node.excerpt}
+              tags={node.frontmatter.tags}
+            />
           );
         })}
       </Layout>
@@ -59,6 +52,7 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt
+          timeToRead
           fields {
             slug
           }
@@ -66,6 +60,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tags
           }
         }
       }
