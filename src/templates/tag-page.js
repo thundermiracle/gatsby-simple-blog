@@ -16,10 +16,7 @@ const TagPageTemplate = ({ pageContext, data }) => {
   const tagHeader = `${totalCount} post${totalCount === 1 ? '' : 's'} tagged with "${tag}"`;
 
   return (
-    <Layout location="location" title={siteTitle}>
-      <aside>
-        <Bio />
-      </aside>
+    <Layout location="location" title={siteTitle} breadcrumbs={[{ text: tag }]}>
       <SEO title={tagHeader} description={tagHeader} />
       <h1>{tagHeader}</h1>
       <main>
@@ -37,6 +34,9 @@ const TagPageTemplate = ({ pageContext, data }) => {
         })}
       </main>
       <div style={{ marginTop: 50 }} />
+      <aside>
+        <Bio />
+      </aside>
     </Layout>
   );
 };
