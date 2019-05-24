@@ -26,7 +26,7 @@ function Breadcrumbs({ data, showTop, ...restProps }) {
       {data.map(({ text, url }) => {
         if (url != null) {
           return (
-            <li className="breadcrumbs-item">
+            <li className="breadcrumbs-item" key={text}>
               <Link to={url} className="breadcrumbs-element">
                 {text}
               </Link>
@@ -34,7 +34,7 @@ function Breadcrumbs({ data, showTop, ...restProps }) {
           );
         } else {
           return (
-            <li className="breadcrumbs-item_active">
+            <li className="breadcrumbs-item_active" key={text}>
               <span className="breadcrumbs-element">{text}</span>
             </li>
           );
