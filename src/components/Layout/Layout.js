@@ -3,10 +3,11 @@ import React from 'react';
 import Header from './Header';
 import ReadModeToggle from './ReadModeToggle';
 import Footer from './Footer';
+import Breadcrumbs from '../Breadcrumbs';
 
 import { rhythm } from '../../utils/typography';
 
-function Layout({ children, location, title }) {
+function Layout({ children, location, title, breadcrumbs }) {
   return (
     <div
       style={{
@@ -35,6 +36,7 @@ function Layout({ children, location, title }) {
           <Header location={location} title={title} />
           <ReadModeToggle />
         </header>
+        <Breadcrumbs data={breadcrumbs} showTop={true} style={{ marginTop: '-1.5rem' }} />
         {children}
         <Footer />
       </div>
