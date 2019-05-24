@@ -16,7 +16,11 @@ const TagPageTemplate = ({ pageContext, data }) => {
   const tagHeader = `${totalCount} post${totalCount === 1 ? '' : 's'} tagged with "${tag}"`;
 
   return (
-    <Layout location="location" title={siteTitle} breadcrumbs={[{ text: tag }]}>
+    <Layout
+      location="location"
+      title={siteTitle}
+      breadcrumbs={[{ text: 'Tags', url: '/tags' }, { text: tag }]}
+    >
       <SEO title={tagHeader} description={tagHeader} />
       <h1>{tagHeader}</h1>
       <main>
