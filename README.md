@@ -1,5 +1,4 @@
-# 10y-in-jp
-Writings of 10 years in Japan
+# gatsby-advanced-blog
 
 ## License & Copyright
 
