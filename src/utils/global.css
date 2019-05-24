@@ -1,6 +1,7 @@
 body {
   --pink: rgb(255, 167, 196);
   background-color: var(--bg);
+  --breadcrumbsDividerSize: 20px;
 }
 
 body.light {
@@ -14,6 +15,8 @@ body.light {
   --inlineCode-text: #1a1a1a;
   --tag-bg: #f7a046;
   --tag-color: #ffffff;
+  --breadcrumbsTextColor: #a1c4e9;
+  --breadcrumbsTextColorActive: #888888;
 }
 
 body.dark {
@@ -29,6 +32,12 @@ body.dark {
   --inlineCode-text: #e6e6e6;
   --tag-bg: rgb(143, 91, 35);
   --tag-color: #dddddd;
+  --breadcrumbsTextColor: #d1c4e9;
+  --breadcrumbsTextColorActive: #eeeeee;
+}
+
+a {
+  box-shadow: none;
 }
 
 /*
@@ -195,4 +204,8 @@ pre[data-line] {
 .gatsby-highlight pre[class*='language-'] {
   float: left;
   min-width: 100%;
+}
+
+h1 {
+  margin-top: 1.5rem;
 }
