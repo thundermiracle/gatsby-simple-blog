@@ -1,4 +1,4 @@
-# gatsby-advanced-blog
+# gatsby-simple-blog
 
 ## License
 
