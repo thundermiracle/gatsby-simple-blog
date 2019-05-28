@@ -67,6 +67,7 @@
   },
   "scripts": {
     "build": "gatsby build",
+    "build:gh": "gatsby build --prefix-paths",
     "dev": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
