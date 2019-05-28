@@ -2,7 +2,7 @@
 
 ## Description
 
-A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and breadcrumbs supported.
+A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and breadcrumbs, eslint supported.
 
 ## How to use
 
