@@ -32,13 +32,12 @@ function Breadcrumbs({ data, showTop, ...restProps }) {
               </Link>
             </li>
           );
-        } else {
-          return (
-            <li className="breadcrumbs-item_active" key={text}>
-              <span className="breadcrumbs-element">{text}</span>
-            </li>
-          );
         }
+        return (
+          <li className="breadcrumbs-item_active" key={text}>
+            <span className="breadcrumbs-element">{text}</span>
+          </li>
+        );
       })}
     </ul>
   );
