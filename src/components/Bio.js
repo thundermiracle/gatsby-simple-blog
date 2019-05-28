@@ -14,6 +14,7 @@ import { rhythm } from '../utils/typography';
 function Bio() {
   return (
     <StaticQuery
+      // eslint-disable-next-line no-use-before-define
       query={bioQuery}
       render={data => {
         const { author, social } = data.site.siteMetadata;

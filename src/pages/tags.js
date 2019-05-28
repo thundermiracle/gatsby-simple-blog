@@ -63,7 +63,7 @@ TagsPage.propTypes = {
         title: PropTypes.string.isRequired,
       }),
     }),
-  }),
+  }).isRequired,
 };
 
 export default TagsPage;

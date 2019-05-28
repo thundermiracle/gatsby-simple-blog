@@ -48,7 +48,7 @@ const TagPageTemplate = ({ pageContext, data }) => {
 TagPageTemplate.propTypes = {
   pageContext: PropTypes.shape({
     tag: PropTypes.string.isRequired,
-  }),
+  }).isRequired,
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       totalCount: PropTypes.number.isRequired,
@@ -65,7 +65,7 @@ TagPageTemplate.propTypes = {
         }).isRequired,
       ),
     }),
-  }),
+  }).isRequired,
 };
 
 export default TagPageTemplate;
