@@ -14,11 +14,15 @@ gatsby new my-blog-folder https://github.com/thundermiracle/gatsby-simple-blog
 
 ## Images
 
-<img src="./images/top.png" width="320" />
-<img src="./images/post.png" width="320" />
-<img src="./images/tag.png" width="320" />
-<img src="./images/alltags.png" width="320" />
-<img src="./images/top-dark.png" width="320" />
+![top--light](./images/top.png)
+
+![post](./images/post.png)
+
+![tag](./images/tag.png)
+
+![alltags](./images/alltags.png)
+
+![top--dark](./images/top-dark.png)
 
 ## License
 
