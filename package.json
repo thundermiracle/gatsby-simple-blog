@@ -1,11 +1,10 @@
 {
-  "name": "10y-in-jp",
-  "private": true,
-  "description": "blog for writting 10 years experiences in Japan",
+  "name": "gatsby-simple-blog",
+  "description": "forked from gatsby-starter-blog with overreacted looking and with tags, breadcrumbs support",
   "version": "0.1.0",
-  "author": "Daniel liu",
+  "author": "thundermiracle",
   "bugs": {
-    "url": "https://github.com/thundermiracle/10y-in-jp/issues"
+    "url": "https://github.com/thundermiracle/gatsby-simple-blog/issues"
   },
   "dependencies": {
     "gatsby": "^2.4.3",
@@ -25,7 +24,9 @@
     "gatsby-source-filesystem": "^2.0.33",
     "gatsby-transformer-remark": "^2.3.12",
     "gatsby-transformer-sharp": "^2.1.19",
+    "lodash": "^4.17.11",
     "prismjs": "^1.16.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
@@ -36,18 +37,33 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "gatsby-plugin-eslint": "^2.0.5",
     "prettier": "^1.17.0"
   },
-  "homepage": "https://10y-in-jp.thundermiracle.com",
+  "homepage": "https://github.com/thundermiracle/gatsby-simple-blog",
   "keywords": [
-    "Japan",
-    "culture shock"
+    "gatsbyjs",
+    "starter",
+    "blog",
+    "tag",
+    "eslint",
+    "breadcrumbs",
+    "overreacted"
   ],
   "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thundermiracle/10y-in-jp.git"
+    "url": "git+https://github.com/thundermiracle/gatsby-simple-blog.git"
   },
   "scripts": {
     "build": "gatsby build",
@@ -55,6 +71,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "eslint": "eslint .",
+    "test": "npm run eslint"
   }
 }

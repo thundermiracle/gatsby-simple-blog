@@ -9,6 +9,7 @@ class ReadModeToggle extends React.Component {
   state = {
     theme: null,
   };
+
   componentDidMount() {
     this.setState({ theme: window.__theme });
     window.__onThemeChange = () => {
@@ -17,17 +18,19 @@ class ReadModeToggle extends React.Component {
   }
 
   render() {
+    const { theme } = this.state;
+
     return (
       <>
         <Helmet
           meta={[
             {
               name: 'theme-color',
-              content: this.state.theme === 'light' ? '#ffa8c5' : '#282c35',
+              content: theme === 'light' ? '#ffa8c5' : '#282c35',
             },
           ]}
         />
-        {this.state.theme !== null ? (
+        {theme !== null ? (
           <Toggle
             icons={{
               checked: (
@@ -51,7 +54,7 @@ class ReadModeToggle extends React.Component {
                 />
               ),
             }}
-            checked={this.state.theme === 'dark'}
+            checked={theme === 'dark'}
             onChange={e => window.__setPreferredTheme(e.target.checked ? 'dark' : 'light')}
           />
         ) : (

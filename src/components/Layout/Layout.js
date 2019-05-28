@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Header from './Header';
 import ReadModeToggle from './ReadModeToggle';
@@ -43,5 +44,18 @@ function Layout({ children, location, title, breadcrumbs }) {
     </div>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.any,
+  location: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  title: PropTypes.string,
+  breadcrumbs: PropTypes.array,
+};
+
+Layout.defaultProps = {
+  children: null,
+  title: null,
+  breadcrumbs: null,
+};
 
 export default Layout;

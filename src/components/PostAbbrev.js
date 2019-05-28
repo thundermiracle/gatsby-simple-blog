@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Link } from 'gatsby';
 
@@ -47,5 +48,20 @@ function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags }) {
     </article>
   );
 }
+
+PostAbbrev.propTypes = {
+  slug: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  date: PropTypes.string.isRequired,
+  timeToRead: PropTypes.number.isRequired,
+  excerpt: PropTypes.string,
+  tags: PropTypes.array,
+};
+
+PostAbbrev.defaultProps = {
+  title: null,
+  excerpt: null,
+  tags: null,
+};
 
 export default PostAbbrev;
