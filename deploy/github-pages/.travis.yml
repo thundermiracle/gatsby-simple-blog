@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - '8'
+
+before_deploy:
+  - yarn build:gh
+  - touch public/.nojekyll
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_GH
+  local-dir: ./public
+  on:
+    branch: master
