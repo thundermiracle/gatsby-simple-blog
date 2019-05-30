@@ -17,17 +17,17 @@ npm install -g gatsby-cli
 gatsby new my-blog-folder https://github.com/thundermiracle/gatsby-simple-blog
 ```
 
-## Images
+## Screenshots
 
-![top--light](./images/top.png)
+![top--light](./screenshots/top.png)
 
-![post](./images/post.png)
+![post](./screenshots/post.png)
 
-![tag](./images/tag.png)
+![tag](./screenshots/tag.png)
 
-![alltags](./images/alltags.png)
+![alltags](./screenshots/alltags.png)
 
-![top--dark](./images/top-dark.png)
+![top--dark](./screenshots/top-dark.png)
 
 ## License
 
