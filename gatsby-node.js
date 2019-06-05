@@ -1,6 +1,7 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const _ = require('lodash');
+const haveSameTags = require('./src/utils/helpers').haveSameItem;
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -17,6 +18,7 @@ exports.createPages = ({ graphql, actions }) => {
                 slug
               }
               frontmatter {
+                date(formatString: "MMMM DD, YYYY")
                 title
                 tags
               }
@@ -37,6 +39,24 @@ exports.createPages = ({ graphql, actions }) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node;
       const next = index === 0 ? null : posts[index - 1].node;
 
+      // posts in same tags
+      const postTags = post.node.frontmatter.tags;
+      const postsInSameTag = posts.filter(({ node }) =>
+        haveSameTags(postTags, node.frontmatter.tags),
+      );
+      const indexInSameTag = postsInSameTag.findIndex(
+        p => p.node.fields.slug === post.node.fields.slug,
+      );
+      let previousInSameTag;
+      let nextInSameTag;
+      if (postsInSameTag.length > 0 && indexInSameTag > -1) {
+        previousInSameTag =
+          indexInSameTag === postsInSameTag.length - 1
+            ? null
+            : postsInSameTag[indexInSameTag + 1].node;
+        nextInSameTag = indexInSameTag <= 0 ? null : postsInSameTag[indexInSameTag - 1].node;
+      }
+
       createPage({
         path: post.node.fields.slug,
         component: blogPost,
@@ -44,6 +64,8 @@ exports.createPages = ({ graphql, actions }) => {
           slug: post.node.fields.slug,
           previous,
           next,
+          previousInSameTag,
+          nextInSameTag,
         },
       });
     });

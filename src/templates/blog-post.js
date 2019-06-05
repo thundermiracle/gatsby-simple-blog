@@ -6,6 +6,7 @@ import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import TagList from '../components/TagList';
+import RelativePosts from '../components/RelativePosts';
 
 import { formatReadingTime } from '../utils/helpers';
 import { rhythm, scale } from '../utils/typography';
@@ -13,7 +14,7 @@ import { rhythm, scale } from '../utils/typography';
 function BlogPostTemplate({ data, pageContext, location }) {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
-  const { previous, next } = pageContext;
+  const { previous, next, previousInSameTag, nextInSameTag } = pageContext;
 
   let tags;
   if (post.frontmatter.tags) {
@@ -40,6 +41,9 @@ function BlogPostTemplate({ data, pageContext, location }) {
       </p>
       {tags}
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
+
+      <RelativePosts postNodes={[previousInSameTag, nextInSameTag]} />
+
       <hr
         style={{
           marginBottom: rhythm(1),
