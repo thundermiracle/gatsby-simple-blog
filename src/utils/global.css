@@ -209,3 +209,7 @@ pre[data-line] {
 h1 {
   margin-top: 1.5rem;
 }
+
+article:hover {
+  opacity: 0.7;
+}
