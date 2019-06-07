@@ -7,7 +7,7 @@
 
 ## Description
 
-A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and breadcrumbs, eslint supported.
+A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and breadcrumbs, eslint,relative posts supported.
 
 ## How to use
 
@@ -16,6 +16,10 @@ npm install -g gatsby-cli
 
 gatsby new my-blog-folder https://github.com/thundermiracle/gatsby-simple-blog
 ```
+
+## Deployment
+
+[Deploy Static Sites to Netlify by Circle-CI](https://medium.com/@thundermiracle/deploy-static-sites-to-netlify-by-circle-ci-ab51a0b59b73?source=friends_link&sk=095db82e2f8e8ef91d03a171f217e340)
 
 ## Screenshots
 
