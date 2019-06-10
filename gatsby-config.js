@@ -8,6 +8,7 @@ module.exports = {
     social: {
       twitter: `kylemathews`,
     },
+    disqusShortName: 'gatsby-simple-blog',
   },
   plugins: [
     'gatsby-plugin-eslint',
