@@ -9,7 +9,7 @@
 
 ## Description
 
-A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and breadcrumbs, eslint,relative posts supported.
+A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and breadcrumbs, eslint, relative posts, disqus supported.
 
 ## Sample pages
 
@@ -25,21 +25,49 @@ npm install -g gatsby-cli
 gatsby new my-blog-folder https://github.com/thundermiracle/gatsby-simple-blog
 ```
 
-## How to deploy in Medium.com
+## How to deploy by Circle-CI in Medium.com
 
 [Medium.com -- Deploy Static Sites to Netlify by Circle-CI](https://medium.com/@thundermiracle/deploy-static-sites-to-netlify-by-circle-ci-ab51a0b59b73?source=friends_link&sk=095db82e2f8e8ef91d03a171f217e340)
 
-## Screenshots
+## Functions
 
-![top--light](./screenshots/top.png)
+* __overreacted design__
 
-![post](./screenshots/post.png)
+  [overreacted.io](https://overreacted.io/) lookings
 
-![tag](./screenshots/tag.png)
+  ![top--light](./screenshots/top.png)
 
-![alltags](./screenshots/alltags.png)
+  ![top--dark](./screenshots/top-dark.png)
 
-![top--dark](./screenshots/top-dark.png)
+* __Tags__
+
+  Display articles in same tag.
+
+  ![tag](./screenshots/tag.png)
+
+  ![alltags](./screenshots/alltags.png)
+
+* __Breadcrumbs__
+
+  Display breadcrumbs in header part.
+
+  ![post](./screenshots/post.png)
+
+* __Relative posts__
+
+  Display previous and next posts in same tag in footer part.
+
+  ![relative-posts](./screenshots/relative-posts.png)
+
+* __Disqus__
+
+  Use disqus.com to enable comment.
+
+  ![disqus](./screenshots/disqus.png)
+
+* __eslint__
+
+  Enable eslint for better coding experience.
 
 ## License
 
