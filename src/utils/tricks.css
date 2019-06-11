@@ -13,3 +13,7 @@ blockquote {
   color: inherit;
   opacity: 0.8;
 }
+
+h4 {
+  font-family: var(--systemFont);
+}
