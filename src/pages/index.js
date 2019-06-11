@@ -6,18 +6,21 @@ import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
+import { useText } from '../context/TextContext';
 
 function BlogIndex({ data, location }) {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
+  const { tIndTitle, taIndKeywords, tfIndCountPosts } = useText();
+
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} lang="chs" />
+      <SEO title={tIndTitle} keywords={taIndKeywords} lang={data.site.siteMetadata.lang} />
       <aside>
         <Bio />
       </aside>
-      <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+      <h4>{tfIndCountPosts(data.allMarkdownRemark.totalCount)}</h4>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
         return (
@@ -48,6 +51,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        lang
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {

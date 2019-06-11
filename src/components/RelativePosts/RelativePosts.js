@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { useText } from '../../context/TextContext';
 import RelativePost from '../RelativePost';
 
 function RelativePosts({ postNodes }) {
@@ -10,10 +11,12 @@ function RelativePosts({ postNodes }) {
     return null;
   }
 
+  const { tRelativePosts } = useText();
+
   return (
     <>
       <hr />
-      <div style={{ marginTop: '-1rem' }}>Relative Readings:</div>
+      <div style={{ marginTop: '-1rem' }}>{tRelativePosts}:</div>
       {postNodesNotNull.map(postNode => (
         <RelativePost key={postNode.fields.slug} postNode={postNode} />
       ))}
