@@ -16,7 +16,7 @@ function BlogIndex({ data, location }) {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title={tIndTitle} keywords={taIndKeywords} lang={data.site.siteMetadata.lang} />
+      <SEO title={tIndTitle} keywords={taIndKeywords} />
       <aside>
         <Bio />
       </aside>
@@ -51,7 +51,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        lang
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
