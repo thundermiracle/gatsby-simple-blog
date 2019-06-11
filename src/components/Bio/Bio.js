@@ -9,9 +9,12 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
-import { rhythm } from '../utils/typography';
+import { rhythm } from '../../utils/typography';
+import { useText } from '../../context/TextContext';
 
 function Bio() {
+  const { tFollowTwitterDescription } = useText();
+
   return (
     <StaticQuery
       // eslint-disable-next-line no-use-before-define
@@ -41,7 +44,7 @@ function Bio() {
             <p>
               {description}
               {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>You should follow him on Twitter</a>
+              <a href={`https://twitter.com/${social.twitter}`}>{tFollowTwitterDescription}</a>
             </p>
           </div>
         );

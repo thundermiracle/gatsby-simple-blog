@@ -11,6 +11,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Tag from '../components/Tag';
 import Bio from '../components/Bio';
+import { useText } from '../context/TextContext';
 
 const styles = {
   tagListDiv: {
@@ -26,27 +27,30 @@ const TagsPage = ({
       siteMetadata: { title },
     },
   },
-}) => (
-  <Layout location="location" title={title}>
-    <aside>
-      <Bio />
-    </aside>
-    <Helmet title="Tags" />
-    <div>
-      <h1>Tags</h1>
-      <div style={styles.tagListDiv}>
-        {group.map(tag => (
-          <Tag
-            key={tag.fieldValue}
-            text={tag.fieldValue}
-            count={tag.totalCount}
-            url={`/tags/${kebabCase(tag.fieldValue)}/`}
-          />
-        ))}
+}) => {
+  const { tTags } = useText();
+  return (
+    <Layout location="location" title={title}>
+      <aside>
+        <Bio />
+      </aside>
+      <Helmet title={tTags} />
+      <div>
+        <h1>{tTags}</h1>
+        <div style={styles.tagListDiv}>
+          {group.map(tag => (
+            <Tag
+              key={tag.fieldValue}
+              text={tag.fieldValue}
+              count={tag.totalCount}
+              url={`/tags/${kebabCase(tag.fieldValue)}/`}
+            />
+          ))}
+        </div>
       </div>
-    </div>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 TagsPage.propTypes = {
   data: PropTypes.shape({

@@ -1,14 +1,27 @@
+const {
+  pathPrefix,
+  title,
+  author,
+  description,
+  siteUrl,
+  twitter,
+  disqusShortName,
+  lang,
+  googleTrackingId: trackingId,
+} = require('./config').site;
+
 module.exports = {
-  pathPrefix: '/gatsby-simple-blog',
+  pathPrefix,
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title,
+    author,
+    description,
+    siteUrl,
     social: {
-      twitter: `kylemathews`,
+      twitter,
     },
-    disqusShortName: 'gatsby-simple-blog',
+    disqusShortName,
+    lang,
   },
   plugins: [
     'gatsby-plugin-eslint',
@@ -53,7 +66,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId,
       },
     },
     `gatsby-plugin-feed`,

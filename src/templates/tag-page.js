@@ -8,18 +8,22 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
 import Bio from '../components/Bio';
+import { useText } from '../context/TextContext';
 
 const TagPageTemplate = ({ pageContext, data }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
   const siteTitle = data.site.siteMetadata.title;
-  const tagHeader = `${totalCount} post${totalCount === 1 ? '' : 's'} tagged with "${tag}"`;
+
+  const { tTags, tfTagHeader } = useText();
+
+  const tagHeader = tfTagHeader(totalCount, tag);
 
   return (
     <Layout
       location="location"
       title={siteTitle}
-      breadcrumbs={[{ text: 'Tags', url: '/tags' }, { text: tag }]}
+      breadcrumbs={[{ text: tTags, url: '/tags' }, { text: tag }]}
     >
       <SEO title={tagHeader} description={tagHeader} />
       <h1>{tagHeader}</h1>
