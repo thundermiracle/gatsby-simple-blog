@@ -16,6 +16,7 @@ function Layout({ children, location, title, breadcrumbs }) {
         background: 'var(--bg)',
         transition: 'color 0.2s ease-out, background 0.2s ease-out',
         minHeight: '100vh',
+        fontFamily: 'var(--systemFont)',
       }}
     >
       <div
