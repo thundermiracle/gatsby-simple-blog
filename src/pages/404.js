@@ -4,15 +4,18 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
+import { useText } from '../context/TextContext';
 
 function NotFoundPage({ data, location }) {
   const siteTitle = data.site.siteMetadata.title;
 
+  const { t404Title, t404Content } = useText();
+
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="404: Not Found" />
-      <h1>Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <SEO title={t404Title} />
+      <h1>{t404Title}</h1>
+      <p>{t404Content}</p>
     </Layout>
   );
 }

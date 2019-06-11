@@ -3,18 +3,21 @@ import './Breadcrumbs.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import { useText } from '../../context/TextContext';
 
 function Breadcrumbs({ data, showTop, ...restProps }) {
   if (data == null) {
     return null;
   }
 
+  const { tHome } = useText();
+
   let topBCli;
   if (showTop) {
     topBCli = (
       <li className="breadcrumbs-item">
         <Link to="/" className="breadcrumbs-element">
-          Home
+          {tHome}
         </Link>
       </li>
     );

@@ -19,6 +19,7 @@ function SEO({ description, lang, meta, keywords, title }) {
             title
             description
             author
+            lang
           }
         }
       }
@@ -30,7 +31,7 @@ function SEO({ description, lang, meta, keywords, title }) {
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: site.siteMetadata.lang || lang,
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
