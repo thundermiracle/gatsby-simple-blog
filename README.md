@@ -29,7 +29,11 @@ gatsby new my-blog-folder https://github.com/thundermiracle/gatsby-simple-blog
 
 [Medium.com -- Deploy Static Sites to Netlify by Circle-CI](https://medium.com/@thundermiracle/deploy-static-sites-to-netlify-by-circle-ci-ab51a0b59b73?source=friends_link&sk=095db82e2f8e8ef91d03a171f217e340)
 
-## Functions
+## Configuration
+
+All configurable values are here: __./config/index.js__
+
+## Features
 
 * __overreacted design__
 
