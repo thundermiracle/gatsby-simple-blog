@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import { rhythm } from '../../utils/typography';
-import { formatReadingTime } from '../../utils/helpers';
+import { formatPostDate, formatReadingTime } from '../../utils/helpers';
 
 import TagList from '../TagList';
 
@@ -42,7 +42,7 @@ function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags }) {
           </Link>
         </h3>
         {tagsPart}
-        <small>{`${date} • ${formatReadingTime(timeToRead)}`}</small>
+        <small>{`${formatPostDate(date)} • ${formatReadingTime(timeToRead)}`}</small>
         {excerptPart}
       </header>
     </article>
