@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Header from './Header';
 import ReadModeToggle from './ReadModeToggle';
-import Footer from './Footer';
+import SocialBar from './SocialBar';
 import Breadcrumbs from '../Breadcrumbs';
 
 import { rhythm } from '../../utils/typography';
@@ -40,7 +40,7 @@ function Layout({ children, location, title, breadcrumbs }) {
         </header>
         <Breadcrumbs data={breadcrumbs} showTop={true} style={{ marginTop: '-1.5rem' }} />
         {children}
-        <Footer />
+        <SocialBar />
       </div>
     </div>
   );
