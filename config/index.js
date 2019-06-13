@@ -5,8 +5,11 @@ const site = {
   description: 'A starter blog demonstrating what Gatsby can do.',
   siteUrl: 'https://gatsby-starter-blog-demo.netlify.com/',
   twitter: 'kylemathews',
+  github: 'thundermiracle',
+  medium: 'thundermiracle',
+  facebook: 'thundermiracle',
   disqusShortName: 'gatsby-simple-blog',
-  googleTrackingId: undefined,
+  googleTrackingId: '',
   lang: 'en',
 };
 

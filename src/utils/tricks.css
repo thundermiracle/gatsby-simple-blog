@@ -17,3 +17,7 @@ blockquote {
 h4 {
   font-family: var(--systemFont);
 }
+
+img {
+  margin-bottom: 0;
+}
