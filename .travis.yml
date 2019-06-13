@@ -4,7 +4,7 @@ node_js:
 
 before_deploy:
   - yarn build:gh
-  - copy -rf ./.circleci ./public/
+  - cp -rf ./.circleci ./public/
   - echo '' > ./public/.nojekyll
 deploy:
   provider: pages
