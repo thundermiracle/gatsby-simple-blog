@@ -22,12 +22,12 @@ function HTML({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                window.__onThemeChange = function() {};
+                window.__onThemeChangeFuncObj = {};
                 function setTheme(newTheme) {
                   window.__theme = newTheme;
                   preferredTheme = newTheme;
                   document.body.className = newTheme;
-                  window.__onThemeChange(newTheme);
+                  Object.values(window.__onThemeChangeFuncObj).forEach(func => func(newTheme));
                 }
 
                 var preferredTheme;
