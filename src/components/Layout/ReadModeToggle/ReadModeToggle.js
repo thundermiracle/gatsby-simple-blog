@@ -5,7 +5,7 @@ import Toggle from '../../Toggle';
 import sun from './sun.png';
 import moon from './moon.png';
 
-import withTheme from '../../../utils/withTheme';
+import withThemeFlag from '../../../utils/withThemeFlag';
 
 // eslint-disable-next-line react/prop-types
 function ReadModeToggle({ isLightTheme }) {
@@ -53,4 +53,4 @@ function ReadModeToggle({ isLightTheme }) {
   );
 }
 
-export default withTheme(ReadModeToggle);
+export default withThemeFlag(ReadModeToggle);

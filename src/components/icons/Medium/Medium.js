@@ -5,14 +5,14 @@ import dark from './dark.png';
 import light from './light.png';
 import withThemeFlag from '../../../utils/withThemeFlag';
 
-function Twitter({ username, size, isLightTheme }) {
+function Medium({ username, size, isLightTheme }) {
   if (!username) return null;
 
   return (
-    <a href={`https://twitter.com/${username}`} target="_blank" rel="noopener noreferrer">
+    <a href={`https://medium.com/@${username}`} target="_blank" rel="noopener noreferrer">
       <img
         src={isLightTheme ? dark : light}
-        alt="Twitter-icon"
+        alt="Medium-icon"
         width={size}
         height={size}
         role="presentation"
@@ -22,16 +22,16 @@ function Twitter({ username, size, isLightTheme }) {
   );
 }
 
-Twitter.propTypes = {
+Medium.propTypes = {
   username: PropTypes.string,
   size: PropTypes.number,
   isLightTheme: PropTypes.bool,
 };
 
-Twitter.defaultProps = {
+Medium.defaultProps = {
   username: null,
   size: 24,
   isLightTheme: true,
 };
 
-export default withThemeFlag(Twitter);
+export default withThemeFlag(Medium);

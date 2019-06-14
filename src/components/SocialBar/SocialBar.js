@@ -1,10 +1,9 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { rhythm } from '../../utils/typography';
-import { Github, Twitter, Facebook } from '../icons';
+import { Github, Twitter, Facebook, Medium } from '../icons';
 
-function Footer() {
+function SocialBar() {
   return (
     <StaticQuery
       // eslint-disable-next-line no-use-before-define
@@ -14,7 +13,6 @@ function Footer() {
         return (
           <div
             style={{
-              paddingTop: rhythm(1),
               display: 'flex',
               justifyContent: 'space-evenly',
               margin: 'auto',
@@ -23,6 +21,7 @@ function Footer() {
             {facebook && <Facebook username={facebook} />}
             {twitter && <Twitter username={twitter} />}
             {github && <Github username={github} />}
+            {medium && <Medium username={medium} />}
           </div>
         );
       }}
@@ -44,4 +43,4 @@ const socialQuery = graphql`
     }
   }
 `;
-export default Footer;
+export default SocialBar;

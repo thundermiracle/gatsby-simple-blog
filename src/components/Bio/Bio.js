@@ -10,42 +10,44 @@ import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
 import { rhythm } from '../../utils/typography';
-import { useText } from '../../context/TextContext';
+
+import SocialBar from '../SocialBar';
 
 function Bio() {
-  const { tFollowTwitterDescription } = useText();
-
   return (
     <StaticQuery
       // eslint-disable-next-line no-use-before-define
       query={bioQuery}
       render={data => {
-        const { author, description, social } = data.site.siteMetadata;
+        const { author, description } = data.site.siteMetadata;
         return (
           <div
             style={{
-              display: `flex`,
               marginBottom: rhythm(2.5),
             }}
           >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
+            <div
               style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
+                display: `flex`,
+                alignItems: 'center',
               }}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
-            />
-            <p>
-              {description}
-              {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>{tFollowTwitterDescription}</a>
-            </p>
+            >
+              <Image
+                fixed={data.avatar.childImageSharp.fixed}
+                alt={author}
+                style={{
+                  marginRight: rhythm(1 / 2),
+                  marginBottom: 0,
+                  minWidth: 50,
+                  borderRadius: `100%`,
+                }}
+                imgStyle={{
+                  borderRadius: `50%`,
+                }}
+              />
+              <p>{description}</p>
+            </div>
+            <SocialBar />
           </div>
         );
       }}
@@ -66,9 +68,6 @@ const bioQuery = graphql`
       siteMetadata {
         author
         description
-        social {
-          twitter
-        }
       }
     }
   }
