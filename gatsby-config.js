@@ -4,12 +4,12 @@ const {
   author,
   description,
   siteUrl,
-  twitter,
-  github,
-  medium,
-  facebook,
-  disqusShortName,
-  lang,
+  twitter = '',
+  github = '',
+  medium = '',
+  facebook = '',
+  disqusShortName = '',
+  lang = 'en',
   googleTrackingId: trackingId,
 } = require('./config').site;
 
