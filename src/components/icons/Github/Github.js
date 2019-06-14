@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import dark from './dark.png';
 import light from './light.png';
-import withTheme from '../../../utils/withTheme';
+import withThemeFlag from '../../../utils/withThemeFlag';
 
 function Github({ username, size, isLightTheme }) {
   if (!username) return null;
@@ -34,4 +34,4 @@ Github.defaultProps = {
   isLightTheme: true,
 };
 
-export default withTheme(Github);
+export default withThemeFlag(Github);
