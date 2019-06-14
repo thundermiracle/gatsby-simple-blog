@@ -1,13 +1,12 @@
 import React from 'react';
 
-export default function withTheme(BaseComponent) {
+export default function withThemeFlag(BaseComponent) {
   class injectTheme extends React.Component {
     state = {
       theme: null,
     };
 
     componentDidMount() {
-      console.log('BaseComponent.name:', BaseComponent.name);
       this.setState({ theme: window.__theme });
       window.__onThemeChangeFuncObj[BaseComponent.name] = () => {
         this.setState({ theme: window.__theme });
