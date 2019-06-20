@@ -8,7 +8,7 @@ aliases:
     restore_cache:
       name: Restore Npm Package Cache
       keys:
-        - yarn-cache-netlify-{{ checksum "yarn.lock" }}
+        - yarn-cache-netlify-0.1.0-{{ checksum "yarn.lock" }}
 
   install_node_modules: &install_node_modules
     run:
@@ -18,7 +18,7 @@ aliases:
   save_cache: &save_cache
     save_cache:
       name: Save NPM package cache
-      key: yarn-cache-netlify-{{ checksum "yarn.lock" }}
+      key: yarn-cache-netlify-0.1.0-{{ checksum "yarn.lock" }}
       paths:
         - ./node_modules
 
