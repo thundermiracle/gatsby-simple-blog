@@ -13,6 +13,11 @@ TextProvider.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
-const useText = () => useContext(TextContext);
+const useText = lang => {
+  const siteText = useContext(TextContext);
+
+  // return context by lang-key, if not exists, return default context
+  return siteText[lang] != null ? siteText[lang] : siteText;
+};
 
 export { TextContext as default, TextProvider, useText };
