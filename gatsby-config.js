@@ -96,5 +96,14 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyDefault: lang,
+        useLangKeyLayout: false,
+        langKeyForNull: 'any',
+        pagesPaths: ['content/blog'],
+      },
+    },
   ],
 };
