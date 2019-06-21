@@ -101,8 +101,7 @@ module.exports = {
       options: {
         langKeyDefault: lang,
         useLangKeyLayout: false,
-        langKeyForNull: 'any',
-        pagesPaths: ['content/blog'],
+        pagesPaths: ['/content/blog/'],
       },
     },
   ],
