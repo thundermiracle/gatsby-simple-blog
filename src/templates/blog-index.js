@@ -8,8 +8,9 @@ import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
 import { useText } from '../context/TextContext';
 
-function BlogIndex({ data, location }) {
+function BlogIndex({ data, location, pageContext }) {
   const siteTitle = data.site.siteMetadata.title;
+  const langKey = pageContext.langKey;
   const posts = data.allMarkdownRemark.edges;
 
   const { tIndTitle, taIndKeywords, tfIndCountPosts } = useText();
@@ -25,6 +26,7 @@ function BlogIndex({ data, location }) {
         const title = node.frontmatter.title || node.fields.slug;
         return (
           <PostAbbrev
+            lang={langKey}
             key={node.fields.slug}
             slug={node.fields.slug}
             date={node.frontmatter.date}
@@ -42,18 +44,26 @@ function BlogIndex({ data, location }) {
 BlogIndex.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object,
+};
+
+BlogIndex.defaultProps = {
+  pageContext: {},
 };
 
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query {
+  query($langKey: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { fields: { langKey: { eq: $langKey } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       totalCount
       edges {
         node {
@@ -61,6 +71,7 @@ export const pageQuery = graphql`
           timeToRead
           fields {
             slug
+            langKey
           }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
