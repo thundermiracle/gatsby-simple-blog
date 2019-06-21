@@ -5,9 +5,14 @@ import { Link } from 'gatsby';
 
 import { scale } from '../../utils/typography';
 
-function Header({ location, title }) {
+/**
+ * base MUST include slash (eg: en/)
+ *
+ * @param {*object} { location, title, base}
+ */
+function Header({ location, title, base }) {
   // eslint-disable-next-line no-undef
-  const rootPath = `${__PATH_PREFIX__}/`;
+  const rootPath = `${__PATH_PREFIX__}/${base}`;
 
   if (location.pathname === rootPath) {
     return (
@@ -24,7 +29,7 @@ function Header({ location, title }) {
             textDecoration: 'none',
             color: 'var(--textTitle)',
           }}
-          to="/"
+          to={`/${base}`}
         >
           {title}
         </Link>
@@ -47,7 +52,7 @@ function Header({ location, title }) {
           textDecoration: 'none',
           color: 'rgb(255, 167, 196)',
         }}
-        to="/"
+        to={`/${base}`}
       >
         {title}
       </Link>
@@ -58,10 +63,12 @@ function Header({ location, title }) {
 Header.propTypes = {
   location: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   title: PropTypes.string,
+  base: PropTypes.string,
 };
 
 Header.defaultProps = {
   title: null,
+  base: '',
 };
 
 export default Header;

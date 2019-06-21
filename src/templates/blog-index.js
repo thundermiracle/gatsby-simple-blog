@@ -7,17 +7,21 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
 import { useText } from '../context/TextContext';
+import getBaseUrl from '../utils/getBaseUrl';
 
 function BlogIndex({ data, location, pageContext }) {
   const siteTitle = data.site.siteMetadata.title;
+  const defaultLang = data.site.siteMetadata.lang;
   const langKey = pageContext.langKey;
   const posts = data.allMarkdownRemark.edges;
+
+  const base = getBaseUrl(defaultLang, langKey);
 
   const { tIndTitle, taIndKeywords, tfIndCountPosts } = useText();
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title={tIndTitle} keywords={taIndKeywords} />
+    <Layout base={base} location={location} title={siteTitle}>
+      <SEO lang={langKey} title={tIndTitle} keywords={taIndKeywords} />
       <aside>
         <Bio />
       </aside>
@@ -58,6 +62,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        lang
       }
     }
     allMarkdownRemark(

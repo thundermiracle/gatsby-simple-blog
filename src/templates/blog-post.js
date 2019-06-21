@@ -11,11 +11,17 @@ import Disqus from '../components/Disqus';
 
 import { formatPostDate, formatReadingTime } from '../utils/helpers';
 import { rhythm, scale } from '../utils/typography';
+import getBaseUrl from '../utils/getBaseUrl';
 
 function BlogPostTemplate({ data, pageContext, location }) {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next, previousInSameTag, nextInSameTag } = pageContext;
+
+  const defaultLang = data.site.siteMetadata.lang;
+  const lang = post.fields.langKey;
+
+  const base = getBaseUrl(defaultLang, lang);
 
   let tags;
   if (post.frontmatter.tags) {
@@ -23,8 +29,14 @@ function BlogPostTemplate({ data, pageContext, location }) {
   }
 
   return (
-    <Layout location={location} title={siteTitle} breadcrumbs={[{ text: post.frontmatter.title }]}>
+    <Layout
+      base={base}
+      location={location}
+      title={siteTitle}
+      breadcrumbs={[{ text: post.frontmatter.title }]}
+    >
       <SEO
+        lang={lang}
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
@@ -37,7 +49,7 @@ function BlogPostTemplate({ data, pageContext, location }) {
           marginTop: rhythm(-1),
         }}
       >
-        {formatPostDate(post.frontmatter.date)}
+        {formatPostDate(post.frontmatter.date, lang)}
         {` • ${formatReadingTime(post.timeToRead)}`}
       </p>
       {tags}
@@ -96,6 +108,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        lang
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -109,6 +122,9 @@ export const pageQuery = graphql`
         description
         tags
         disqus
+      }
+      fields {
+        langKey
       }
     }
   }

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { useText } from '../../context/TextContext';
 
-function Breadcrumbs({ data, showTop, ...restProps }) {
+function Breadcrumbs({ data, showTop, base, ...restProps }) {
   if (data == null) {
     return null;
   }
@@ -16,7 +16,7 @@ function Breadcrumbs({ data, showTop, ...restProps }) {
   if (showTop) {
     topBCli = (
       <li className="breadcrumbs-item">
-        <Link to="/" className="breadcrumbs-element">
+        <Link to={`/${base}`} className="breadcrumbs-element">
           {tHome}
         </Link>
       </li>
@@ -54,11 +54,13 @@ Breadcrumbs.propTypes = {
     }),
   ),
   showTop: PropTypes.bool,
+  base: PropTypes.string,
 };
 
 Breadcrumbs.defaultProps = {
   data: null,
   showTop: false,
+  base: '',
 };
 
 export default Breadcrumbs;
