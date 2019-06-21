@@ -8,7 +8,7 @@ import Breadcrumbs from '../Breadcrumbs';
 
 import { rhythm } from '../../utils/typography';
 
-function Layout({ children, location, title, breadcrumbs }) {
+function Layout({ children, location, title, breadcrumbs, base }) {
   return (
     <div
       style={{
@@ -35,10 +35,15 @@ function Layout({ children, location, title, breadcrumbs }) {
             marginBottom: '2.625rem',
           }}
         >
-          <Header location={location} title={title} />
+          <Header base={base} location={location} title={title} />
           <ReadModeToggle />
         </header>
-        <Breadcrumbs data={breadcrumbs} showTop={true} style={{ marginTop: '-1.5rem' }} />
+        <Breadcrumbs
+          base={base}
+          data={breadcrumbs}
+          showTop={true}
+          style={{ marginTop: '-1.5rem' }}
+        />
         {children}
         <Footer />
       </div>
@@ -51,12 +56,14 @@ Layout.propTypes = {
   location: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   title: PropTypes.string,
   breadcrumbs: PropTypes.array,
+  base: PropTypes.string,
 };
 
 Layout.defaultProps = {
   children: null,
   title: null,
   breadcrumbs: null,
+  base: '',
 };
 
 export default Layout;
