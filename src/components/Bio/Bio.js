@@ -9,6 +9,7 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
+import './Bio.css';
 import { rhythm } from '../../utils/typography';
 
 import SocialBar from '../SocialBar';
@@ -26,28 +27,23 @@ function Bio() {
               marginBottom: rhythm(2.5),
             }}
           >
-            <div
-              style={{
-                display: `flex`,
-                alignItems: 'center',
-              }}
-            >
+            <div className="bio">
               <Image
                 fixed={data.avatar.childImageSharp.fixed}
                 alt={author}
+                className="pic"
                 style={{
                   marginRight: rhythm(1 / 2),
-                  marginBottom: 0,
-                  minWidth: 50,
-                  borderRadius: `100%`,
                 }}
                 imgStyle={{
-                  borderRadius: `50%`,
+                  borderRadius: '50%',
                 }}
               />
-              <p>{description}</p>
+              <div className="description">
+                <p>{description}</p>
+                <SocialBar />
+              </div>
             </div>
-            <SocialBar />
           </div>
         );
       }}
@@ -59,7 +55,7 @@ const bioQuery = graphql`
   query BioQuery {
     avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(width: 70, height: 70) {
           ...GatsbyImageSharpFixed
         }
       }
