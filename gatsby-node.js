@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
 const path = require(`path`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
 const _ = require('lodash');
 const haveSameTags = require('./src/utils/helpers').haveSameItem;
-const { supportedLanguages } = require('./i18n');
-const { lang = 'en' } = require('./config').site;
+const {
+  site: { lang = 'en' },
+  supportedLanguages,
+} = require('./config');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
