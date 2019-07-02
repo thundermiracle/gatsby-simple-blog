@@ -27,7 +27,13 @@ const text = {
   t404Content: 'You just hit a route that doesn&#39;t exist... the sadness.',
 };
 
+const supportedLanguages = {
+  en: 'English',
+  'zh-hans': '简体中文',
+};
+
 module.exports = {
   site,
   text,
+  supportedLanguages,
 };
