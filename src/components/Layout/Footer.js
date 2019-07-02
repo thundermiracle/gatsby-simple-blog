@@ -12,7 +12,7 @@ function Footer() {
       }}
     >
       <p>
-        Made from{' '}
+        Made of{' '}
         <a
           href="https://github.com/thundermiracle/gatsby-simple-blog"
           target="_blank"

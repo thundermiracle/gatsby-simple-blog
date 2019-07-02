@@ -1,0 +1,18 @@
+.bio {
+  display: flex;
+  align-items: center;
+}
+
+.bio .pic {
+  margin-bottom: 0;
+  min-width: 70px;
+  border-radius: 100%;
+}
+
+.bio .description {
+  width: 100%;
+}
+
+.bio .description p {
+  margin-bottom: 1rem;
+}
