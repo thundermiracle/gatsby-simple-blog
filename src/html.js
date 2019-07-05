@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { themeOper, languageOper } from './utils/IIEF';
+import { themeOper, languageOper } from './utils/IIFE';
 
 function HTML({
   htmlAttributes,
