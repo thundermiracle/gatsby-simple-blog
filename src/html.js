@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { themeOper } from './utils/IIEF';
+import { themeOper, languageOper } from './utils/IIEF';
 
 function HTML({
   htmlAttributes,
@@ -24,6 +24,7 @@ function HTML({
           dangerouslySetInnerHTML={{
             __html: `
               (${themeOper.toString()})();
+              (${languageOper.toString()})();
             `,
           }}
         />

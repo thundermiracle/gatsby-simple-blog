@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import LanguageBar from './LanguageBar';
 import Header from './Header';
 import Footer from './Footer';
 import ReadModeToggle from './ReadModeToggle';
@@ -19,6 +20,7 @@ function Layout({ children, location, title, breadcrumbs, base }) {
         fontFamily: 'var(--systemFont)',
       }}
     >
+      <LanguageBar />
       <div
         style={{
           marginLeft: 'auto',

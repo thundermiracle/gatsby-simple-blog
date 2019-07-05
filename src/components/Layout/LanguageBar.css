@@ -1,0 +1,8 @@
+.bar {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px 30px;
+  border-bottom: 1px solid;
+  display: flex;
+  flex-direction: row-reverse;
+}
