@@ -1,0 +1,18 @@
+.lang-icon {
+  margin-right: 20px;
+  box-shadow: none;
+  text-decoration: none;
+  color: rgb(255, 167, 196);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.25rem;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  user-select: none;
+  border-radius: 50%;
+  justify-content: center;
+}
