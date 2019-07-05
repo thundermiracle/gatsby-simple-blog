@@ -8,13 +8,13 @@ export default function withThemeFlag(BaseComponent) {
 
     componentDidMount() {
       this.setState({ theme: window.__theme });
-      window.__onThemeChangeFuncObj[BaseComponent.name] = () => {
+      window.__subOnThemeChange(BaseComponent.name, () => {
         this.setState({ theme: window.__theme });
-      };
+      });
     }
 
     componentWillUnmount() {
-      Reflect.deleteProperty(window.__onThemeChangeFuncObj, BaseComponent.name);
+      window.__unsubOnThemeChange(BaseComponent.name);
     }
 
     render() {
