@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { themeOper, languageOper } from './utils/IIFE';
+
 function HTML({
   htmlAttributes,
   headComponents,
@@ -21,34 +23,8 @@ function HTML({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
-                window.__onThemeChangeFuncObj = {};
-                function setTheme(newTheme) {
-                  window.__theme = newTheme;
-                  preferredTheme = newTheme;
-                  document.body.className = newTheme;
-                  Object.values(window.__onThemeChangeFuncObj).forEach(func => func(newTheme));
-                }
-
-                var preferredTheme;
-                try {
-                  preferredTheme = localStorage.getItem('theme');
-                } catch (err) { }
-
-                window.__setPreferredTheme = function(newTheme) {
-                  setTheme(newTheme);
-                  try {
-                    localStorage.setItem('theme', newTheme);
-                  } catch (err) {}
-                }
-
-                var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
-                darkQuery.addListener(function(e) {
-                  window.__setPreferredTheme(e.matches ? 'dark' : 'light')
-                });
-
-                setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
-              })();
+              (${themeOper.toString()})();
+              (${languageOper.toString()})();
             `,
           }}
         />
