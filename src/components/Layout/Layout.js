@@ -9,7 +9,7 @@ import Breadcrumbs from '../Breadcrumbs';
 
 import { rhythm } from '../../utils/typography';
 
-function Layout({ children, location, title, breadcrumbs, base }) {
+function Layout({ children, location, title, breadcrumbs, base, lang }) {
   return (
     <div
       style={{
@@ -20,7 +20,7 @@ function Layout({ children, location, title, breadcrumbs, base }) {
         fontFamily: 'var(--systemFont)',
       }}
     >
-      <LanguageBar />
+      <LanguageBar lang={lang} />
       <div
         style={{
           marginLeft: 'auto',
@@ -59,6 +59,7 @@ Layout.propTypes = {
   title: PropTypes.string,
   breadcrumbs: PropTypes.array,
   base: PropTypes.string,
+  lang: PropTypes.string,
 };
 
 Layout.defaultProps = {
@@ -66,6 +67,7 @@ Layout.defaultProps = {
   title: null,
   breadcrumbs: null,
   base: '',
+  lang: null,
 };
 
 export default Layout;

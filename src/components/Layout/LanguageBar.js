@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
 import './LanguageBar.css';
@@ -9,15 +10,9 @@ import LangButton from '../LangButton';
 /**
  * base MUST include slash (eg: en/)
  *
- * @param {*object} { location, title, base}
+ * @param {*object} { lang }
  */
-function LanguageBar() {
-  const [lang, setLang] = useState('');
-  useEffect(() => {
-    const savedLang = window.__getPreferredLang();
-    setLang(savedLang);
-  });
-
+function LanguageBar({ lang }) {
   return (
     <StaticQuery
       // eslint-disable-next-line no-use-before-define
@@ -29,7 +24,14 @@ function LanguageBar() {
           return null;
         }
 
-        if (!lang) {
+        const langKey = lang || window.__getPreferredLang();
+        if (lang) {
+          window.__setPreferredLang(lang);
+        }
+
+        const language = supportedLanguages[langKey];
+
+        if (!language) {
           return null;
         }
 
@@ -40,13 +42,21 @@ function LanguageBar() {
               maxWidth: rhythm(24),
             }}
           >
-            <LangButton lang={lang} />
+            <LangButton lang={language} />
           </div>
         );
       }}
     />
   );
 }
+
+LanguageBar.propTypes = {
+  lang: PropTypes.string,
+};
+
+LanguageBar.defaultProps = {
+  lang: null,
+};
 
 const supportedLanguagesQuery = graphql`
   query SupportedLanguagesQuery {
