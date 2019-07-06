@@ -14,7 +14,7 @@ function LangButton({ lang, ...restProps }) {
 }
 
 LangButton.propTypes = {
-  lang: PropTypes.object,
+  lang: PropTypes.string,
 };
 
 LangButton.defaultProps = {
