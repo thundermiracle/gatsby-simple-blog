@@ -1,0 +1,11 @@
+.language {
+  display: flex;
+}
+
+.language .icon {
+  fill: var(--textNormal);
+  margin-right: 5px;
+}
+.language span {
+  color: var(--textNormal);
+}

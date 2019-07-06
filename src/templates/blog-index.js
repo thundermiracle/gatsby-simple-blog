@@ -20,7 +20,7 @@ function BlogIndex({ data, location, pageContext }) {
   const { tIndTitle, taIndKeywords, tfIndCountPosts } = useText();
 
   return (
-    <Layout base={base} location={location} title={siteTitle}>
+    <Layout lang={langKey} base={base} location={location} title={siteTitle}>
       <SEO lang={langKey} title={tIndTitle} keywords={taIndKeywords} />
       <aside>
         <Bio />

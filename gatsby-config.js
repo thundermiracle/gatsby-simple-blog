@@ -12,6 +12,7 @@ const {
   lang = 'en',
   googleTrackingId: trackingId,
 } = require('./config').site;
+const supportedLanguages = require('./config').supportedLanguages;
 
 module.exports = {
   pathPrefix,
@@ -28,6 +29,7 @@ module.exports = {
     },
     disqusShortName,
     lang,
+    langsJson: JSON.stringify(supportedLanguages),
   },
   plugins: [
     'gatsby-plugin-eslint',
