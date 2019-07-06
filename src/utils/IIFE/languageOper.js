@@ -21,5 +21,5 @@ export default function languageOper() {
     return preferredLang;
   };
 
-  setLang(preferredLang || 'English');
+  setLang(preferredLang || 'en');
 }

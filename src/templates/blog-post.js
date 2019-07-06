@@ -19,9 +19,9 @@ function BlogPostTemplate({ data, pageContext, location }) {
   const { previous, next, previousInSameTag, nextInSameTag } = pageContext;
 
   const defaultLang = data.site.siteMetadata.lang;
-  const lang = post.fields.langKey;
+  const langKey = post.fields.langKey;
 
-  const base = getBaseUrl(defaultLang, lang);
+  const base = getBaseUrl(defaultLang, langKey);
 
   let tags;
   if (post.frontmatter.tags) {
@@ -30,13 +30,14 @@ function BlogPostTemplate({ data, pageContext, location }) {
 
   return (
     <Layout
+      lang={langKey}
       base={base}
       location={location}
       title={siteTitle}
       breadcrumbs={[{ text: post.frontmatter.title }]}
     >
       <SEO
-        lang={lang}
+        lang={langKey}
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
@@ -49,7 +50,7 @@ function BlogPostTemplate({ data, pageContext, location }) {
           marginTop: rhythm(-1),
         }}
       >
-        {formatPostDate(post.frontmatter.date, lang)}
+        {formatPostDate(post.frontmatter.date, langKey)}
         {` • ${formatReadingTime(post.timeToRead)}`}
       </p>
       {tags}
