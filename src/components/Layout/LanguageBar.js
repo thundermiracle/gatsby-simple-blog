@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -13,6 +13,14 @@ import LangButton from '../LangButton';
  * @param {*object} { lang }
  */
 function LanguageBar({ lang }) {
+  let getLangFunc = () => 'en';
+  let setLangFunc = null;
+
+  useEffect(() => {
+    getLangFunc = window.__getPreferredLang;
+    setLangFunc = window.__setPreferredLang;
+  });
+
   return (
     <StaticQuery
       // eslint-disable-next-line no-use-before-define
@@ -24,9 +32,9 @@ function LanguageBar({ lang }) {
           return null;
         }
 
-        const langKey = lang || window.__getPreferredLang();
-        if (lang) {
-          window.__setPreferredLang(lang);
+        const langKey = lang || getLangFunc();
+        if (lang && setLangFunc != null) {
+          setLangFunc(lang);
         }
 
         const language = supportedLanguages[langKey];
