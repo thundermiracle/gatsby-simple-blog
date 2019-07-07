@@ -1,0 +1,13 @@
+.rotate-icon {
+  position: relative;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+
+.rotate-icon:hover {
+  background-color: transparent;
+  transform: rotate(360deg) scale(1.5);
+  top: 5px;
+  cursor: pointer;
+  box-shadow: none;
+}
