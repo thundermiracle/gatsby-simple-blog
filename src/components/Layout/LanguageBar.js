@@ -6,6 +6,7 @@ import './LanguageBar.css';
 
 import { rhythm } from '../../utils/typography';
 import LangButton from '../LangButton';
+import BalloonField from '../BalloonField';
 
 /**
  * base MUST include slash (eg: en/)
@@ -51,6 +52,7 @@ function LanguageBar({ lang }) {
             }}
           >
             <LangButton lang={language} />
+            <BalloonField>Test</BalloonField>
           </div>
         );
       }}
