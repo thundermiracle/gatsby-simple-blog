@@ -9,7 +9,7 @@
 
 ## Description
 
-A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and breadcrumbs, eslint, relative posts, disqus supported.
+A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and breadcrumbs, eslint, relative posts, disqus, i18n, eslint supported.
 
 ## Sample pages
 
@@ -35,7 +35,7 @@ All configurable values are here: __./config/index.js__
 
 ## Features
 
-* __overreacted design__
+* ## __overreacted design__
 
   [overreacted.io](https://overreacted.io/) lookings
 
@@ -43,7 +43,7 @@ All configurable values are here: __./config/index.js__
 
   ![top--dark](./screenshots/top-dark.png)
 
-* __Tags__
+* ## __Tags__
 
   Display articles in same tag.
 
@@ -51,25 +51,31 @@ All configurable values are here: __./config/index.js__
 
   ![alltags](./screenshots/alltags.png)
 
-* __Breadcrumbs__
+* ## __Breadcrumbs__
 
   Display breadcrumbs in header part.
 
   ![post](./screenshots/post.png)
 
-* __Relative posts__
+* ## __Relative posts__
 
   Display previous and next posts in same tag in footer part.
 
   ![relative-posts](./screenshots/relative-posts.png)
 
-* __Disqus__
+* ## __Disqus__
 
   Use disqus.com to enable comment.
 
   ![disqus](./screenshots/disqus.png)
 
-* __eslint__
+* ## __i18n__
+
+  Display multiple language. (Only be shown when supportedLanguages > 1)
+
+  ![i18n](./screenshots/i18n.png)
+
+* ## __eslint__
 
   Enable eslint for better coding experience.
 
