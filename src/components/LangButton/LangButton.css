@@ -1,5 +1,11 @@
 .language {
   display: flex;
+  transition: transform 0.25s ease;
+}
+
+.language:hover {
+  /* transform: scale(1.2); */
+  cursor: pointer;
 }
 
 .language .icon {
@@ -8,4 +14,8 @@
 }
 .language span {
   color: var(--textNormal);
+}
+
+.language-focused {
+  transform: scale(1.1);
 }
