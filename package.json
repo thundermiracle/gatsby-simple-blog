@@ -1,7 +1,7 @@
 {
   "name": "gatsby-simple-blog",
   "description": "forked from gatsby-starter-blog with overreacted looking and with tags, breadcrumbs support",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "thundermiracle",
   "bugs": {
     "url": "https://github.com/thundermiracle/gatsby-simple-blog/issues"
