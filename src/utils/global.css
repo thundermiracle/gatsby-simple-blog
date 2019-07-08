@@ -18,6 +18,8 @@ body.light {
   --tag-color: #ffffff;
   --breadcrumbsTextColor: #a1c4e9;
   --breadcrumbsTextColorActive: #888888;
+  --linkBackground: rgba(187, 239, 253, 0.3);
+  --linkBorder: rgba(0, 0, 0, 0.2);
 }
 
 body.dark {
