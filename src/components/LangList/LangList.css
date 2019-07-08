@@ -1,0 +1,12 @@
+.lang-root {
+  display: flex;
+  justify-content: space-around;
+}
+
+.lang-link {
+  background-color: var(--linkBackground);
+  border-bottom: 1px solid var(--linkBorder);
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}

@@ -4,7 +4,7 @@
 }
 
 .language:hover {
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
   cursor: pointer;
 }
 
@@ -14,4 +14,8 @@
 }
 .language span {
   color: var(--textNormal);
+}
+
+.language-focused {
+  transform: scale(1.1);
 }

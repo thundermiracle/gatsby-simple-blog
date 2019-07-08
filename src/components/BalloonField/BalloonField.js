@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import './BalloonField.css';
 
-function BalloonField({ children, ...restProps }) {
+function BalloonField({ children, className, ...restProps }) {
   return (
-    <div className="balloon" {...restProps}>
+    <div className={`balloon ${className}`} {...restProps}>
       {children}
     </div>
   );
@@ -13,6 +13,13 @@ function BalloonField({ children, ...restProps }) {
 
 BalloonField.propTypes = {
   children: PropTypes.any.isRequired,
+  className: PropTypes.string,
+  display: PropTypes.bool,
+};
+
+BalloonField.defaultProps = {
+  className: '',
+  display: true,
 };
 
 export default BalloonField;

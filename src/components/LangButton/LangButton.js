@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import IconLanguage from './IconLanguage';
 import './LangButton.css';
 
-function LangButton({ lang, ...restProps }) {
+function LangButton({ lang, onClick, focused, ...restProps }) {
+  const focusedClass = focused ? 'language-focused' : '';
   return (
-    <div className="language" {...restProps}>
+    // eslint-disable-next-line jsx-a11y/interactive-supports-focus
+    <div className={`language ${focusedClass}`} onClick={onClick} role="button" {...restProps}>
       <IconLanguage className="icon" />
       <span>{lang}</span>
     </div>
@@ -15,10 +17,14 @@ function LangButton({ lang, ...restProps }) {
 
 LangButton.propTypes = {
   lang: PropTypes.string,
+  onClick: PropTypes.func,
+  focused: PropTypes.bool,
 };
 
 LangButton.defaultProps = {
   lang: 'English',
+  onClick: null,
+  focused: false,
 };
 
 LangButton.defaultProps = {};
