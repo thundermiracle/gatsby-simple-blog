@@ -9,7 +9,7 @@ function LangList({ languages, langKey, ...restProps }) {
   return (
     <div className="lang-root" {...restProps}>
       {Object.keys(languages).map(lang => {
-        const url = lang === langKey ? '/' : `/${lang}`;
+        const url = lang === langKey ? '/' : `/${lang}/`;
 
         return (
           <Link key={lang} to={url} className="lang-link">
