@@ -44,7 +44,8 @@ function LanguageBar({ lang }) {
       // eslint-disable-next-line no-use-before-define
       query={supportedLanguagesQuery}
       render={data => {
-        const { langsJson } = data.site.siteMetadata;
+        const { langsJson, lang: defaultLang } = data.site.siteMetadata;
+
         const supportedLanguages = JSON.parse(langsJson) || {};
         if (supportedLanguages == null || Object.keys(supportedLanguages).length < 2) {
           return null;
@@ -73,7 +74,7 @@ function LanguageBar({ lang }) {
             </div>
             <div className="toggle-content" style={toggleStyle}>
               <BalloonField style={{ padding: 20 }}>
-                <LangList languages={supportedLanguages} langKey={lang} />
+                <LangList languages={supportedLanguages} langKey={defaultLang} />
               </BalloonField>
             </div>
           </div>
@@ -95,6 +96,7 @@ const supportedLanguagesQuery = graphql`
   query SupportedLanguagesQuery {
     site {
       siteMetadata {
+        lang
         langsJson
       }
     }
