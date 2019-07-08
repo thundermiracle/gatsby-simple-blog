@@ -14,12 +14,10 @@ function BalloonField({ children, className, ...restProps }) {
 BalloonField.propTypes = {
   children: PropTypes.any.isRequired,
   className: PropTypes.string,
-  display: PropTypes.bool,
 };
 
 BalloonField.defaultProps = {
   className: '',
-  display: true,
 };
 
 export default BalloonField;
