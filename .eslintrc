@@ -1,11 +1,13 @@
 {
   "parser": "babel-eslint",
   "extends": ["airbnb", "plugin:react/recommended", "prettier", "prettier/react"],
+  "plugins": ["jest"],
   "env": {
     "browser": true,
     "es6": true,
     "node": true,
-    "worker": true
+    "worker": true,
+    "jest/globals": true
   },
   "rules": {
     "arrow-body-style": 0,
