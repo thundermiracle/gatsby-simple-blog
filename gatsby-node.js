@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 const path = require(`path`);
 const _ = require('lodash');
-const haveSameTags = require('./src/utils/helpers').haveSameItem;
+const { haveSameItem, getPreviousNextNode } = require('./src/utils/helpers');
 const {
   site: { lang = 'en' },
   supportedLanguages,
@@ -56,27 +56,27 @@ exports.createPages = ({ graphql, actions }) => {
         // Create blog posts pages.
         const posts = result.data.allMarkdownRemark.edges;
 
-        posts.forEach((post, index) => {
-          const previous = index === posts.length - 1 ? null : posts[index + 1].node;
-          const next = index === 0 ? null : posts[index - 1].node;
+        posts.forEach(post => {
+          // posts in same language
+          const postLangKey = post.node.fields.langKey;
+          const postsInSameLang = posts.filter(({ node }) => postLangKey === node.fields.langKey);
+          const indexInSameLang = postsInSameLang.findIndex(
+            p => p.node.fields.slug === post.node.fields.slug,
+          );
+          const { previous, next } = getPreviousNextNode(postsInSameLang, indexInSameLang);
 
           // posts in same tags
           const postTags = post.node.frontmatter.tags;
           const postsInSameTag = posts.filter(({ node }) =>
-            haveSameTags(postTags, node.frontmatter.tags),
+            haveSameItem(postTags, node.frontmatter.tags),
           );
           const indexInSameTag = postsInSameTag.findIndex(
             p => p.node.fields.slug === post.node.fields.slug,
           );
-          let previousInSameTag;
-          let nextInSameTag;
-          if (postsInSameTag.length > 0 && indexInSameTag > -1) {
-            previousInSameTag =
-              indexInSameTag === postsInSameTag.length - 1
-                ? null
-                : postsInSameTag[indexInSameTag + 1].node;
-            nextInSameTag = indexInSameTag <= 0 ? null : postsInSameTag[indexInSameTag - 1].node;
-          }
+          const { previous: previousInSameTag, next: nextInSameTag } = getPreviousNextNode(
+            postsInSameTag,
+            indexInSameTag,
+          );
 
           createPage({
             path: post.node.fields.slug,
