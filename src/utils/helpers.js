@@ -33,8 +33,8 @@ function getPreviousNextNode(posts, fromInd) {
   let previous;
   let next;
   if (posts.length > 0 && fromInd > -1) {
-    previous = fromInd === posts.length - 1 ? null : posts[fromInd + 1].node;
-    next = fromInd <= 0 ? null : posts[fromInd - 1].node;
+    previous = fromInd <= 0 ? null : posts[fromInd - 1].node;
+    next = fromInd === posts.length - 1 ? null : posts[fromInd + 1].node;
   }
 
   return {
