@@ -24,11 +24,11 @@ const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
     site: {
-      siteMetadata: { title },
+      siteMetadata: { title, lang },
     },
   },
 }) => {
-  const { tTags } = useText();
+  const { tTags } = useText(lang);
   return (
     <Layout location="location" title={title}>
       <aside>
@@ -65,6 +65,7 @@ TagsPage.propTypes = {
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
+        lang: PropTypes.string.isRequired,
       }),
     }),
   }).isRequired,
@@ -77,6 +78,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        lang
       }
     }
     allMarkdownRemark(limit: 2000) {

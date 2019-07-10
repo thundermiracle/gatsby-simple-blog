@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { useText } from '../../context/TextContext';
 
-function Breadcrumbs({ data, showTop, base, ...restProps }) {
+function Breadcrumbs({ data, showTop, base, langKey, ...restProps }) {
   if (data == null) {
     return null;
   }
 
-  const { tHome } = useText();
+  const { tHome } = useText(langKey);
 
   let topBCli;
   if (showTop) {
@@ -55,12 +55,14 @@ Breadcrumbs.propTypes = {
   ),
   showTop: PropTypes.bool,
   base: PropTypes.string,
+  langKey: PropTypes.string,
 };
 
 Breadcrumbs.defaultProps = {
   data: null,
   showTop: false,
   base: '',
+  langKey: 'en',
 };
 
 export default Breadcrumbs;
