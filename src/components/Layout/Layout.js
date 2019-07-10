@@ -42,6 +42,7 @@ function Layout({ children, location, title, breadcrumbs, base, lang }) {
         </header>
         <Breadcrumbs
           base={base}
+          langKey={lang}
           data={breadcrumbs}
           showTop={true}
           style={{ marginTop: '-1.5rem' }}

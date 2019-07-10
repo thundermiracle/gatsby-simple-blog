@@ -17,7 +17,8 @@ const useText = lang => {
   const siteText = useContext(TextContext);
 
   // return context by lang-key, if not exists, return default context
-  return siteText[lang] != null ? siteText[lang] : siteText;
+  const langKey = lang || window.__getPreferredLang() || 'en';
+  return siteText[langKey] != null ? siteText[langKey] : siteText;
 };
 
 export { TextContext as default, TextProvider, useText };
