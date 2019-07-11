@@ -17,7 +17,7 @@ function BlogIndex({ data, location, pageContext }) {
 
   const base = getBaseUrl(defaultLang, langKey);
 
-  const { tIndTitle, taIndKeywords, tfIndCountPosts } = useText();
+  const { tIndTitle, taIndKeywords, tfIndCountPosts } = useText(langKey);
 
   return (
     <Layout lang={langKey} base={base} location={location} title={siteTitle}>
