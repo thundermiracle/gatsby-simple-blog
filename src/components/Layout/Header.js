@@ -12,8 +12,9 @@ import { scale } from '../../utils/typography';
  */
 function Header({ location, title, base }) {
   // eslint-disable-next-line no-undef
-  const rootPath = `${__PATH_PREFIX__}/${base}`;
-
+  const rootPath = `${__PATH_PREFIX__}${base}`;
+  console.log('location.pathname:', location.pathname);
+  console.log('rootPath:', rootPath);
   if (location.pathname === rootPath) {
     return (
       <h1
@@ -29,7 +30,7 @@ function Header({ location, title, base }) {
             textDecoration: 'none',
             color: 'var(--textTitle)',
           }}
-          to={`/${base}`}
+          to={base}
         >
           {title}
         </Link>

@@ -16,7 +16,7 @@ function Breadcrumbs({ data, showTop, base, langKey, ...restProps }) {
   if (showTop) {
     topBCli = (
       <li className="breadcrumbs-item">
-        <Link to={`/${base}`} className="breadcrumbs-element">
+        <Link to={base} className="breadcrumbs-element">
           {tHome}
         </Link>
       </li>
