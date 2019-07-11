@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 const path = require(`path`);
 const _ = require('lodash');
+const R = require('ramda');
 const { haveSameItem, getPreviousNextNode } = require('./src/utils/helpers');
+const getBaseUrl = require('./src/utils/getBaseUrl');
 const {
   site: { lang = 'en' },
   supportedLanguages,
@@ -18,7 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
     // Create index pages for all supported languages
     Object.keys(supportedLanguages).forEach(langKey => {
       createPage({
-        path: langKey === lang ? '/' : `/${langKey}/`,
+        path: getBaseUrl(lang, langKey),
         component: blogIndex,
         context: {
           langKey,
@@ -91,25 +93,32 @@ exports.createPages = ({ graphql, actions }) => {
           });
         });
 
-        // Tag pages:
-        let tags = [];
-        // Iterate through each post, putting all found tags into `tags`
-        _.each(posts, edge => {
-          if (_.get(edge, 'node.frontmatter.tags')) {
-            tags = tags.concat(edge.node.frontmatter.tags);
-          }
-        });
-        // Eliminate duplicate tags
-        tags = _.uniq(tags);
+        // group by language
+        const byLangKey = R.groupBy(R.path(['node', 'fields', 'langKey']));
+        const gpPosts = byLangKey(posts);
+        Object.keys(gpPosts).forEach(langKey => {
+          // Tag pages:
+          let tags = [];
+          const postsInSameLang = gpPosts[langKey];
 
-        // Make tag pages
-        tags.forEach(tag => {
-          createPage({
-            path: `/tags/${_.kebabCase(tag)}/`,
-            component: tagPage,
-            context: {
-              tag,
-            },
+          _.each(postsInSameLang, edge => {
+            if (_.get(edge, 'node.frontmatter.tags')) {
+              tags = tags.concat(edge.node.frontmatter.tags);
+            }
+          });
+          // Eliminate duplicate tags
+          tags = _.uniq(tags);
+
+          // Make tag pages
+          tags.forEach(tag => {
+            createPage({
+              path: `${getBaseUrl(lang, langKey)}tags/${_.kebabCase(tag)}/`,
+              component: tagPage,
+              context: {
+                tag,
+                langKey,
+              },
+            });
           });
         });
 
