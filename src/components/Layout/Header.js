@@ -12,7 +12,7 @@ import { scale } from '../../utils/typography';
  */
 function Header({ location, title, base }) {
   // eslint-disable-next-line no-undef
-  const rootPath = `${__PATH_PREFIX__}/${base}`;
+  const rootPath = `${__PATH_PREFIX__}${base}`;
 
   if (location.pathname === rootPath) {
     return (
@@ -29,7 +29,7 @@ function Header({ location, title, base }) {
             textDecoration: 'none',
             color: 'var(--textTitle)',
           }}
-          to={`/${base}`}
+          to={base}
         >
           {title}
         </Link>
@@ -52,7 +52,7 @@ function Header({ location, title, base }) {
           textDecoration: 'none',
           color: 'rgb(255, 167, 196)',
         }}
-        to={`/${base}`}
+        to={base}
       >
         {title}
       </Link>

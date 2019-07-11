@@ -10,21 +10,26 @@ import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
 import Bio from '../components/Bio';
 import { useText } from '../context/TextContext';
+import getBaseUrl from '../utils/getBaseUrl';
 
 const TagPageTemplate = ({ pageContext, data }) => {
-  const { tag } = pageContext;
+  const { tag, langKey } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
   const siteTitle = data.site.siteMetadata.title;
+  const defaultLang = data.site.siteMetadata.lang;
 
   const { tTags, tfTagHeader } = useText();
 
   const tagHeader = tfTagHeader(totalCount, tag);
 
+  const base = getBaseUrl(defaultLang, langKey);
+
   return (
     <Layout
+      base={base}
       location="location"
       title={siteTitle}
-      breadcrumbs={[{ text: tTags, url: '/tags' }, { text: tag }]}
+      breadcrumbs={[{ text: tTags, url: `${base}tags` }, { text: tag }]}
     >
       <SEO title={tagHeader} description={tagHeader} />
       <h1>{tagHeader}</h1>
@@ -65,6 +70,7 @@ TagPageTemplate.propTypes = {
             }),
             fields: PropTypes.shape({
               slug: PropTypes.string.isRequired,
+              langKey: PropTypes.string.isRequired,
             }),
           }),
         }).isRequired,
@@ -76,17 +82,17 @@ TagPageTemplate.propTypes = {
 export default TagPageTemplate;
 
 export const pageQuery = graphql`
-  query($tag: String) {
+  query TagPage($tag: String, $langKey: String) {
     site {
       siteMetadata {
         title
-        author
+        lang
       }
     }
     allMarkdownRemark(
-      limit: 2000
+      limit: 1000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: { frontmatter: { tags: { in: [$tag] } }, fields: { langKey: { eq: $langKey } } }
     ) {
       totalCount
       edges {
@@ -94,6 +100,7 @@ export const pageQuery = graphql`
           timeToRead
           fields {
             slug
+            langKey
           }
           frontmatter {
             title
