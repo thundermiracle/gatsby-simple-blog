@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import { useText } from '../../context/TextContext';
 import RelativePost from '../RelativePost';
 
-function RelativePosts({ postNodes }) {
+function RelativePosts({ postNodes, lang }) {
   const postNodesNotNull = postNodes.filter(x => x);
 
   if (postNodesNotNull.length === 0) {
     return null;
   }
 
-  const { tRelativePosts } = useText();
+  const { tRelativePosts } = useText(lang);
 
   return (
     <>
@@ -26,10 +26,12 @@ function RelativePosts({ postNodes }) {
 
 RelativePosts.propTypes = {
   postNodes: PropTypes.array,
+  lang: PropTypes.string,
 };
 
 RelativePosts.defaultProps = {
   postNodes: [],
+  lang: '',
 };
 
 export default RelativePosts;

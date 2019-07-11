@@ -56,7 +56,7 @@ function BlogPostTemplate({ data, pageContext, location }) {
       {tags}
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
 
-      <RelativePosts postNodes={[previousInSameTag, nextInSameTag]} />
+      <RelativePosts postNodes={[previousInSameTag, nextInSameTag]} lang={langKey} />
 
       <hr
         style={{
