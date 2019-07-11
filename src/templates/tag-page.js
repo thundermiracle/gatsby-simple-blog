@@ -26,6 +26,7 @@ const TagPageTemplate = ({ pageContext, data }) => {
 
   return (
     <Layout
+      base={base}
       location="location"
       title={siteTitle}
       breadcrumbs={[{ text: tTags, url: `${base}tags` }, { text: tag }]}
