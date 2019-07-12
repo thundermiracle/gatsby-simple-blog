@@ -14,6 +14,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   const blogIndex = path.resolve('./src/templates/blog-index.js');
   const blogPost = path.resolve('./src/templates/blog-post.js');
+  const tagsTotal = path.resolve('./src/templates/tags.js');
   const tagPage = path.resolve('./src/templates/tag-page.js');
 
   return new Promise((resolve, reject) => {
@@ -97,6 +98,15 @@ exports.createPages = ({ graphql, actions }) => {
         const byLangKey = R.groupBy(R.path(['node', 'fields', 'langKey']));
         const gpPosts = byLangKey(posts);
         Object.keys(gpPosts).forEach(langKey => {
+          // Make tags-total
+          createPage({
+            path: `${getBaseUrl(lang, langKey)}tags/`,
+            component: tagsTotal,
+            context: {
+              langKey,
+            },
+          });
+
           // Tag pages:
           let tags = [];
           const postsInSameLang = gpPosts[langKey];

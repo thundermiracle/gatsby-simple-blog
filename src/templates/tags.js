@@ -12,6 +12,7 @@ import Layout from '../components/Layout';
 import Tag from '../components/Tag';
 import Bio from '../components/Bio';
 import { useText } from '../context/TextContext';
+import getBaseUrl from '../utils/getBaseUrl';
 
 const styles = {
   tagListDiv: {
@@ -21,6 +22,7 @@ const styles = {
 };
 
 const TagsPage = ({
+  pageContext,
   data: {
     allMarkdownRemark: { group },
     site: {
@@ -28,9 +30,13 @@ const TagsPage = ({
     },
   },
 }) => {
-  const { tTags } = useText(lang);
+  const { langKey } = pageContext;
+  const { tTags } = useText(langKey);
+
+  const base = getBaseUrl(lang, langKey);
+
   return (
-    <Layout location="location" title={title}>
+    <Layout base={base} lang={langKey} location="location" title={title}>
       <aside>
         <Bio />
       </aside>
@@ -43,7 +49,7 @@ const TagsPage = ({
               key={tag.fieldValue}
               text={tag.fieldValue}
               count={tag.totalCount}
-              url={`/tags/${kebabCase(tag.fieldValue)}/`}
+              url={`${base}tags/${kebabCase(tag.fieldValue)}/`}
             />
           ))}
         </div>
@@ -53,6 +59,7 @@ const TagsPage = ({
 };
 
 TagsPage.propTypes = {
+  pageContext: PropTypes.object.isRequired,
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       group: PropTypes.arrayOf(
@@ -74,14 +81,14 @@ TagsPage.propTypes = {
 export default TagsPage;
 
 export const pageQuery = graphql`
-  query {
+  query TagsTotalPage($langKey: String) {
     site {
       siteMetadata {
         title
         lang
       }
     }
-    allMarkdownRemark(limit: 2000) {
+    allMarkdownRemark(limit: 1000, filter: { fields: { langKey: { eq: $langKey } } }) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
