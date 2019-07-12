@@ -28,7 +28,7 @@ const text = {
   'zh-hans': {
     tHome: '主页',
     tRelativePosts: '相关文章',
-    tTags: '标签',
+    tTags: '所有标签',
     tIndTitle: '所有文章',
     taIndKeywords: [`博客`, `gatsby`, `javascript`, `react`],
     tfIndCountPosts: count => `共 ${count} 篇文章`,
