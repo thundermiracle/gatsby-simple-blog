@@ -18,7 +18,7 @@ const TagPageTemplate = ({ pageContext, data }) => {
   const siteTitle = data.site.siteMetadata.title;
   const defaultLang = data.site.siteMetadata.lang;
 
-  const { tTags, tfTagHeader } = useText();
+  const { tTags, tfTagHeader } = useText(langKey);
 
   const tagHeader = tfTagHeader(totalCount, tag);
 
@@ -27,6 +27,7 @@ const TagPageTemplate = ({ pageContext, data }) => {
   return (
     <Layout
       base={base}
+      lang={langKey}
       location="location"
       title={siteTitle}
       breadcrumbs={[{ text: tTags, url: `${base}tags` }, { text: tag }]}
@@ -39,6 +40,7 @@ const TagPageTemplate = ({ pageContext, data }) => {
           return (
             <PostAbbrev
               key={node.fields.slug}
+              base={base}
               slug={node.fields.slug}
               date={node.frontmatter.date}
               timeToRead={node.timeToRead}
