@@ -31,6 +31,7 @@ function BlogIndex({ data, location, pageContext }) {
         return (
           <PostAbbrev
             lang={langKey}
+            base={base}
             key={node.fields.slug}
             slug={node.fields.slug}
             date={node.frontmatter.date}
