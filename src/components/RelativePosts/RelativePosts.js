@@ -18,7 +18,7 @@ function RelativePosts({ postNodes, lang }) {
       <hr />
       <div style={{ marginTop: '-1rem' }}>{tRelativePosts}:</div>
       {postNodesNotNull.map(postNode => (
-        <RelativePost key={postNode.fields.slug} postNode={postNode} />
+        <RelativePost lang={lang} key={postNode.fields.slug} postNode={postNode} />
       ))}
     </>
   );
