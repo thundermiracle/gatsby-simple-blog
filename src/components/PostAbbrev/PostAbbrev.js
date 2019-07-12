@@ -8,7 +8,7 @@ import { formatPostDate, formatReadingTime } from '../../utils/helpers';
 
 import TagList from '../TagList';
 
-function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags, lang }) {
+function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags, lang, base }) {
   let excerptPart;
   if (excerpt) {
     excerptPart = (
@@ -23,7 +23,7 @@ function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags, lang }) {
   let tagsPart;
   if (tags) {
     tagsPart = (
-      <TagList style={{ margin: '0.5rem 0 -0.5rem -0.5rem' }} tags={tags} baseUrl="/tags" />
+      <TagList style={{ margin: '0.5rem 0 -0.5rem -0.5rem' }} tags={tags} baseUrl={`${base}tags`} />
     );
   }
 
@@ -57,6 +57,7 @@ PostAbbrev.propTypes = {
   excerpt: PropTypes.string,
   tags: PropTypes.array,
   lang: PropTypes.string,
+  base: PropTypes.string,
 };
 
 PostAbbrev.defaultProps = {
@@ -64,6 +65,7 @@ PostAbbrev.defaultProps = {
   excerpt: null,
   tags: null,
   lang: 'en',
+  base: '',
 };
 
 export default PostAbbrev;

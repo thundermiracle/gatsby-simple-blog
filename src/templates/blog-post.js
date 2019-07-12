@@ -25,7 +25,7 @@ function BlogPostTemplate({ data, pageContext, location }) {
 
   let tags;
   if (post.frontmatter.tags) {
-    tags = <TagList tags={post.frontmatter.tags} baseUrl="/tags" />;
+    tags = <TagList tags={post.frontmatter.tags} baseUrl={`${base}tags`} />;
   }
 
   return (
