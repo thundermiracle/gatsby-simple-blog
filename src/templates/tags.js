@@ -36,7 +36,13 @@ const TagsPage = ({
   const base = getBaseUrl(lang, langKey);
 
   return (
-    <Layout base={base} lang={langKey} location="location" title={title}>
+    <Layout
+      base={base}
+      lang={langKey}
+      location="location"
+      title={title}
+      breadcrumbs={[{ text: tTags }]}
+    >
       <aside>
         <Bio />
       </aside>

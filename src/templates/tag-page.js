@@ -41,6 +41,7 @@ const TagPageTemplate = ({ pageContext, data }) => {
             <PostAbbrev
               key={node.fields.slug}
               base={base}
+              lang={langKey}
               slug={node.fields.slug}
               date={node.frontmatter.date}
               timeToRead={node.timeToRead}
