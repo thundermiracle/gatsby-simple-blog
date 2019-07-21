@@ -78,7 +78,7 @@
     "build:gh": "gatsby build --prefix-paths",
     "dev": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "yarn run develop",
+    "start": "yarn run dev",
     "serve": "gatsby serve",
     "eslint": "eslint .",
     "jest": "jest",
