@@ -46,7 +46,7 @@
     "babel-preset-gatsby": "^0.2.2",
     "eslint": "^6.0.1",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.1.0",
+    "eslint-config-prettier": "^6.2.0",
     "eslint-config-react": "^1.1.7",
     "eslint-loader": "^3.0.0",
     "eslint-plugin-import": "^2.18.2",
