@@ -2,9 +2,12 @@ import React from 'react';
 
 export default function withThemeFlag(BaseComponent) {
   class injectTheme extends React.Component {
-    state = {
-      theme: null,
-    };
+    constructor() {
+      super();
+      this.state = {
+        theme: null,
+      };
+    }
 
     componentDidMount() {
       this.setState({ theme: window.__theme });
