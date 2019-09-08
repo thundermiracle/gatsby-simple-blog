@@ -40,6 +40,7 @@
     "react/no-danger": 0,
     "react/prefer-stateless-function": 1,
     "react/prop-types": 2,
-    "react/react-in-jsx-scope": 0
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-props-no-spreading": 0
   }
 }
