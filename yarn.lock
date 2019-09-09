@@ -641,9 +641,9 @@
     "@babel/plugin-transform-react-jsx-self" "^7.0.0"
     "@babel/plugin-transform-react-jsx-source" "^7.0.0"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5":
-  version "7.5.5"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.0":
+  version "7.6.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.0.tgz#4fc1d642a9fd0299754e8b5de62c631cf5568205"
   dependencies:
     regenerator-runtime "^0.13.2"
 
@@ -5001,9 +5001,9 @@ gatsby-cli@^2.7.40:
     ink "^2.3.0"
     ink-spinner "^3.0.1"
 
-gatsby-core-utils@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.0.6.tgz#f7fa24b87ad4820d92851a702e6c45d540177033"
+gatsby-core-utils@^1.0.6, gatsby-core-utils@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-1.0.8.tgz#e765a1338d65ff1de65238c7f0a9967e07da20fa"
 
 gatsby-graphiql-explorer@^0.2.8:
   version "0.2.8"
@@ -5068,12 +5068,12 @@ gatsby-plugin-i18n@^1.0.1:
     graphql "^0.11.7"
     ptz-i18n "^1.0.0"
 
-gatsby-plugin-manifest@^2.2.10:
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.2.10.tgz#b4b3cc52390979bb34615302ea4aed6e5b0cbb68"
+gatsby-plugin-manifest@^2.2.16:
+  version "2.2.16"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.2.16.tgz#ce83838602390e96375212d6535aea25d4037bba"
   dependencies:
-    "@babel/runtime" "^7.5.5"
-    gatsby-core-utils "^1.0.6"
+    "@babel/runtime" "^7.6.0"
+    gatsby-core-utils "^1.0.8"
     semver "^5.7.1"
     sharp "^0.23.0"
 
