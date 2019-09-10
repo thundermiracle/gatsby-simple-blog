@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { formatMessage } from '../../context/i18n';
+import { formatMessage } from '../../utils/i18n';
 import RelativePost from '../RelativePost';
 
 function RelativePosts({ postNodes, lang }) {
