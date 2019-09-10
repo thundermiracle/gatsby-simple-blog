@@ -11,33 +11,26 @@ import Disqus from '../components/Disqus';
 
 import { formatPostDate, formatReadingTime } from '../utils/helpers';
 import { rhythm, scale } from '../utils/typography';
-import getBaseUrl from '../utils/getBaseUrl';
+import { useLang } from '../context/LanguageContext';
 
 function BlogPostTemplate({ data, pageContext, location }) {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next, previousInSameTag, nextInSameTag } = pageContext;
 
-  const defaultLang = data.site.siteMetadata.lang;
-  const langKey = post.fields.langKey;
+  // const defaultLang = data.site.siteMetadata.lang;
+  // const langKey = post.fields.langKey;
 
-  const base = getBaseUrl(defaultLang, langKey);
+  const { lang, homeLink } = useLang();
 
   let tags;
   if (post.frontmatter.tags) {
-    tags = <TagList tags={post.frontmatter.tags} baseUrl={`${base}tags`} />;
+    tags = <TagList tags={post.frontmatter.tags} baseUrl={`${homeLink}tags`} />;
   }
 
   return (
-    <Layout
-      lang={langKey}
-      base={base}
-      location={location}
-      title={siteTitle}
-      breadcrumbs={[{ text: post.frontmatter.title }]}
-    >
+    <Layout location={location} title={siteTitle} breadcrumbs={[{ text: post.frontmatter.title }]}>
       <SEO
-        lang={langKey}
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
@@ -50,13 +43,13 @@ function BlogPostTemplate({ data, pageContext, location }) {
           marginTop: rhythm(-1),
         }}
       >
-        {formatPostDate(post.frontmatter.date, langKey)}
+        {formatPostDate(post.frontmatter.date, lang)}
         {` • ${formatReadingTime(post.timeToRead)}`}
       </p>
       {tags}
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
 
-      <RelativePosts postNodes={[previousInSameTag, nextInSameTag]} lang={langKey} />
+      <RelativePosts postNodes={[previousInSameTag, nextInSameTag]} lang={lang} />
 
       <hr
         style={{
@@ -72,6 +65,7 @@ function BlogPostTemplate({ data, pageContext, location }) {
           justifyContent: `space-between`,
           listStyle: `none`,
           padding: 0,
+          marginLeft: 0,
         }}
       >
         <li>

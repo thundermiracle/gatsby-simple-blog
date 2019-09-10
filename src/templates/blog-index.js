@@ -6,32 +6,28 @@ import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
-import { useText } from '../context/TextContext';
-import getBaseUrl from '../utils/getBaseUrl';
+import { useLang } from '../context/LanguageContext';
+import { formatMessage } from '../context/i18n';
 
-function BlogIndex({ data, location, pageContext }) {
+function BlogIndex({ data, location }) {
   const siteTitle = data.site.siteMetadata.title;
-  const defaultLang = data.site.siteMetadata.lang;
-  const langKey = pageContext.langKey;
   const posts = data.allMarkdownRemark.edges;
 
-  const base = getBaseUrl(defaultLang, langKey);
-
-  const { tIndTitle, taIndKeywords, tfIndCountPosts } = useText(langKey);
+  const { lang, homeLink } = useLang();
 
   return (
-    <Layout lang={langKey} base={base} location={location} title={siteTitle}>
-      <SEO lang={langKey} title={tIndTitle} keywords={taIndKeywords} />
+    <Layout location={location} title={siteTitle}>
+      <SEO title={formatMessage('tIndTitle')} keywords={formatMessage('taIndKeywords')} />
       <aside>
         <Bio />
       </aside>
-      <h4>{tfIndCountPosts(data.allMarkdownRemark.totalCount)}</h4>
+      <h4>{formatMessage('tfIndCountPosts', data.allMarkdownRemark.totalCount)}</h4>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
         return (
           <PostAbbrev
-            lang={langKey}
-            base={base}
+            lang={lang}
+            base={homeLink}
             key={node.fields.slug}
             slug={node.fields.slug}
             date={node.frontmatter.date}
@@ -49,12 +45,9 @@ function BlogIndex({ data, location, pageContext }) {
 BlogIndex.propTypes = {
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  pageContext: PropTypes.object,
 };
 
-BlogIndex.defaultProps = {
-  pageContext: {},
-};
+BlogIndex.defaultProps = {};
 
 export default BlogIndex;
 
@@ -63,7 +56,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        lang
       }
     }
     allMarkdownRemark(

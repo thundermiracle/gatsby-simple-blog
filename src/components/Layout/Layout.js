@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { useLang } from '../../context/LanguageContext';
+
 import LanguageBar from './LanguageBar';
 import Header from './Header';
 import Footer from './Footer';
@@ -9,7 +11,13 @@ import Breadcrumbs from '../Breadcrumbs';
 
 import { rhythm } from '../../utils/typography';
 
-function Layout({ children, location, title, breadcrumbs, base, lang }) {
+function Layout({ children, location, title, breadcrumbs }) {
+  const { lang, homeLink, refresh } = useLang();
+
+  React.useEffect(() => {
+    refresh(location);
+  }, [location.pathname]);
+
   return (
     <div
       style={{
@@ -37,11 +45,11 @@ function Layout({ children, location, title, breadcrumbs, base, lang }) {
             marginBottom: '2.625rem',
           }}
         >
-          <Header base={base} location={location} title={title} />
+          <Header base={homeLink} location={location} title={title} />
           <ReadModeToggle />
         </header>
         <Breadcrumbs
-          base={base}
+          base={homeLink}
           langKey={lang}
           data={breadcrumbs}
           showTop={true}
@@ -56,19 +64,15 @@ function Layout({ children, location, title, breadcrumbs, base, lang }) {
 
 Layout.propTypes = {
   children: PropTypes.any,
-  location: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  location: PropTypes.object.isRequired,
   title: PropTypes.string,
   breadcrumbs: PropTypes.array,
-  base: PropTypes.string,
-  lang: PropTypes.string,
 };
 
 Layout.defaultProps = {
   children: null,
   title: null,
   breadcrumbs: null,
-  base: '',
-  lang: null,
 };
 
 export default Layout;
