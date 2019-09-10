@@ -11,11 +11,11 @@ import Breadcrumbs from '../Breadcrumbs';
 
 import { rhythm } from '../../utils/typography';
 
-function Layout({ children, location, title, breadcrumbs, base }) {
-  const { lang, refresh } = useLang();
+function Layout({ children, location, title, breadcrumbs }) {
+  const { lang, homeLink, refresh } = useLang();
 
   React.useEffect(() => {
-    refresh();
+    refresh(location);
   }, [location.pathname]);
 
   return (
@@ -45,11 +45,11 @@ function Layout({ children, location, title, breadcrumbs, base }) {
             marginBottom: '2.625rem',
           }}
         >
-          <Header base={base} location={location} title={title} />
+          <Header base={homeLink} location={location} title={title} />
           <ReadModeToggle />
         </header>
         <Breadcrumbs
-          base={base}
+          base={homeLink}
           langKey={lang}
           data={breadcrumbs}
           showTop={true}
@@ -64,17 +64,15 @@ function Layout({ children, location, title, breadcrumbs, base }) {
 
 Layout.propTypes = {
   children: PropTypes.any,
-  location: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  location: PropTypes.object.isRequired,
   title: PropTypes.string,
   breadcrumbs: PropTypes.array,
-  base: PropTypes.string,
 };
 
 Layout.defaultProps = {
   children: null,
   title: null,
   breadcrumbs: null,
-  base: '',
 };
 
 export default Layout;
