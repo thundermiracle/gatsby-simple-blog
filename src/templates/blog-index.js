@@ -6,22 +6,22 @@ import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
-import { useText, useLang } from '../context/LanguageContext';
+import { useLang } from '../context/LanguageContext';
+import { formatMessage } from '../context/i18n';
 
 function BlogIndex({ data, location }) {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
-  const { tIndTitle, taIndKeywords, tfIndCountPosts } = useText();
   const { lang, homeLink } = useLang();
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title={tIndTitle} keywords={taIndKeywords} />
+      <SEO title={formatMessage('tIndTitle')} keywords={formatMessage('taIndKeywords')} />
       <aside>
         <Bio />
       </aside>
-      <h4>{tfIndCountPosts(data.allMarkdownRemark.totalCount)}</h4>
+      <h4>{formatMessage('tfIndCountPosts', data.allMarkdownRemark.totalCount)}</h4>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
         return (

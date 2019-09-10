@@ -11,7 +11,8 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Tag from '../components/Tag';
 import Bio from '../components/Bio';
-import { useText, useLang } from '../context/LanguageContext';
+import { useLang } from '../context/LanguageContext';
+import { formatMessage } from '../context/i18n';
 
 const styles = {
   tagListDiv: {
@@ -29,8 +30,8 @@ const TagsPage = ({
   },
   location,
 }) => {
-  const { tTags } = useText();
   const { homeLink } = useLang();
+  const tTags = formatMessage('tTags');
 
   return (
     <Layout location={location} title={title} breadcrumbs={[{ text: tTags }]}>

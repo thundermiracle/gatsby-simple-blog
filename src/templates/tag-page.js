@@ -9,23 +9,23 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
 import Bio from '../components/Bio';
-import { useText, useLang } from '../context/LanguageContext';
+import { useLang } from '../context/LanguageContext';
+import { formatMessage } from '../context/i18n';
 
 const TagPageTemplate = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
   const siteTitle = data.site.siteMetadata.title;
 
-  const { tTags, tfTagHeader } = useText();
   const { lang, homeLink } = useLang();
 
-  const tagHeader = tfTagHeader(totalCount, tag);
+  const tagHeader = formatMessage('tfTagHeader', totalCount, tag);
 
   return (
     <Layout
       location={location}
       title={siteTitle}
-      breadcrumbs={[{ text: tTags, url: `${homeLink}tags` }, { text: tag }]}
+      breadcrumbs={[{ text: formatMessage('tTags'), url: `${homeLink}tags` }, { text: tag }]}
     >
       <SEO title={tagHeader} description={tagHeader} />
       <h1>{tagHeader}</h1>

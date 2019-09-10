@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useText } from '../../context/LanguageContext';
+import { formatMessage } from '../../context/i18n';
 import RelativePost from '../RelativePost';
 
 function RelativePosts({ postNodes, lang }) {
@@ -11,12 +11,10 @@ function RelativePosts({ postNodes, lang }) {
     return null;
   }
 
-  const { tRelativePosts } = useText();
-
   return (
     <>
       <hr />
-      <div style={{ marginTop: '-1rem' }}>{tRelativePosts}:</div>
+      <div style={{ marginTop: '-1rem' }}>{formatMessage('tRelativePosts')}:</div>
       {postNodesNotNull.map(postNode => (
         <RelativePost lang={lang} key={postNode.fields.slug} postNode={postNode} />
       ))}
