@@ -9,7 +9,8 @@ import TagList from '../components/TagList';
 import RelativePosts from '../components/RelativePosts';
 import Disqus from '../components/Disqus';
 
-import { formatPostDate, formatReadingTime } from '../utils/helpers';
+import { formatReadingTime } from '../utils/helpers';
+import { formatDate } from '../utils/i18n';
 import { rhythm, scale } from '../utils/typography';
 import { useLang } from '../context/LanguageContext';
 
@@ -43,7 +44,7 @@ function BlogPostTemplate({ data, pageContext, location }) {
           marginTop: rhythm(-1),
         }}
       >
-        {formatPostDate(post.frontmatter.date, lang)}
+        {formatDate(post.frontmatter.date)}
         {` • ${formatReadingTime(post.timeToRead)}`}
       </p>
       {tags}
