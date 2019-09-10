@@ -1,7 +1,8 @@
-/* eslint-disable import/prefer-default-export */
 import { useContext } from 'react';
 
-import LanguageContext from './LanguageContext';
+import { formatPostDate } from './helpers';
+
+import LanguageContext from '../context/LanguageContext';
 import { site } from '../../config';
 
 const textCache = {};
@@ -35,4 +36,10 @@ const formatMessage = (msgId, ...args) => {
   return msg;
 };
 
-export { formatMessage };
+const formatDate = dateStr => {
+  const { lang } = useContext(LanguageContext);
+
+  return formatPostDate(dateStr, lang);
+};
+
+export { formatMessage, formatDate };

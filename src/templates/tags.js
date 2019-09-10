@@ -12,7 +12,7 @@ import Layout from '../components/Layout';
 import Tag from '../components/Tag';
 import Bio from '../components/Bio';
 import { useLang } from '../context/LanguageContext';
-import { formatMessage } from '../context/i18n';
+import { formatMessage } from '../utils/i18n';
 
 const styles = {
   tagListDiv: {

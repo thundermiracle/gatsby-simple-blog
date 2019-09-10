@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import { rhythm } from '../../utils/typography';
-import { formatPostDate, formatReadingTime } from '../../utils/helpers';
+import { formatReadingTime } from '../../utils/helpers';
+import { formatDate } from '../../utils/i18n';
 
 import TagList from '../TagList';
 
-function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags, lang, base }) {
+function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags, base }) {
   let excerptPart;
   if (excerpt) {
     excerptPart = (
@@ -42,7 +43,7 @@ function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags, lang, base }
           </Link>
         </h3>
         {tagsPart}
-        <small>{`${formatPostDate(date, lang)} • ${formatReadingTime(timeToRead)}`}</small>
+        <small>{`${formatDate(date)} • ${formatReadingTime(timeToRead)}`}</small>
         {excerptPart}
       </header>
     </article>
@@ -56,7 +57,6 @@ PostAbbrev.propTypes = {
   timeToRead: PropTypes.number.isRequired,
   excerpt: PropTypes.string,
   tags: PropTypes.array,
-  lang: PropTypes.string,
   base: PropTypes.string,
 };
 
@@ -64,7 +64,6 @@ PostAbbrev.defaultProps = {
   title: null,
   excerpt: null,
   tags: null,
-  lang: 'en',
   base: '',
 };
 

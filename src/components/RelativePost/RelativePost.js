@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import { rhythm } from '../../utils/typography';
-import { formatPostDate } from '../../utils/helpers';
+import { formatDate } from '../../utils/i18n';
 
-function RelativePost({ postNode, lang }) {
+function RelativePost({ postNode }) {
   const {
     fields: { slug },
     frontmatter: { title, date },
@@ -33,7 +33,7 @@ function RelativePost({ postNode, lang }) {
               marginLeft: rhythm(1 / 4),
             }}
           >
-            {formatPostDate(date, lang)}
+            {formatDate(date)}
           </small>
         </header>
       </article>
@@ -43,11 +43,6 @@ function RelativePost({ postNode, lang }) {
 
 RelativePost.propTypes = {
   postNode: PropTypes.object.isRequired,
-  lang: PropTypes.string,
-};
-
-RelativePost.defaultProps = {
-  lang: '',
 };
 
 export default RelativePost;
