@@ -4,18 +4,16 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import { useText } from '../context/TextContext';
+import { formatMessage } from '../context/i18n';
 
 function NotFoundPage({ data, location }) {
   const siteTitle = data.site.siteMetadata.title;
 
-  const { t404Title, t404Content } = useText();
-
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title={t404Title} />
-      <h1>{t404Title}</h1>
-      <p>{t404Content}</p>
+      <SEO title={formatMessage('t404Title')} />
+      <h1>{formatMessage('t404Title')}</h1>
+      <p>{formatMessage('t404Content')}</p>
     </Layout>
   );
 }

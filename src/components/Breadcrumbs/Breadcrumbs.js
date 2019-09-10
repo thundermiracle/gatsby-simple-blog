@@ -3,21 +3,19 @@ import './Breadcrumbs.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { useText } from '../../context/TextContext';
+import { formatMessage } from '../../context/i18n';
 
 function Breadcrumbs({ data, showTop, base, langKey, ...restProps }) {
   if (data == null) {
     return null;
   }
 
-  const { tHome } = useText(langKey);
-
   let topBCli;
   if (showTop) {
     topBCli = (
       <li className="breadcrumbs-item">
         <Link to={base} className="breadcrumbs-element">
-          {tHome}
+          {formatMessage('tHome')}
         </Link>
       </li>
     );
