@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { getCurrentLangKey } from 'ptz-i18n';
 
-import { site, text, supportedLanguages } from '../../config';
+import { site, supportedLanguages } from '../../config';
 
 const LanguageContext = React.createContext({
   lang: site.lang,
@@ -45,17 +45,10 @@ LanguageProvider.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
-const useText = () => {
-  const langContext = useContext(LanguageContext);
-
-  // return context by lang-key, if not exists, return default context
-  return text[langContext.lang] != null ? text[langContext.lang] : text;
-};
-
 const useLang = () => {
   const langContext = useContext(LanguageContext);
 
   return langContext;
 };
 
-export { LanguageContext as default, LanguageProvider, useLang, useText };
+export { LanguageContext as default, LanguageProvider, useLang };
