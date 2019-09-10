@@ -6,7 +6,7 @@ import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
-import { useText } from '../context/TextContext';
+import { useText } from '../context/LanguageContext';
 import getBaseUrl from '../utils/getBaseUrl';
 
 function BlogIndex({ data, location, pageContext }) {
@@ -17,7 +17,7 @@ function BlogIndex({ data, location, pageContext }) {
 
   const base = getBaseUrl(defaultLang, langKey);
 
-  const { tIndTitle, taIndKeywords, tfIndCountPosts } = useText(langKey);
+  const { tIndTitle, taIndKeywords, tfIndCountPosts } = useText();
 
   return (
     <Layout lang={langKey} base={base} location={location} title={siteTitle}>

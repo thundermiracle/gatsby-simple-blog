@@ -3,14 +3,14 @@ import './Breadcrumbs.css';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { useText } from '../../context/TextContext';
+import { useText } from '../../context/LanguageContext';
 
 function Breadcrumbs({ data, showTop, base, langKey, ...restProps }) {
   if (data == null) {
     return null;
   }
 
-  const { tHome } = useText(langKey);
+  const { tHome } = useText();
 
   let topBCli;
   if (showTop) {

@@ -9,7 +9,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
 import Bio from '../components/Bio';
-import { useText } from '../context/TextContext';
+import { useText } from '../context/LanguageContext';
 import getBaseUrl from '../utils/getBaseUrl';
 
 const TagPageTemplate = ({ pageContext, data }) => {
@@ -18,7 +18,7 @@ const TagPageTemplate = ({ pageContext, data }) => {
   const siteTitle = data.site.siteMetadata.title;
   const defaultLang = data.site.siteMetadata.lang;
 
-  const { tTags, tfTagHeader } = useText(langKey);
+  const { tTags, tfTagHeader } = useText();
 
   const tagHeader = tfTagHeader(totalCount, tag);
 

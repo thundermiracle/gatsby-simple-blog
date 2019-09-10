@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { useLang } from '../../context/LanguageContext';
+
 import LanguageBar from './LanguageBar';
 import Header from './Header';
 import Footer from './Footer';
@@ -9,7 +11,13 @@ import Breadcrumbs from '../Breadcrumbs';
 
 import { rhythm } from '../../utils/typography';
 
-function Layout({ children, location, title, breadcrumbs, base, lang }) {
+function Layout({ children, location, title, breadcrumbs, base }) {
+  const { lang, refresh } = useLang();
+
+  React.useEffect(() => {
+    refresh();
+  }, [location.pathname]);
+
   return (
     <div
       style={{
@@ -60,7 +68,6 @@ Layout.propTypes = {
   title: PropTypes.string,
   breadcrumbs: PropTypes.array,
   base: PropTypes.string,
-  lang: PropTypes.string,
 };
 
 Layout.defaultProps = {
@@ -68,7 +75,6 @@ Layout.defaultProps = {
   title: null,
   breadcrumbs: null,
   base: '',
-  lang: null,
 };
 
 export default Layout;

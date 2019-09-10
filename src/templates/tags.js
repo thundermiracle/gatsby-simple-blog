@@ -11,7 +11,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Tag from '../components/Tag';
 import Bio from '../components/Bio';
-import { useText } from '../context/TextContext';
+import { useText } from '../context/LanguageContext';
 import getBaseUrl from '../utils/getBaseUrl';
 
 const styles = {
@@ -31,7 +31,7 @@ const TagsPage = ({
   },
 }) => {
   const { langKey } = pageContext;
-  const { tTags } = useText(langKey);
+  const { tTags } = useText();
 
   const base = getBaseUrl(lang, langKey);
 
