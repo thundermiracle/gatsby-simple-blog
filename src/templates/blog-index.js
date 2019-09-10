@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
 import { useLang } from '../context/LanguageContext';
-import { formatMessage } from '../context/i18n';
+import { formatMessage } from '../utils/i18n';
 
 function BlogIndex({ data, location }) {
   const siteTitle = data.site.siteMetadata.title;
