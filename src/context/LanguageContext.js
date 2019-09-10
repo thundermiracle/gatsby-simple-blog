@@ -15,9 +15,11 @@ function LanguageProvider({ children }) {
   const [lang, setLang] = React.useState(defaultLang);
   const [homeLink, setHomeLink] = React.useState('/');
 
-  function refresh() {
+  function refresh(location = window.location) {
     if (supportedLanguages != null && Object.keys(supportedLanguages).length > 1) {
-      const url = location.pathname;
+      // const url = location.pathname;
+      const url = location.pathname == null ? window.location.pathname : location.pathname;
+
       const currentLang = getCurrentLangKey(Object.keys(supportedLanguages), defaultLang, url);
       const currentHomeLink = `/${currentLang}/`.replace(`/${defaultLang}/`, '/');
 

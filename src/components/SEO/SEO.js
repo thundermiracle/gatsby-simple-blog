@@ -9,8 +9,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { useLang } from '../../context/LanguageContext';
 
-function SEO({ description, lang, meta, keywords, title }) {
+function SEO({ description, meta, keywords, title }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -25,6 +26,8 @@ function SEO({ description, lang, meta, keywords, title }) {
       }
     `,
   );
+
+  const { lang } = useLang();
 
   const metaDescription = description || site.siteMetadata.description;
 
@@ -82,19 +85,17 @@ function SEO({ description, lang, meta, keywords, title }) {
   );
 }
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  keywords: [],
-  description: ``,
-};
-
 SEO.propTypes = {
   description: PropTypes.string,
-  lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
+};
+
+SEO.defaultProps = {
+  meta: [],
+  keywords: [],
+  description: '',
 };
 
 export default SEO;

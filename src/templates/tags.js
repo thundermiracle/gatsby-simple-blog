@@ -11,8 +11,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Tag from '../components/Tag';
 import Bio from '../components/Bio';
-import { useText } from '../context/LanguageContext';
-import getBaseUrl from '../utils/getBaseUrl';
+import { useText, useLang } from '../context/LanguageContext';
 
 const styles = {
   tagListDiv: {
@@ -22,27 +21,19 @@ const styles = {
 };
 
 const TagsPage = ({
-  pageContext,
   data: {
     allMarkdownRemark: { group },
     site: {
-      siteMetadata: { title, lang },
+      siteMetadata: { title },
     },
   },
+  location,
 }) => {
-  const { langKey } = pageContext;
   const { tTags } = useText();
-
-  const base = getBaseUrl(lang, langKey);
+  const { homeLink } = useLang();
 
   return (
-    <Layout
-      base={base}
-      lang={langKey}
-      location="location"
-      title={title}
-      breadcrumbs={[{ text: tTags }]}
-    >
+    <Layout location={location} title={title} breadcrumbs={[{ text: tTags }]}>
       <aside>
         <Bio />
       </aside>
@@ -55,7 +46,7 @@ const TagsPage = ({
               key={tag.fieldValue}
               text={tag.fieldValue}
               count={tag.totalCount}
-              url={`${base}tags/${kebabCase(tag.fieldValue)}/`}
+              url={`${homeLink}tags/${kebabCase(tag.fieldValue)}/`}
             />
           ))}
         </div>
@@ -65,7 +56,6 @@ const TagsPage = ({
 };
 
 TagsPage.propTypes = {
-  pageContext: PropTypes.object.isRequired,
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       group: PropTypes.arrayOf(
@@ -82,6 +72,7 @@ TagsPage.propTypes = {
       }),
     }),
   }).isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default TagsPage;

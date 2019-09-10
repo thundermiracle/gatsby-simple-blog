@@ -9,28 +9,23 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PostAbbrev from '../components/PostAbbrev';
 import Bio from '../components/Bio';
-import { useText } from '../context/LanguageContext';
-import getBaseUrl from '../utils/getBaseUrl';
+import { useText, useLang } from '../context/LanguageContext';
 
-const TagPageTemplate = ({ pageContext, data }) => {
-  const { tag, langKey } = pageContext;
+const TagPageTemplate = ({ pageContext, data, location }) => {
+  const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
   const siteTitle = data.site.siteMetadata.title;
-  const defaultLang = data.site.siteMetadata.lang;
 
   const { tTags, tfTagHeader } = useText();
+  const { lang, homeLink } = useLang();
 
   const tagHeader = tfTagHeader(totalCount, tag);
 
-  const base = getBaseUrl(defaultLang, langKey);
-
   return (
     <Layout
-      base={base}
-      lang={langKey}
-      location="location"
+      location={location}
       title={siteTitle}
-      breadcrumbs={[{ text: tTags, url: `${base}tags` }, { text: tag }]}
+      breadcrumbs={[{ text: tTags, url: `${homeLink}tags` }, { text: tag }]}
     >
       <SEO title={tagHeader} description={tagHeader} />
       <h1>{tagHeader}</h1>
@@ -40,8 +35,8 @@ const TagPageTemplate = ({ pageContext, data }) => {
           return (
             <PostAbbrev
               key={node.fields.slug}
-              base={base}
-              lang={langKey}
+              base={homeLink}
+              lang={lang}
               slug={node.fields.slug}
               date={node.frontmatter.date}
               timeToRead={node.timeToRead}
@@ -80,6 +75,7 @@ TagPageTemplate.propTypes = {
       ),
     }),
   }).isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default TagPageTemplate;
@@ -89,7 +85,6 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        lang
       }
     }
     allMarkdownRemark(
