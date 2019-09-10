@@ -5,6 +5,6 @@ import 'typeface-montserrat';
 import 'typeface-merriweather';
 
 import React from 'react';
-import { TextProvider } from './src/context/TextContext';
+import { LanguageProvider } from './src/context/LanguageContext';
 
-export const wrapRootElement = ({ element }) => <TextProvider>{element}</TextProvider>;
+export const wrapRootElement = ({ element }) => <LanguageProvider>{element}</LanguageProvider>;

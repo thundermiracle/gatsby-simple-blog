@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useText } from '../../context/TextContext';
+import { useText } from '../../context/LanguageContext';
 import RelativePost from '../RelativePost';
 
 function RelativePosts({ postNodes, lang }) {
@@ -11,7 +11,7 @@ function RelativePosts({ postNodes, lang }) {
     return null;
   }
 
-  const { tRelativePosts } = useText(lang);
+  const { tRelativePosts } = useText();
 
   return (
     <>
