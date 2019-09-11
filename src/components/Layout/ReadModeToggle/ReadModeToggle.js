@@ -1,11 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
+import withThemeFlag from 'utils/withThemeFlag';
 import Toggle from '../../Toggle';
 import sun from './sun.png';
 import moon from './moon.png';
-
-import withThemeFlag from '../../../utils/withThemeFlag';
 
 // eslint-disable-next-line react/prop-types
 function ReadModeToggle({ isLightTheme }) {

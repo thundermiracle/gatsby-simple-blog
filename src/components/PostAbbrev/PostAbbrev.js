@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'gatsby';
 
-import { rhythm } from '../../utils/typography';
-import { formatReadingTime } from '../../utils/helpers';
-import { formatDate } from '../../utils/i18n';
+import { rhythm } from 'utils/typography';
+import { formatReadingTime } from 'utils/helpers';
+import { formatDate } from 'utils/i18n';
 
 import TagList from '../TagList';
 

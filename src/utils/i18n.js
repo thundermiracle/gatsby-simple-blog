@@ -1,9 +1,8 @@
 import { useContext } from 'react';
 
-import { formatPostDate } from './helpers';
-
-import LanguageContext from '../context/LanguageContext';
-import { site } from '../../config';
+import LanguageContext from 'context/LanguageContext';
+import { site } from 'config';
+import { formatPostDate } from 'utils/helpers';
 
 const textCache = {};
 const getAllMsg = lang => {
