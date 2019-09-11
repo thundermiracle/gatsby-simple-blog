@@ -47,6 +47,7 @@
     "babel-plugin-import": "^1.12.1",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-gatsby": "^0.2.13",
+    "cross-env": "^5.2.1",
     "eslint": "^6.3.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
@@ -87,6 +88,6 @@
     "serve": "gatsby serve",
     "eslint": "eslint .",
     "jest": "jest",
-    "test": "yarn run eslint && yarn run jest"
+    "test": "cross-env NODE_ENV=test yarn run eslint && cross-env NODE_ENV=test yarn run jest"
   }
 }
