@@ -42,5 +42,12 @@
     "react/prop-types": 2,
     "react/react-in-jsx-scope": 0,
     "react/jsx-props-no-spreading": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {
+        "root": ["./"]
+      }
+    }
   }
 }

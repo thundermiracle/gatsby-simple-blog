@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'gatsby';
 
-import { rhythm } from '../../utils/typography';
-import { formatDate } from '../../utils/i18n';
+import { rhythm } from 'utils/typography';
+import { formatDate } from 'utils/i18n';
 
 function RelativePost({ postNode }) {
   const {

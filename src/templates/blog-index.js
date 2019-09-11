@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import Bio from '../components/Bio';
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
-import PostAbbrev from '../components/PostAbbrev';
-import { useLang } from '../context/LanguageContext';
-import { formatMessage } from '../utils/i18n';
+import Bio from 'components/Bio';
+import Layout from 'components/Layout';
+import SEO from 'components/SEO';
+import PostAbbrev from 'components/PostAbbrev';
+import { useLang } from 'context/LanguageContext';
+import { formatMessage } from 'utils/i18n';
 
 function BlogIndex({ data, location }) {
   const siteTitle = data.site.siteMetadata.title;

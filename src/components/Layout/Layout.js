@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useLang } from '../../context/LanguageContext';
+import { useLang } from 'context/LanguageContext';
+import { rhythm } from 'utils/typography';
 
 import LanguageBar from './LanguageBar';
 import Header from './Header';
 import Footer from './Footer';
 import ReadModeToggle from './ReadModeToggle';
 import Breadcrumbs from '../Breadcrumbs';
-
-import { rhythm } from '../../utils/typography';
 
 function Layout({ children, location, title, breadcrumbs }) {
   const { lang, homeLink, refresh } = useLang();
