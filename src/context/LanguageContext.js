@@ -4,16 +4,23 @@ import { getCurrentLangKey } from 'ptz-i18n';
 
 import { site, supportedLanguages } from 'config';
 
-const LanguageContext = React.createContext({
+import makeLoadMessage from './makeLoadMessage';
+
+const loadMessage = makeLoadMessage(site.lang);
+
+const initValues = {
   lang: site.lang,
   homeLink: '/',
+  messages: loadMessage(site.lang),
   refresh: () => {},
-});
+};
+const LanguageContext = React.createContext(initValues);
 
 function LanguageProvider({ children }) {
   const { lang: defaultLang } = site;
-  const [lang, setLang] = React.useState(defaultLang);
-  const [homeLink, setHomeLink] = React.useState('/');
+  const [lang, setLang] = React.useState(initValues.lang);
+  const [homeLink, setHomeLink] = React.useState(initValues.homeLink);
+  const [messages, setMessages] = React.useState(initValues.messages);
 
   function refresh(location = window.location) {
     if (supportedLanguages != null && Object.keys(supportedLanguages).length > 1) {
@@ -22,9 +29,11 @@ function LanguageProvider({ children }) {
 
       const currentLang = getCurrentLangKey(Object.keys(supportedLanguages), defaultLang, url);
       const currentHomeLink = `/${currentLang}/`.replace(`/${defaultLang}/`, '/');
+      const currentMessages = loadMessage(currentLang);
 
       setLang(currentLang);
       setHomeLink(currentHomeLink);
+      setMessages(currentMessages);
     }
   }
 
@@ -33,6 +42,7 @@ function LanguageProvider({ children }) {
       value={{
         lang,
         homeLink,
+        messages,
         refresh,
       }}
     >
