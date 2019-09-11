@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 
-import Bio from '../components/Bio';
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
-import TagList from '../components/TagList';
-import RelativePosts from '../components/RelativePosts';
-import Disqus from '../components/Disqus';
+import Bio from 'components/Bio';
+import Layout from 'components/Layout';
+import SEO from 'components/SEO';
+import TagList from 'components/TagList';
+import RelativePosts from 'components/RelativePosts';
+import Disqus from 'components/Disqus';
 
-import { formatReadingTime } from '../utils/helpers';
-import { formatDate } from '../utils/i18n';
-import { rhythm, scale } from '../utils/typography';
-import { useLang } from '../context/LanguageContext';
+import { formatReadingTime } from 'utils/helpers';
+import { formatDate } from 'utils/i18n';
+import { rhythm, scale } from 'utils/typography';
+import { useLang } from 'context/LanguageContext';
 
 function BlogPostTemplate({ data, pageContext, location }) {
   const post = data.markdownRemark;

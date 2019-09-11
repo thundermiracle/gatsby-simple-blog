@@ -79,6 +79,10 @@ All configurable values are here: __./config/index.js__
 
   Enable eslint for better coding experience.
 
+* ## __module resolver__
+
+  Enable babel-module-resolver to prevent relative path hell
+
 ## License
 
 This project is licensed under the terms of the [MIT license](/LICENSE).

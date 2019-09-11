@@ -8,11 +8,11 @@ import kebabCase from 'lodash/kebabCase';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
-import Tag from '../components/Tag';
-import Bio from '../components/Bio';
-import { useLang } from '../context/LanguageContext';
-import { formatMessage } from '../utils/i18n';
+import Layout from 'components/Layout';
+import Tag from 'components/Tag';
+import Bio from 'components/Bio';
+import { useLang } from 'context/LanguageContext';
+import { formatMessage } from 'utils/i18n';
 
 const styles = {
   tagListDiv: {

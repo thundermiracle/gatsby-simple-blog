@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { getCurrentLangKey } from 'ptz-i18n';
 
-import { site, supportedLanguages } from '../../config';
+import { site, supportedLanguages } from 'config';
 
 const LanguageContext = React.createContext({
   lang: site.lang,

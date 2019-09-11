@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'gatsby';
 
-import { scale } from '../../utils/typography';
+import { scale } from 'utils/typography';
 
 /**
  * base MUST include slash (eg: en/)
