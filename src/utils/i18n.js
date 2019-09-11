@@ -1,32 +1,16 @@
-import { useContext } from 'react';
-
-import LanguageContext from 'context/LanguageContext';
-import { site } from 'config';
+import { useLang } from 'context/LanguageContext';
 import { formatPostDate } from 'utils/helpers';
 
-const textCache = {};
-const getAllMsg = lang => {
-  let result = textCache[lang];
-  if (!result) {
-    // get default language's definitions
-    const defMsgs = lang === site.lang ? {} : getAllMsg(site.lang);
-
-    // merge with default definitions
-    result = {
-      ...defMsgs,
-      ...require(`../../config/locales/${lang}.js`),
-    };
-    textCache[lang] = result;
-  }
-
-  return result;
-};
-
 const formatMessage = (msgId, ...args) => {
-  const { lang } = useContext(LanguageContext);
+  const { lang, messages } = useLang();
 
-  const allMsg = getAllMsg(lang);
-  const msg = allMsg[msgId];
+  const msg = messages[msgId];
+
+  if (msg == null) {
+    console.error(`MessageId [${msgId}] is not exist!!
+    You should add it to config/locales/${lang}.js`);
+    return msgId;
+  }
 
   if (typeof msg === 'function') {
     return msg(...args);
@@ -36,7 +20,7 @@ const formatMessage = (msgId, ...args) => {
 };
 
 const formatDate = dateStr => {
-  const { lang } = useContext(LanguageContext);
+  const { lang } = useLang();
 
   return formatPostDate(dateStr, lang);
 };
