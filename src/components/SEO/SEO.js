@@ -9,7 +9,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
-import { useLang } from '../../context/LanguageContext';
+import { useLang } from 'context/LanguageContext';
 
 function SEO({ description, meta, keywords, title }) {
   const { site } = useStaticQuery(

@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 // Components
 import { graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
-import PostAbbrev from '../components/PostAbbrev';
-import Bio from '../components/Bio';
-import { useLang } from '../context/LanguageContext';
-import { formatMessage } from '../utils/i18n';
+import Layout from 'components/Layout';
+import SEO from 'components/SEO';
+import PostAbbrev from 'components/PostAbbrev';
+import Bio from 'components/Bio';
+import { useLang } from 'context/LanguageContext';
+import { formatMessage } from 'utils/i18n';
 
 const TagPageTemplate = ({ pageContext, data, location }) => {
   const { tag } = pageContext;

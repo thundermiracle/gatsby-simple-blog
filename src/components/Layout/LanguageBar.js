@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
-import './LanguageBar.css';
+import { rhythm } from 'utils/typography';
 
-import { rhythm } from '../../utils/typography';
 import LangButton from '../LangButton';
 import BalloonField from '../BalloonField';
 import LangList from '../LangList/LangList';
+import './LanguageBar.css';
 
 /**
  * base MUST include slash (eg: en/)
