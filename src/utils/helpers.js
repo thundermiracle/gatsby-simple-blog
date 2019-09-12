@@ -43,12 +43,21 @@ function getPreviousNextNode(posts, fromInd) {
   };
 }
 
+const isAlphabetNum = s =>
+  /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g.test(s);
+
 function kebabCase(s) {
+  if (isAlphabetNum(s)) {
+    return s
+      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+      .map(x => x.toLowerCase())
+      .join('-');
+  }
+
   return s
-    .match(/[A-Z]{2,}(?=[A-Z][a-z0-9]*|\b)|[A-Z]?[a-z0-9]*|[A-Z]|[0-9]+/g)
-    .filter(Boolean)
-    .map(x => x.toLowerCase())
-    .join('-');
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/[\s_]+/g, '-')
+    .toLowerCase();
 }
 
 module.exports = {
