@@ -34,8 +34,8 @@ test('IAmListeningToFMWhileLoadingDifferentURLOnMyBrowserAndAlsoEditingSomeXMLAn
   );
 });
 
-test('Som3thing\\3lse', () => {
-  const result = kebabCase('Som3thing\\3lse');
+test('生活', () => {
+  const result = kebabCase('生活');
 
-  expect(result).toEqual('som3thing-3lse');
+  expect(result).toEqual('生活');
 });
