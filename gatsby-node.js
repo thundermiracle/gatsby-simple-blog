@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
 const path = require(`path`);
-const _ = require('lodash');
 const R = require('ramda');
-const { haveSameItem, getPreviousNextNode } = require('./src/utils/helpers');
+const { haveSameItem, getPreviousNextNode, kebabCase } = require('./src/utils/helpers');
 const getBaseUrl = require('./src/utils/getBaseUrl');
 const {
   site: { lang = 'en' },
@@ -111,18 +110,19 @@ exports.createPages = ({ graphql, actions }) => {
           let tags = [];
           const postsInSameLang = gpPosts[langKey];
 
-          _.each(postsInSameLang, edge => {
-            if (_.get(edge, 'node.frontmatter.tags')) {
+          R.forEach(edge => {
+            if (R.path(['node', 'frontmatter', 'tags'], edge)) {
               tags = tags.concat(edge.node.frontmatter.tags);
             }
-          });
+          }, postsInSameLang);
+
           // Eliminate duplicate tags
-          tags = _.uniq(tags);
+          tags = R.uniq(tags);
 
           // Make tag pages
           tags.forEach(tag => {
             createPage({
-              path: `${getBaseUrl(lang, langKey)}tags/${_.kebabCase(tag)}/`,
+              path: `${getBaseUrl(lang, langKey)}tags/${kebabCase(tag)}/`,
               component: tagPage,
               context: {
                 tag,
