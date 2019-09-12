@@ -33,6 +33,16 @@ gatsby new my-blog-folder https://github.com/thundermiracle/gatsby-simple-blog
 
 All configurable values are here: __./config/index.js__
 
+## i18n
+
+1. Add [lang].js to config/locales folder
+
+1. Modify supportedLanguages in config/index.js
+
+1. Set site.lang in config/index.js as default language
+
+1. add [filename].[lang].md to content/blog and enjoy!
+
 ## Features
 
 * ## __overreacted design__
