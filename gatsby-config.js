@@ -29,7 +29,7 @@ module.exports = {
     },
     disqusShortName,
     lang,
-    langsJson: JSON.stringify(supportedLanguages),
+    langsEntries: Object.entries(supportedLanguages),
   },
   plugins: [
     'gatsby-plugin-eslint',
