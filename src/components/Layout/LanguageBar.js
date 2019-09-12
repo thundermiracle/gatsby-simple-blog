@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -14,15 +14,7 @@ import './LanguageBar.css';
  *
  * @param {*object} { lang }
  */
-function LanguageBar({ lang }) {
-  let getLangFunc = () => 'en';
-  let setLangFunc = null;
-
-  useEffect(() => {
-    getLangFunc = window.__getPreferredLang;
-    setLangFunc = window.__setPreferredLang;
-  });
-
+function LanguageBar({ lang: langKey }) {
   const [displayLang, toggleDisplayLang] = useState(false);
 
   function handleToggleLanguage() {
@@ -44,18 +36,13 @@ function LanguageBar({ lang }) {
       // eslint-disable-next-line no-use-before-define
       query={supportedLanguagesQuery}
       render={data => {
-        const { langsJson, lang: defaultLang } = data.site.siteMetadata;
+        const { langsEntries, lang: defaultLang } = data.site.siteMetadata;
 
-        const supportedLanguages = JSON.parse(langsJson) || {};
-        if (supportedLanguages == null || Object.keys(supportedLanguages).length < 2) {
+        if (langsEntries.length < 2) {
           return null;
         }
 
-        const langKey = lang || getLangFunc();
-        if (lang && setLangFunc != null) {
-          setLangFunc(lang);
-        }
-
+        const supportedLanguages = Object.fromEntries(langsEntries);
         const language = supportedLanguages[langKey];
 
         if (!language) {
@@ -89,7 +76,7 @@ LanguageBar.propTypes = {
 };
 
 LanguageBar.defaultProps = {
-  lang: null,
+  lang: 'en',
 };
 
 const supportedLanguagesQuery = graphql`
@@ -97,7 +84,7 @@ const supportedLanguagesQuery = graphql`
     site {
       siteMetadata {
         lang
-        langsJson
+        langsEntries
       }
     }
   }
