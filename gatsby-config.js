@@ -1,3 +1,4 @@
+const { toPairs } = require('ramda');
 const {
   pathPrefix,
   title,
@@ -29,7 +30,7 @@ module.exports = {
     },
     disqusShortName,
     lang,
-    langsEntries: Object.entries(supportedLanguages),
+    langsEntries: toPairs(supportedLanguages),
   },
   plugins: [
     'gatsby-plugin-eslint',

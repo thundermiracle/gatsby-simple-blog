@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
+import { fromPairs } from 'ramda';
 
 import { rhythm } from 'utils/typography';
 
@@ -42,7 +43,7 @@ function LanguageBar({ lang: langKey }) {
           return null;
         }
 
-        const supportedLanguages = Object.fromEntries(langsEntries);
+        const supportedLanguages = fromPairs(langsEntries);
         const language = supportedLanguages[langKey];
 
         if (!language) {
