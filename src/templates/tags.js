@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Utilities
-import kebabCase from 'lodash/kebabCase';
+import { kebabCase } from 'utils/helpers';
 
 // Components
 import { Helmet } from 'react-helmet';

@@ -43,9 +43,18 @@ function getPreviousNextNode(posts, fromInd) {
   };
 }
 
+function kebabCase(s) {
+  return s
+    .match(/[A-Z]{2,}(?=[A-Z][a-z0-9]*|\b)|[A-Z]?[a-z0-9]*|[A-Z]|[0-9]+/g)
+    .filter(Boolean)
+    .map(x => x.toLowerCase())
+    .join('-');
+}
+
 module.exports = {
   formatReadingTime,
   formatPostDate,
   haveSameItem,
   getPreviousNextNode,
+  kebabCase,
 };

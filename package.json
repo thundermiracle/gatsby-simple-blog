@@ -26,7 +26,6 @@
     "gatsby-source-filesystem": "^2.1.22",
     "gatsby-transformer-remark": "^2.6.22",
     "gatsby-transformer-sharp": "^2.2.14",
-    "lodash": "^4.17.15",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
     "ptz-i18n": "^1.0.0",
@@ -42,6 +41,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
+    "@types/jest": "^22.2.3",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-import": "^1.12.1",
