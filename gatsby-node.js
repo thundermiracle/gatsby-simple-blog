@@ -8,25 +8,113 @@ const {
   supportedLanguages,
 } = require('./config');
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
-
+/**
+ * @param {*func} createPage
+ */
+function PageMaker(createPage) {
   const blogIndex = path.resolve('./src/templates/blog-index.js');
   const blogPost = path.resolve('./src/templates/blog-post.js');
   const tagsTotal = path.resolve('./src/templates/tags.js');
   const tagPage = path.resolve('./src/templates/tag-page.js');
 
-  return new Promise((resolve, reject) => {
-    // Create index pages for all supported languages
-    Object.keys(supportedLanguages).forEach(langKey => {
-      createPage({
-        path: getBaseUrl(lang, langKey),
-        component: blogIndex,
-        context: {
-          langKey,
-        },
+  return {
+    createBlogIndex() {
+      // Create index pages for all supported languages
+      Object.keys(supportedLanguages).forEach(langKey => {
+        createPage({
+          path: getBaseUrl(lang, langKey),
+          component: blogIndex,
+          context: {
+            langKey,
+          },
+        });
       });
-    });
+    },
+
+    createBlogPost(posts) {
+      console.log('posts:', posts);
+      posts.forEach(post => {
+        // posts in same language
+        const postLangKey = post.node.fields.langKey;
+        const postsInSameLang = posts.filter(({ node }) => postLangKey === node.fields.langKey);
+        const indexInSameLang = postsInSameLang.findIndex(
+          p => p.node.fields.slug === post.node.fields.slug,
+        );
+        const { previous, next } = getPreviousNextNode(postsInSameLang, indexInSameLang);
+
+        // posts in same tags
+        const postTags = post.node.frontmatter.tags;
+        const postsInSameTag = posts.filter(({ node }) =>
+          haveSameItem(postTags, node.frontmatter.tags),
+        );
+        const indexInSameTag = postsInSameTag.findIndex(
+          p => p.node.fields.slug === post.node.fields.slug,
+        );
+        const { previous: previousInSameTag, next: nextInSameTag } = getPreviousNextNode(
+          postsInSameTag,
+          indexInSameTag,
+        );
+
+        createPage({
+          path: post.node.fields.slug,
+          component: blogPost,
+          context: {
+            slug: post.node.fields.slug,
+            previous,
+            next,
+            previousInSameTag,
+            nextInSameTag,
+          },
+        });
+      });
+    },
+
+    createTagIndex(postsGroupByLang) {
+      Object.keys(postsGroupByLang).forEach(langKey => {
+        // Make tags-total
+        createPage({
+          path: `${getBaseUrl(lang, langKey)}tags/`,
+          component: tagsTotal,
+          context: {
+            langKey,
+          },
+        });
+      });
+    },
+
+    createTagPage(postsGroupByLang) {
+      Object.keys(postsGroupByLang).forEach(langKey => {
+        // Tag pages:
+        let tags = [];
+        postsGroupByLang[langKey].forEach(post => {
+          if (R.path(['node', 'frontmatter', 'tags'], post)) {
+            tags = tags.concat(post.node.frontmatter.tags);
+          }
+        });
+        // Eliminate duplicate tags
+        tags = R.uniq(tags);
+
+        // Make tag pages
+        tags.forEach(tag => {
+          createPage({
+            path: `${getBaseUrl(lang, langKey)}tags/${kebabCase(tag)}/`,
+            component: tagPage,
+            context: {
+              tag,
+              langKey,
+            },
+          });
+        });
+      });
+    },
+  };
+}
+
+exports.createPages = ({ graphql, actions: { createPage } }) => {
+  const pageMaker = PageMaker(createPage);
+
+  return new Promise((resolve, reject) => {
+    pageMaker.createBlogIndex();
 
     resolve(
       graphql(
@@ -55,82 +143,14 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors);
         }
 
-        // Create blog posts pages.
         const posts = result.data.allMarkdownRemark.edges;
-
-        posts.forEach(post => {
-          // posts in same language
-          const postLangKey = post.node.fields.langKey;
-          const postsInSameLang = posts.filter(({ node }) => postLangKey === node.fields.langKey);
-          const indexInSameLang = postsInSameLang.findIndex(
-            p => p.node.fields.slug === post.node.fields.slug,
-          );
-          const { previous, next } = getPreviousNextNode(postsInSameLang, indexInSameLang);
-
-          // posts in same tags
-          const postTags = post.node.frontmatter.tags;
-          const postsInSameTag = posts.filter(({ node }) =>
-            haveSameItem(postTags, node.frontmatter.tags),
-          );
-          const indexInSameTag = postsInSameTag.findIndex(
-            p => p.node.fields.slug === post.node.fields.slug,
-          );
-          const { previous: previousInSameTag, next: nextInSameTag } = getPreviousNextNode(
-            postsInSameTag,
-            indexInSameTag,
-          );
-
-          createPage({
-            path: post.node.fields.slug,
-            component: blogPost,
-            context: {
-              slug: post.node.fields.slug,
-              previous,
-              next,
-              previousInSameTag,
-              nextInSameTag,
-            },
-          });
-        });
-
         // group by language
         const byLangKey = R.groupBy(R.path(['node', 'fields', 'langKey']));
         const gpPosts = byLangKey(posts);
-        Object.keys(gpPosts).forEach(langKey => {
-          // Make tags-total
-          createPage({
-            path: `${getBaseUrl(lang, langKey)}tags/`,
-            component: tagsTotal,
-            context: {
-              langKey,
-            },
-          });
 
-          // Tag pages:
-          let tags = [];
-          const postsInSameLang = gpPosts[langKey];
-
-          R.forEach(edge => {
-            if (R.path(['node', 'frontmatter', 'tags'], edge)) {
-              tags = tags.concat(edge.node.frontmatter.tags);
-            }
-          }, postsInSameLang);
-
-          // Eliminate duplicate tags
-          tags = R.uniq(tags);
-
-          // Make tag pages
-          tags.forEach(tag => {
-            createPage({
-              path: `${getBaseUrl(lang, langKey)}tags/${kebabCase(tag)}/`,
-              component: tagPage,
-              context: {
-                tag,
-                langKey,
-              },
-            });
-          });
-        });
+        pageMaker.createBlogPost(posts);
+        pageMaker.createTagIndex(gpPosts);
+        pageMaker.createTagPage(gpPosts);
 
         return null;
       }),
