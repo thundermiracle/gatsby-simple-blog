@@ -1,0 +1,17 @@
+.translation-root {
+  font-size: 0.9em;
+  border: 1px solid var(--hr);
+  border-radius: 0.75em;
+  padding: 0.75em;
+  background: var(--inlineCode-bg);
+  word-break: break-all;
+}
+
+.translation-link {
+  background-color: var(--linkBackground);
+  border-bottom: 1px solid var(--linkBorder);
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+}
