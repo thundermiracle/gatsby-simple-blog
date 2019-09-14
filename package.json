@@ -48,6 +48,7 @@
     "babel-jest": "^24.9.0",
     "babel-plugin-import": "^1.12.1",
     "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-preset-gatsby": "^0.2.13",
     "cross-env": "^5.2.1",
     "eslint": "^6.3.0",
