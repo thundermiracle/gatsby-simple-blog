@@ -45,6 +45,16 @@ All configurable values are here: __./config/index.js__
 
 ## Features
 
+* ## __i18n__
+
+  Display multiple language. (Only be shown when supportedLanguages > 1)
+
+  ![i18n](./screenshots/i18n.png)
+
+  Display language link in every post. (You can disable it in config/index.js by displayTranslations: false)
+
+  ![translations](./screenshots/translations.png)
+
 * ## __overreacted design__
 
   [overreacted.io](https://overreacted.io/) lookings
@@ -78,12 +88,6 @@ All configurable values are here: __./config/index.js__
   Use disqus.com to enable comment.
 
   ![disqus](./screenshots/disqus.png)
-
-* ## __i18n__
-
-  Display multiple language. (Only be shown when supportedLanguages > 1)
-
-  ![i18n](./screenshots/i18n.png)
 
 * ## __eslint__
 
