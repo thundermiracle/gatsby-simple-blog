@@ -11,6 +11,7 @@ const site = {
   disqusShortName: 'gatsby-simple-blog',
   googleTrackingId: '',
   lang: 'en',
+  displayTranslations: true,
 };
 
 const supportedLanguages = {

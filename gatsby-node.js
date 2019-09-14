@@ -4,9 +4,27 @@ const R = require('ramda');
 const { haveSameItem, getPreviousNextNode, kebabCase } = require('./src/utils/helpers');
 const getBaseUrl = require('./src/utils/getBaseUrl');
 const {
-  site: { lang = 'en' },
+  site: { lang: defaultLang = 'en', displayTranslations },
   supportedLanguages,
 } = require('./config');
+
+// group by language
+const byLangKey = R.groupBy(R.path(['node', 'fields', 'langKey']));
+// group by directoryName
+const byDirectoryName = R.groupBy(R.path(['node', 'fields', 'directoryName']));
+
+const translationsByDirectory = posts => {
+  const gpDirPosts = byDirectoryName(posts);
+
+  const dirNames = R.keys(gpDirPosts);
+
+  const otherLangs = R.compose(
+    R.map(R.map(R.path(['node', 'fields', 'langKey']))),
+    R.values,
+  )(gpDirPosts);
+
+  return R.zipObj(dirNames, otherLangs);
+};
 
 /**
  * @param {*func} createPage
@@ -22,7 +40,7 @@ function PageMaker(createPage) {
       // Create index pages for all supported languages
       Object.keys(supportedLanguages).forEach(langKey => {
         createPage({
-          path: getBaseUrl(lang, langKey),
+          path: getBaseUrl(defaultLang, langKey),
           component: blogIndex,
           context: {
             langKey,
@@ -32,7 +50,8 @@ function PageMaker(createPage) {
     },
 
     createBlogPost(posts) {
-      console.log('posts:', posts);
+      const translationsInfo = displayTranslations ? translationsByDirectory(posts) : [];
+
       posts.forEach(post => {
         // posts in same language
         const postLangKey = post.node.fields.langKey;
@@ -55,6 +74,18 @@ function PageMaker(createPage) {
           indexInSameTag,
         );
 
+        // translations
+        let translationsLink = [];
+        if (displayTranslations && R.path(['node', 'fields', 'directoryName'], post)) {
+          const dirName = post.node.fields.directoryName;
+          const translations = R.without([postLangKey], translationsInfo[dirName]);
+
+          translationsLink = translations.map(trans => ({
+            name: supportedLanguages[trans],
+            url: `/${trans}/${dirName}/`.replace(`/${defaultLang}`, ''),
+          }));
+        }
+
         createPage({
           path: post.node.fields.slug,
           component: blogPost,
@@ -64,6 +95,7 @@ function PageMaker(createPage) {
             next,
             previousInSameTag,
             nextInSameTag,
+            translationsLink,
           },
         });
       });
@@ -73,7 +105,7 @@ function PageMaker(createPage) {
       Object.keys(postsGroupByLang).forEach(langKey => {
         // Make tags-total
         createPage({
-          path: `${getBaseUrl(lang, langKey)}tags/`,
+          path: `${getBaseUrl(defaultLang, langKey)}tags/`,
           component: tagsTotal,
           context: {
             langKey,
@@ -97,7 +129,7 @@ function PageMaker(createPage) {
         // Make tag pages
         tags.forEach(tag => {
           createPage({
-            path: `${getBaseUrl(lang, langKey)}tags/${kebabCase(tag)}/`,
+            path: `${getBaseUrl(defaultLang, langKey)}tags/${kebabCase(tag)}/`,
             component: tagPage,
             context: {
               tag,
@@ -126,6 +158,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
                   fields {
                     slug
                     langKey
+                    directoryName
                   }
                   frontmatter {
                     date(formatString: "MMMM DD, YYYY")
@@ -144,16 +177,26 @@ exports.createPages = ({ graphql, actions: { createPage } }) => {
         }
 
         const posts = result.data.allMarkdownRemark.edges;
-        // group by language
-        const byLangKey = R.groupBy(R.path(['node', 'fields', 'langKey']));
-        const gpPosts = byLangKey(posts);
+        const gpLangPosts = byLangKey(posts);
 
         pageMaker.createBlogPost(posts);
-        pageMaker.createTagIndex(gpPosts);
-        pageMaker.createTagPage(gpPosts);
+        pageMaker.createTagIndex(gpLangPosts);
+        pageMaker.createTagPage(gpLangPosts);
 
         return null;
       }),
     );
   });
+};
+
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
+
+  if (R.path(['internal', 'type'], node) === 'MarkdownRemark') {
+    createNodeField({
+      node,
+      name: 'directoryName',
+      value: path.basename(path.dirname(node.fileAbsolutePath)),
+    });
+  }
 };

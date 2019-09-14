@@ -8,6 +8,7 @@ import SEO from 'components/SEO';
 import TagList from 'components/TagList';
 import RelativePosts from 'components/RelativePosts';
 import Disqus from 'components/Disqus';
+import TranslationsLink from 'components/TranslationsLink';
 
 import { formatReadingTime } from 'utils/helpers';
 import { formatDate } from 'utils/i18n';
@@ -17,10 +18,7 @@ import { useLang } from 'context/LanguageContext';
 function BlogPostTemplate({ data, pageContext, location }) {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
-  const { previous, next, previousInSameTag, nextInSameTag } = pageContext;
-
-  // const defaultLang = data.site.siteMetadata.lang;
-  // const langKey = post.fields.langKey;
+  const { previous, next, previousInSameTag, nextInSameTag, translationsLink } = pageContext;
 
   const { lang, homeLink } = useLang();
 
@@ -47,7 +45,14 @@ function BlogPostTemplate({ data, pageContext, location }) {
         {formatDate(post.frontmatter.date)}
         {` • ${formatReadingTime(post.timeToRead)}`}
       </p>
+
       {tags}
+      <TranslationsLink
+        translationsLink={translationsLink}
+        langKey={lang}
+        style={{ margin: '-0.5rem 0 1.5rem' }}
+      />
+
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
 
       <RelativePosts postNodes={[previousInSameTag, nextInSameTag]} lang={lang} />
