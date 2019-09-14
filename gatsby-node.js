@@ -4,7 +4,7 @@ const R = require('ramda');
 const { haveSameItem, getPreviousNextNode, kebabCase } = require('./src/utils/helpers');
 const getBaseUrl = require('./src/utils/getBaseUrl');
 const {
-  site: { lang: defaultLang = 'en' },
+  site: { lang: defaultLang = 'en', displayTranslations },
   supportedLanguages,
 } = require('./config');
 
@@ -50,7 +50,7 @@ function PageMaker(createPage) {
     },
 
     createBlogPost(posts) {
-      const translationsInfo = translationsByDirectory(posts);
+      const translationsInfo = displayTranslations ? translationsByDirectory(posts) : [];
 
       posts.forEach(post => {
         // posts in same language
@@ -76,7 +76,7 @@ function PageMaker(createPage) {
 
         // translations
         let translationsLink = [];
-        if (R.path(['node', 'fields', 'directoryName'], post)) {
+        if (displayTranslations && R.path(['node', 'fields', 'directoryName'], post)) {
           const dirName = post.node.fields.directoryName;
           const translations = R.without([postLangKey], translationsInfo[dirName]);
 
