@@ -18,9 +18,9 @@ import './LanguageBar.css';
 function LanguageBar({ lang: langKey }) {
   const [displayLang, toggleDisplayLang] = useState(false);
 
-  function handleToggleLanguage() {
+  const handleToggleLanguage = React.useCallback(() => {
     toggleDisplayLang(!displayLang);
-  }
+  }, [displayLang]);
 
   let toggleStyle = {
     maxHeight: null,

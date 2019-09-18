@@ -15,7 +15,7 @@ function Layout({ children, location, title, breadcrumbs }) {
 
   React.useEffect(() => {
     refresh(location);
-  }, [location.pathname]);
+  }, [location, refresh]);
 
   return (
     <div
