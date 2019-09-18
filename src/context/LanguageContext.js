@@ -22,20 +22,23 @@ function LanguageProvider({ children }) {
   const [homeLink, setHomeLink] = React.useState(initValues.homeLink);
   const [messages, setMessages] = React.useState(initValues.messages);
 
-  function refresh(location = window.location) {
-    if (supportedLanguages != null && Object.keys(supportedLanguages).length > 1) {
-      // const url = location.pathname;
-      const url = location.pathname == null ? window.location.pathname : location.pathname;
+  const refresh = React.useCallback(
+    (location = window.location) => {
+      if (supportedLanguages != null && Object.keys(supportedLanguages).length > 1) {
+        // const url = location.pathname;
+        const url = location.pathname == null ? window.location.pathname : location.pathname;
 
-      const currentLang = getCurrentLangKey(Object.keys(supportedLanguages), defaultLang, url);
-      const currentHomeLink = `/${currentLang}/`.replace(`/${defaultLang}/`, '/');
-      const currentMessages = loadMessage(currentLang);
+        const currentLang = getCurrentLangKey(Object.keys(supportedLanguages), defaultLang, url);
+        const currentHomeLink = `/${currentLang}/`.replace(`/${defaultLang}/`, '/');
+        const currentMessages = loadMessage(currentLang);
 
-      setLang(currentLang);
-      setHomeLink(currentHomeLink);
-      setMessages(currentMessages);
-    }
-  }
+        setLang(currentLang);
+        setHomeLink(currentHomeLink);
+        setMessages(currentMessages);
+      }
+    },
+    [defaultLang],
+  );
 
   return (
     <LanguageContext.Provider

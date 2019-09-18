@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useLang } from 'context/LanguageContext';
 import { formatPostDate } from 'utils/helpers';
 
