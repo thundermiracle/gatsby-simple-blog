@@ -1,7 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": ["airbnb", "plugin:react/recommended", "prettier", "prettier/react"],
-  "plugins": ["jest"],
+  "plugins": ["jest", "react-hooks"],
   "env": {
     "browser": true,
     "es6": true,
@@ -41,7 +41,9 @@
     "react/prefer-stateless-function": 1,
     "react/prop-types": 2,
     "react/react-in-jsx-scope": 0,
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 2
   },
   "settings": {
     "import/resolver": {
