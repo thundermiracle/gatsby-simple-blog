@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { getCurrentLangKey } from 'ptz-i18n';
 
+import getCurrentLangKey from 'utils/getCurrentLangKey';
 import { site, supportedLanguages } from 'config';
 
 import makeLoadMessage from './makeLoadMessage';
@@ -28,7 +28,12 @@ function LanguageProvider({ children }) {
         // const url = location.pathname;
         const url = location.pathname == null ? window.location.pathname : location.pathname;
 
-        const currentLang = getCurrentLangKey(Object.keys(supportedLanguages), defaultLang, url);
+        const currentLang = getCurrentLangKey(
+          url,
+          Object.keys(supportedLanguages),
+          defaultLang,
+          site.pathPrefix,
+        );
         const currentHomeLink = `/${currentLang}/`.replace(`/${defaultLang}/`, '/');
         const currentMessages = loadMessage(currentLang);
 
