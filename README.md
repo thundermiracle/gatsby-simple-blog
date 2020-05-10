@@ -2,8 +2,6 @@
 
 [![Build Status](https://travis-ci.org/thundermiracle/gatsby-simple-blog.svg)](https://travis-ci.org/thundermiracle/gatsby-simple-blog)
 [![dependencies Status](https://david-dm.org/thundermiracle/gatsby-simple-blog/status.svg)](https://david-dm.org/thundermiracle/gatsby-simple-blog)
-[![devDependencies Status](https://david-dm.org/thundermiracle/gatsby-simple-blog/dev-status.svg)](https://david-dm.org/thundermiracle/gatsby-simple-blog?type=dev)
-[![peerDependencies Status](https://david-dm.org/thundermiracle/gatsby-simple-blog/peer-status.svg)](https://david-dm.org/thundermiracle/gatsby-simple-blog?type=peer)
 [![CircleCI](https://circleci.com/gh/thundermiracle/gatsby-simple-blog.svg?style=svg)](https://circleci.com/gh/thundermiracle/gatsby-simple-blog)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bdb0f821-73be-43ea-8ad5-bf002188415f/deploy-status)](https://app.netlify.com/sites/kind-thompson-8554b1/deploys)
 

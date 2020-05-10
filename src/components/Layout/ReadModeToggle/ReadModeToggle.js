@@ -1,5 +1,5 @@
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 import withThemeFlag from 'utils/withThemeFlag';
 import Toggle from '../../Toggle';
@@ -43,7 +43,7 @@ function ReadModeToggle({ isLightTheme }) {
             ),
           }}
           checked={!isLightTheme}
-          onChange={e => window.__setPreferredTheme(e.target.checked ? 'dark' : 'light')}
+          onChange={(e) => window.__setPreferredTheme(e.target.checked ? 'dark' : 'light')}
         />
       ) : (
         <div style={{ height: '24px' }} />
