@@ -52,7 +52,7 @@ BlogIndex.defaultProps = {};
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query($langKey: String!) {
+  query($langKey: String!, $skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -61,6 +61,8 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       filter: { fields: { langKey: { eq: $langKey } } }
       sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
     ) {
       totalCount
       edges {
