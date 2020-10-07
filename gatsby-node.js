@@ -54,6 +54,8 @@ function PageMaker(createPage) {
               context: {
                 from,
                 to,
+                currentPage: ind + 1,
+                numPages,
                 limit: postsPerPage,
                 skip: ind * postsPerPage,
                 langKey,
@@ -68,6 +70,8 @@ function PageMaker(createPage) {
             context: {
               from,
               to,
+              currentPage: ind + 1,
+              numPages,
               limit: postsPerPage,
               skip: ind * postsPerPage,
               langKey,

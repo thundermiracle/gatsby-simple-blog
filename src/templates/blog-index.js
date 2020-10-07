@@ -6,11 +6,12 @@ import Bio from 'components/Bio';
 import Layout from 'components/Layout';
 import SEO from 'components/SEO';
 import PostAbbrev from 'components/PostAbbrev';
+import Pagination from 'components/Pagination';
 import { useLang } from 'context/LanguageContext';
 import { formatMessage } from 'utils/i18n';
 
 function BlogIndex({ pageContext, data, location }) {
-  const { from, to } = pageContext;
+  const { from, to, currentPage, numPages } = pageContext;
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
@@ -41,6 +42,7 @@ function BlogIndex({ pageContext, data, location }) {
           />
         );
       })}
+      <Pagination currentPage={currentPage} totalPageNumber={numPages} />
     </Layout>
   );
 }
