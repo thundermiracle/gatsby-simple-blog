@@ -43,12 +43,17 @@ function PageMaker(createPage) {
         const numPages = Math.ceil(postsGroupByLang[langKey].length / postsPerPage);
 
         Array.from({ length: numPages }).forEach((_, ind) => {
+          const from = ind * postsPerPage + 1;
+          const to = Math.min((ind + 1) * postsPerPage, postsGroupByLang[langKey].length);
+
           if (ind === 0) {
             // add extra page for page 1
             createPage({
               path: baseUrl,
               component: blogIndex,
               context: {
+                from,
+                to,
                 limit: postsPerPage,
                 skip: ind * postsPerPage,
                 langKey,
@@ -61,6 +66,8 @@ function PageMaker(createPage) {
             path: `${baseUrl}${ind + 1}`,
             component: blogIndex,
             context: {
+              from,
+              to,
               limit: postsPerPage,
               skip: ind * postsPerPage,
               langKey,
