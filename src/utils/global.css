@@ -20,6 +20,7 @@ body.light {
   --breadcrumbsTextColorActive: #888888;
   --linkBackground: rgba(187, 239, 253, 0.3);
   --linkBorder: rgba(0, 0, 0, 0.2);
+  --pagination-bg: #f7a046;
 }
 
 body.dark {
@@ -37,6 +38,7 @@ body.dark {
   --tag-color: #dddddd;
   --breadcrumbsTextColor: #d1c4e9;
   --breadcrumbsTextColorActive: #eeeeee;
+  --pagination-bg: rgb(143, 91, 35);
 }
 
 a {

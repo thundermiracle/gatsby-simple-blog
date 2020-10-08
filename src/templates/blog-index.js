@@ -6,10 +6,12 @@ import Bio from 'components/Bio';
 import Layout from 'components/Layout';
 import SEO from 'components/SEO';
 import PostAbbrev from 'components/PostAbbrev';
+import Pagination from 'components/Pagination';
 import { useLang } from 'context/LanguageContext';
 import { formatMessage } from 'utils/i18n';
 
-function BlogIndex({ data, location }) {
+function BlogIndex({ pageContext, data, location }) {
+  const { from, to, currentPage, numPages } = pageContext;
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
@@ -21,7 +23,9 @@ function BlogIndex({ data, location }) {
       <aside>
         <Bio />
       </aside>
-      <h4>{formatMessage('tfIndCountPosts', data.allMarkdownRemark.totalCount)}</h4>
+      <h4>
+        {formatMessage('tfIndCountPosts', { count: data.allMarkdownRemark.totalCount, from, to })}
+      </h4>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
         return (
@@ -38,11 +42,13 @@ function BlogIndex({ data, location }) {
           />
         );
       })}
+      <Pagination currentPage={currentPage} totalPageNumber={numPages} />
     </Layout>
   );
 }
 
 BlogIndex.propTypes = {
+  pageContext: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 };
@@ -52,7 +58,7 @@ BlogIndex.defaultProps = {};
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query($langKey: String!) {
+  query($langKey: String!, $skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -61,6 +67,8 @@ export const pageQuery = graphql`
     allMarkdownRemark(
       filter: { fields: { langKey: { eq: $langKey } } }
       sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
     ) {
       totalCount
       edges {

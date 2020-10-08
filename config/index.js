@@ -12,6 +12,7 @@ const site = {
   googleTrackingId: '',
   lang: 'en',
   displayTranslations: true,
+  postsPerPage: 3,
 };
 
 const supportedLanguages = {
