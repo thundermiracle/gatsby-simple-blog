@@ -114,5 +114,13 @@ module.exports = {
         pagesPaths: ['/content/blog/'],
       },
     },
+    {
+      resolve: `gatsby-plugin-html2amp`,
+      options: {
+        files: ['**/*.html'],
+        dist: 'public/amp',
+        gaConfigPath: 'gaConfig.json',
+      },
+    },
   ],
 };
