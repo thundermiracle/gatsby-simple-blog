@@ -20,7 +20,7 @@ const formatMessage = (msgId, ...args) => {
   return msg;
 };
 
-const formatDate = dateStr => {
+const formatDate = (dateStr) => {
   const { lang } = useLang();
 
   return formatPostDate(dateStr, lang);

@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { rhythm } from 'utils/typography';
 import './Bio.css';
@@ -19,7 +19,7 @@ function Bio() {
     <StaticQuery
       // eslint-disable-next-line no-use-before-define
       query={bioQuery}
-      render={data => {
+      render={(data) => {
         const { author, description } = data.site.siteMetadata;
         return (
           <div

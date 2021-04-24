@@ -42,7 +42,7 @@ const TagsPage = ({
       <div>
         <h1>{tTags}</h1>
         <div style={styles.tagListDiv}>
-          {group.map(tag => (
+          {group.map((tag) => (
             <Tag
               key={tag.fieldValue}
               text={tag.fieldValue}
