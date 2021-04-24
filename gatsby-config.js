@@ -33,6 +33,7 @@ module.exports = {
     langsEntries: toPairs(supportedLanguages),
   },
   plugins: [
+    'gatsby-plugin-image',
     'gatsby-plugin-eslint',
     {
       resolve: `gatsby-source-filesystem`,
