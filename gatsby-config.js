@@ -33,6 +33,7 @@ module.exports = {
     langsEntries: toPairs(supportedLanguages),
   },
   plugins: [
+    'gatsby-plugin-image',
     'gatsby-plugin-eslint',
     {
       resolve: `gatsby-source-filesystem`,
@@ -114,13 +115,13 @@ module.exports = {
         pagesPaths: ['/content/blog/'],
       },
     },
-    {
-      resolve: `gatsby-plugin-html2amp`,
-      options: {
-        files: ['**/*.html'],
-        dist: 'public/amp',
-        gaConfigPath: 'gaConfig.json',
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-html2amp`,
+    //   options: {
+    //     files: ['**/*.html'],
+    //     dist: 'public/amp',
+    //     gaConfigPath: 'gaConfig.json',
+    //   },
+    // },
   ],
 };
