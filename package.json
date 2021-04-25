@@ -8,7 +8,10 @@
   },
   "dependencies": {
     "disqus-react": "^1.0.11",
+    "dotenv": "^8.2.0",
+    "escape-string-regexp": "^4.0.0",
     "gatsby": "^3.3.1",
+    "gatsby-plugin-algolia": "^0.19.0",
     "gatsby-plugin-feed": "^3.3.0",
     "gatsby-plugin-google-analytics": "^3.3.0",
     "gatsby-plugin-html2amp": "^1.4.1",
