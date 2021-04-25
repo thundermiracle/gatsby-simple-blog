@@ -9,6 +9,8 @@
 
 A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and breadcrumbs, eslint, relative posts, disqus, i18n, eslint supported.
 
+__This project is migrated to Gatsby@v3, check the latest Gatsby@v2 version [here](https://github.com/thundermiracle/gatsby-simple-blog/tree/gatsby-2.0).__
+
 ## Sample pages
 
 [Github-Pages](https://thundermiracle.github.io/gatsby-simple-blog/)
