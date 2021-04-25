@@ -125,6 +125,7 @@ module.exports = {
         queries: require('./src/utils/algoliaQueries'),
       },
     },
+    `gatsby-plugin-styled-components`,
     // {
     //   resolve: `gatsby-plugin-html2amp`,
     //   options: {

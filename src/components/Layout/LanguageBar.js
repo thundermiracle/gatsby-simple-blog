@@ -10,6 +10,12 @@ import BalloonField from '../BalloonField';
 import LangList from '../LangList/LangList';
 import './LanguageBar.css';
 
+import Search from '../Search';
+
+const searchIndices = [
+  { name: process.env.GATSBY_ALGOLIA_INDEX_NAME, title: process.env.GATSBY_ALGOLIA_INDEX_NAME },
+];
+
 /**
  * base MUST include slash (eg: en/)
  *
@@ -36,7 +42,7 @@ function LanguageBar({ lang: langKey }) {
     <StaticQuery
       // eslint-disable-next-line no-use-before-define
       query={supportedLanguagesQuery}
-      render={data => {
+      render={(data) => {
         const { langsEntries, lang: defaultLang } = data.site.siteMetadata;
 
         if (langsEntries.length < 2) {
@@ -59,6 +65,7 @@ function LanguageBar({ lang: langKey }) {
           >
             <div className="bar">
               <LangButton lang={language} focused={displayLang} onClick={handleToggleLanguage} />
+              <Search indices={searchIndices} />
             </div>
             <div className="toggle-content" style={toggleStyle}>
               <BalloonField style={{ padding: 20 }}>
