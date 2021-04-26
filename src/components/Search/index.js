@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { createRef, useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch } from 'react-instantsearch-dom';
+import { InstantSearch, Configure } from 'react-instantsearch-dom';
 import { ThemeProvider } from 'styled-components';
+import { useLang } from 'context/LanguageContext';
 import StyledSearchBox from './StyledSearchBox';
 import StyledSearchResult from './StyledSearchResult';
 import StyledSearchRoot from './StyledSearchRoot';
@@ -15,6 +16,7 @@ const theme = {
 };
 
 export default function Search({ indices }) {
+  const { lang } = useLang();
   const rootRef = createRef();
   const [query, setQuery] = useState();
   const [hasFocus, setFocus] = useState(false);
@@ -34,6 +36,7 @@ export default function Search({ indices }) {
           // eslint-disable-next-line no-shadow
           onSearchStateChange={({ query }) => setQuery(query)}
         >
+          <Configure filters={`langKey:${lang}`} />
           <StyledSearchBox onFocus={() => setFocus(true)} hasFocus={hasFocus} />
           <StyledSearchResult show={query && query.length > 0 && hasFocus} indices={indices} />
         </InstantSearch>

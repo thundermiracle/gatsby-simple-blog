@@ -17,6 +17,7 @@ const pageQuery = `{
         }
         fields {
           slug
+          langKey
         }
         excerpt(pruneLength: 5000)
       }
@@ -38,7 +39,14 @@ const queries = [
     query: pageQuery,
     transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
     indexName,
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings: {
+      attributesToSnippet: [`excerpt:20`],
+      attributesForFaceting: ['filterOnly(langKey)'],
+      indexLanguages: ['en', 'zh'],
+      queryLanguages: ['en', 'zh'],
+      searchableAttributes: ['title', 'excerpt'],
+      ranking: ['typo', 'geo', 'words', 'filters', 'proximity', 'attribute', 'exact', 'custom'],
+    },
   },
 ];
 
