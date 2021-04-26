@@ -3,7 +3,7 @@ import SearchResult from './SearchResult';
 
 const Popover = css`
   max-height: 80vh;
-  overflow: scroll;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
   position: absolute;
   z-index: 2;
@@ -25,6 +25,7 @@ export default styled(SearchResult)`
   .HitCount {
     display: flex;
     justify-content: flex-end;
+    color: ${({ theme }) => theme.foreground};
   }
 
   .Hits {
@@ -35,9 +36,10 @@ export default styled(SearchResult)`
 
     li.ais-Hits-item {
       margin-bottom: 1em;
+      color: ${({ theme }) => theme.foreground};
 
       a {
-        color: ${({ theme }) => theme.foreground};
+        color: rgb(0, 122, 204);
 
         h4 {
           margin-bottom: 0.2em;

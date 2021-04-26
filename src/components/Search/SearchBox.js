@@ -2,6 +2,8 @@ import React from 'react';
 import { connectSearchBox } from 'react-instantsearch-dom';
 import { Search as SearchIcon } from '@styled-icons/fa-solid/Search';
 
+import './SearchBox.css';
+
 export default connectSearchBox(({ refine, currentRefinement, className, onFocus }) => (
   <form className={className}>
     <input
@@ -13,6 +15,6 @@ export default connectSearchBox(({ refine, currentRefinement, className, onFocus
       value={currentRefinement}
       onFocus={onFocus}
     />
-    <SearchIcon className="SearchIcon" />
+    <SearchIcon className="SearchIcon theme-search-icon" />
   </form>
 ));
