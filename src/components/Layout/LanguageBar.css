@@ -5,6 +5,7 @@
   border-bottom: 1px solid;
   display: flex;
   flex-direction: row-reverse;
+  align-items: center;
 }
 
 .toggle-content {
