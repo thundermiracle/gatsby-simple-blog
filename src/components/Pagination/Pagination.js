@@ -2,21 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Link } from 'gatsby';
+import { useLang } from 'context/LanguageContext';
 
 import './Pagination.css';
 
 const Pagination = ({ currentPage, totalPageNumber }) => {
+  const { homeLink } = useLang();
+
   const befMark =
     currentPage === 1 ? (
       <span className="disabled">&laquo;</span>
     ) : (
-      <Link to={`/${currentPage - 1}`}>&laquo;</Link>
+      <Link to={`${homeLink}${currentPage - 1}`}>&laquo;</Link>
     );
   const nextMark =
     currentPage === totalPageNumber ? (
       <span className="disabled">&raquo;</span>
     ) : (
-      <Link to={`/${currentPage + 1}`}>&raquo;</Link>
+      <Link to={`${homeLink}${currentPage + 1}`}>&raquo;</Link>
     );
 
   return (
@@ -30,7 +33,7 @@ const Pagination = ({ currentPage, totalPageNumber }) => {
               {pageNum}
             </span>
           ) : (
-            <Link key={`pageNum-${pageNum}`} to={`/${pageNum}`}>
+            <Link key={`pageNum-${pageNum}`} to={`${homeLink}${pageNum}`}>
               {pageNum}
             </Link>
           );
