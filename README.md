@@ -7,7 +7,7 @@
 
 ## Description
 
-A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and breadcrumbs, eslint, relative posts, disqus, i18n, eslint supported.
+A gatsbyjs starter forked from gatsby-starter-blog and applied overreacted lookings, with tags and Algolia, pagination, breadcrumbs, eslint, relative posts, disqus, i18n, eslint supported.
 
 __This project is migrated to Gatsby@v3, check the latest Gatsby@v2 version [here](https://github.com/thundermiracle/gatsby-simple-blog/tree/gatsby-2.0).__
 
@@ -31,7 +31,11 @@ gatsby new my-blog-folder https://github.com/thundermiracle/gatsby-simple-blog
 
 ## Configuration
 
-All configurable values are here: __./config/index.js__
+1. Almost all basic configurable values are here: __./config/index.js__
+
+1. To enable Algolia, create a site in Algolia and copy `.env.sample` to `.env`, change all variables to real Algolia ones. You can check the tutorial here:
+
+[https://www.gatsbyjs.com/docs/adding-search-with-algolia/#configuring-the-algolia-plugin](https://www.gatsbyjs.com/docs/adding-search-with-algolia/#configuring-the-algolia-plugin)
 
 ## i18n
 
@@ -70,6 +74,12 @@ All configurable values are here: __./config/index.js__
   ![tag](./screenshots/tag.png)
 
   ![alltags](./screenshots/alltags.png)
+
+* ## __Algolia__
+
+  Search posts in same language by Algolia.
+
+  ![Algolia-search](./screenshots/Algolia.png)
 
 * ## __Breadcrumbs__
 
