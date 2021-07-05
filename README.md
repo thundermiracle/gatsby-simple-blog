@@ -29,6 +29,9 @@ gatsby new my-blog-folder https://github.com/thundermiracle/gatsby-simple-blog
 
 [Medium.com -- Deploy Static Sites to Netlify by Circle-CI](https://medium.com/@thundermiracle/deploy-static-sites-to-netlify-by-circle-ci-ab51a0b59b73?source=friends_link&sk=095db82e2f8e8ef91d03a171f217e340)
 
+## How to add search function to a multilingual GatsbyJS site with Algolia
+
+[https://thundermiracle.medium.com/how-to-add-search-function-to-a-multilingual-gatsbyjs-site-with-algolia-4ef17af888f3](https://thundermiracle.medium.com/how-to-add-search-function-to-a-multilingual-gatsbyjs-site-with-algolia-4ef17af888f3)
 ## Configuration
 
 1. Almost all basic configurable values are here: __./config/index.js__
