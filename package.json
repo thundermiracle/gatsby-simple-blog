@@ -75,7 +75,7 @@
     "prettier": "^2.2.1"
   },
   "resolutions": {
-    "sharp": "0.27.0",
+    "sharp": "^0.27.0",
     "graphql": "^15.4.0",
     "graphql-compose": "^7.25.0",
     "webpack": "^5.24.2"
