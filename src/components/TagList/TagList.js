@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { kebabCase } from 'utils/helpers';
 import Tag from '../Tag';
 
-function TagList({ tags, baseUrl, ...restProps }) {
+const TagList = function({ tags, baseUrl, ...restProps }) {
   return (
     <ul className="tag-ul" {...restProps}>
       {tags.map((text) => (

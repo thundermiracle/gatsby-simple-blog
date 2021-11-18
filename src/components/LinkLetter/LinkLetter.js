@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 
 import './LinkLetter.css';
 
-function LinkLetter({ href, children, ...restProps }) {
+const LinkLetter = function({ href, children, ...restProps }) {
   return (
     <Link className="lang-icon" to={href} {...restProps}>
       {children}

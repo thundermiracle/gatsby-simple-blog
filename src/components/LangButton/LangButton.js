@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import IconLanguage from './IconLanguage';
 import './LangButton.css';
 
-function LangButton({ lang, onClick, focused, ...restProps }) {
+const LangButton = function({ lang, onClick, focused, ...restProps }) {
   const focusedClass = focused ? 'language-focused' : '';
   return (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus

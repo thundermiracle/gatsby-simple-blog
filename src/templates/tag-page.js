@@ -12,7 +12,7 @@ import Bio from 'components/Bio';
 import { useLang } from 'context/LanguageContext';
 import { formatMessage } from 'utils/i18n';
 
-const TagPageTemplate = ({ pageContext, data, location }) => {
+const TagPageTemplate = function({ pageContext, data, location }) {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
   const siteTitle = data.site.siteMetadata.title;
@@ -51,7 +51,7 @@ const TagPageTemplate = ({ pageContext, data, location }) => {
       </aside>
     </Layout>
   );
-};
+}
 
 TagPageTemplate.propTypes = {
   pageContext: PropTypes.shape({

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { formatMessage } from 'utils/i18n';
 
-function Breadcrumbs({ data, showTop, base, langKey, ...restProps }) {
+const Breadcrumbs = function({ data, showTop, base, langKey, ...restProps }) {
   if (data == null) {
     return null;
   }

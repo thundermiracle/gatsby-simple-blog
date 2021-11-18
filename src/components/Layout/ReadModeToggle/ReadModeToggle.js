@@ -7,7 +7,7 @@ import sun from './sun.png';
 import moon from './moon.png';
 
 // eslint-disable-next-line react/prop-types
-function ReadModeToggle({ isLightTheme }) {
+const ReadModeToggle = function({ isLightTheme }) {
   return (
     <>
       <Helmet

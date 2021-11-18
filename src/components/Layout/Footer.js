@@ -2,7 +2,7 @@ import React from 'react';
 
 import { rhythm } from 'utils/typography';
 
-function Footer() {
+const Footer = function() {
   return (
     <footer
       style={{

@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 
 import './LangList.css';
 
-function LangList({ languages, langKey, ...restProps }) {
+const LangList = function({ languages, langKey, ...restProps }) {
   return (
     <div className="lang-root" {...restProps}>
       {Object.keys(languages).map(lang => {

@@ -16,7 +16,7 @@ const initValues = {
 };
 const LanguageContext = React.createContext(initValues);
 
-function LanguageProvider({ children }) {
+const LanguageProvider = function ({ children }) {
   const { lang: defaultLang } = site;
   const [lang, setLang] = React.useState(initValues.lang);
   const [homeLink, setHomeLink] = React.useState(initValues.homeLink);
@@ -45,19 +45,18 @@ function LanguageProvider({ children }) {
     [defaultLang],
   );
 
-  return (
-    <LanguageContext.Provider
-      value={{
-        lang,
-        homeLink,
-        messages,
-        refresh,
-      }}
-    >
-      {children}
-    </LanguageContext.Provider>
+  const value = React.useMemo(
+    () => ({
+      lang,
+      homeLink,
+      messages,
+      refresh,
+    }),
+    [homeLink, lang, messages, refresh],
   );
-}
+
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
+};
 
 LanguageProvider.propTypes = {
   children: PropTypes.any.isRequired,

@@ -21,7 +21,7 @@ const styles = {
   },
 };
 
-const TagsPage = ({
+const TagsPage = function({
   data: {
     allMarkdownRemark: { group },
     site: {
@@ -29,7 +29,7 @@ const TagsPage = ({
     },
   },
   location,
-}) => {
+}) {
   const { homeLink } = useLang();
   const tTags = formatMessage('tTags');
 
@@ -54,7 +54,7 @@ const TagsPage = ({
       </div>
     </Layout>
   );
-};
+}
 
 TagsPage.propTypes = {
   data: PropTypes.shape({

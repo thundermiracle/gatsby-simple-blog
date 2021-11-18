@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 import { Github, Twitter, Facebook, Medium } from '../icons';
 
-function SocialBar() {
+const SocialBar = function() {
   return (
     <StaticQuery
       // eslint-disable-next-line no-use-before-define

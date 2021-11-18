@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { themeOper } from './utils/IIFE';
 
-function HTML({
+const HTML = function({
   htmlAttributes,
   headComponents,
   bodyAttributes,

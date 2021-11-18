@@ -15,7 +15,7 @@ const theme = {
   faded: '#888',
 };
 
-export default function Search({ indices }) {
+const Search = function ({ indices }) {
   const { lang } = useLang();
   const rootRef = createRef();
   const [query, setQuery] = useState();
@@ -43,4 +43,6 @@ export default function Search({ indices }) {
       </StyledSearchRoot>
     </ThemeProvider>
   );
-}
+};
+
+export default Search;

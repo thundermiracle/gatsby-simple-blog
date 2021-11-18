@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { formatMessage } from 'utils/i18n';
 import RelativePost from '../RelativePost';
 
-function RelativePosts({ postNodes, lang }) {
+const RelativePosts = function({ postNodes, lang }) {
   const postNodesNotNull = postNodes.filter(x => x);
 
   if (postNodesNotNull.length === 0) {

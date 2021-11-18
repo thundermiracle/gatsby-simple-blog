@@ -20,8 +20,8 @@ const HitCount = connectStateResults(({ searchResults }) => {
   ) : null;
 });
 
-const PageHit = ({ hit }) => (
-  <div>
+const PageHit = function({ hit }) {
+  return <div>
     <Link to={hit.slug}>
       <h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />
@@ -29,22 +29,22 @@ const PageHit = ({ hit }) => (
     </Link>
     <Snippet attribute="excerpt" hit={hit} tagName="mark" />
   </div>
-);
+}
 
-const HitsInIndex = ({ index }) => (
-  <Index indexName={index.name}>
+const HitsInIndex = function({ index }) {
+  return <Index indexName={index.name}>
     <HitCount />
     <Hits className="Hits" hitComponent={PageHit} />
   </Index>
-);
+}
 
-const SearchResult = ({ indices, className }) => (
-  <div className={className}>
+const SearchResult = function({ indices, className }) {
+  return <div className={className}>
     {indices.map((index) => (
       <HitsInIndex index={index} key={index.name} />
     ))}
     <PoweredBy />
   </div>
-);
+}
 
 export default SearchResult;

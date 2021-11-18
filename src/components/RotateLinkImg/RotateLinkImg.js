@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './RotateLinkImg.css';
 
-function RotateLinkImg({ href, size, src, ...restProps }) {
+const RotateLinkImg = function({ href, size, src, ...restProps }) {
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className="rotate-icon" {...restProps}>
       <img src={src} alt="RotateLinkImg-icon" width={size} height={size} role="presentation" />

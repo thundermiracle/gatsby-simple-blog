@@ -6,7 +6,7 @@ import Layout from 'components/Layout';
 import SEO from 'components/SEO';
 import { formatMessage } from '../utils/i18n';
 
-function NotFoundPage({ data, location }) {
+const NotFoundPage = function({ data, location }) {
   const siteTitle = data.site.siteMetadata.title;
 
   return (

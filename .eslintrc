@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": ["airbnb", "plugin:react/recommended", "prettier"],
   "plugins": ["jest", "react-hooks"],
   "env": {
@@ -24,6 +24,7 @@
     "no-console": 1,
     "no-irregular-whitespace": 0,
     "no-param-reassign": 0,
+    "no-restricted-exports": 0,
     "no-restricted-globals": 0,
     "no-underscore-dangle": 0,
     "no-unused-vars": 1,

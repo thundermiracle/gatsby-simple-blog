@@ -6,7 +6,7 @@ import dark from './dark.png';
 import light from './light.png';
 import withThemeFlag from '../../../utils/withThemeFlag';
 
-function Github({ username, size, isLightTheme }) {
+const Github = function({ username, size, isLightTheme }) {
   if (!username) return null;
 
   return (

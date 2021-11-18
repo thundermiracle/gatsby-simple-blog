@@ -21,7 +21,7 @@ const searchIndices = [
  *
  * @param {*object} { lang }
  */
-function LanguageBar({ lang: langKey }) {
+const LanguageBar = function({ lang: langKey }) {
   const [displayLang, toggleDisplayLang] = useState(false);
 
   const handleToggleLanguage = React.useCallback(() => {

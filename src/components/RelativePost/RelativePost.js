@@ -6,7 +6,7 @@ import { Link } from 'gatsby';
 import { rhythm } from 'utils/typography';
 import { formatDate } from 'utils/i18n';
 
-function RelativePost({ postNode }) {
+const RelativePost = function({ postNode }) {
   const {
     fields: { slug },
     frontmatter: { title, date },

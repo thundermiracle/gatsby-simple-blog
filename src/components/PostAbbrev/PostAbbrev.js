@@ -9,7 +9,7 @@ import { formatDate } from 'utils/i18n';
 
 import TagList from '../TagList';
 
-function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags, base }) {
+const PostAbbrev = function({ slug, title, date, timeToRead, excerpt, tags, base }) {
   let excerptPart;
   if (excerpt) {
     excerptPart = (

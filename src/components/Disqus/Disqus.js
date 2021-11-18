@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { graphql, useStaticQuery } from 'gatsby';
 import { DiscussionEmbed } from 'disqus-react';
 
-function Disqus({ identifier, title, show }) {
+const Disqus = function({ identifier, title, show }) {
   const {
     site: {
       siteMetadata: { disqusShortName },

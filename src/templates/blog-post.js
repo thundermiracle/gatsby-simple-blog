@@ -15,7 +15,7 @@ import { formatDate } from 'utils/i18n';
 import { rhythm, scale } from 'utils/typography';
 import { useLang } from 'context/LanguageContext';
 
-function BlogPostTemplate({ data, pageContext, location }) {
+const BlogPostTemplate = function({ data, pageContext, location }) {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next, previousInSameTag, nextInSameTag, translationsLink } = pageContext;

@@ -10,7 +10,7 @@ import Footer from './Footer';
 import ReadModeToggle from './ReadModeToggle';
 import Breadcrumbs from '../Breadcrumbs';
 
-function Layout({ children, location, title, breadcrumbs }) {
+const Layout = function({ children, location, title, breadcrumbs }) {
   const { lang, homeLink, refresh } = useLang();
 
   React.useEffect(() => {

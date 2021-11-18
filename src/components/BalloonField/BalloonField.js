@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './BalloonField.css';
 
-function BalloonField({ children, className, ...restProps }) {
+const BalloonField = function({ children, className, ...restProps }) {
   return (
     <div className={`balloon ${className}`} {...restProps}>
       {children}

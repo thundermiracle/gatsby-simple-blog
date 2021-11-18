@@ -10,7 +10,7 @@ import { scale } from 'utils/typography';
  *
  * @param {*object} { location, title, base}
  */
-function Header({ location, title, base }) {
+const Header = function({ location, title, base }) {
   // eslint-disable-next-line no-undef
   const rootPath = `${__PATH_PREFIX__}${base}`;
 

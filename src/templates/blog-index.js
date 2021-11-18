@@ -10,7 +10,7 @@ import Pagination from 'components/Pagination';
 import { useLang } from 'context/LanguageContext';
 import { formatMessage } from 'utils/i18n';
 
-function BlogIndex({ pageContext, data, location }) {
+const BlogIndex = function({ pageContext, data, location }) {
   const { from, to, currentPage, numPages } = pageContext;
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;

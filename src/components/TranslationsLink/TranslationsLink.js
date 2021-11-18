@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 
 import './TranslationsLink.css';
 
-function TranslationsLink({ translationsLink, langKey, ...restProps }) {
+const TranslationsLink = function({ translationsLink, langKey, ...restProps }) {
   if (translationsLink == null || translationsLink.length === 0) {
     return null;
   }

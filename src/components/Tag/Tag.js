@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'gatsby';
 
-function Tag({ url, text, count, ...restProps }) {
+const Tag = function({ url, text, count, ...restProps }) {
   let countPart;
   if (count != null) {
     countPart = `  (${count})`;
