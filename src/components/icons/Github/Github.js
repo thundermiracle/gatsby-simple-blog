@@ -6,7 +6,7 @@ import dark from './dark.png';
 import light from './light.png';
 import withThemeFlag from '../../../utils/withThemeFlag';
 
-const Github = function({ username, size, isLightTheme }) {
+const Github = function ({ username, size, isLightTheme }) {
   if (!username) return null;
 
   return (
@@ -14,9 +14,10 @@ const Github = function({ username, size, isLightTheme }) {
       href={`https://github.com/${username}`}
       size={size}
       src={isLightTheme ? dark : light}
+      aria-label="github link"
     />
   );
-}
+};
 
 Github.propTypes = {
   username: PropTypes.string,

@@ -10,7 +10,7 @@ import Pagination from 'components/Pagination';
 import { useLang } from 'context/LanguageContext';
 import { formatMessage } from 'utils/i18n';
 
-const BlogIndex = function({ pageContext, data, location }) {
+const BlogIndex = function ({ pageContext, data, location }) {
   const { from, to, currentPage, numPages } = pageContext;
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
@@ -23,9 +23,9 @@ const BlogIndex = function({ pageContext, data, location }) {
       <aside>
         <Bio />
       </aside>
-      <h4>
+      <h3>
         {formatMessage('tfIndCountPosts', { count: data.allMarkdownRemark.totalCount, from, to })}
-      </h4>
+      </h3>
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug;
         return (
@@ -45,7 +45,7 @@ const BlogIndex = function({ pageContext, data, location }) {
       <Pagination currentPage={currentPage} totalPageNumber={numPages} />
     </Layout>
   );
-}
+};
 
 BlogIndex.propTypes = {
   pageContext: PropTypes.object.isRequired,
@@ -58,7 +58,7 @@ BlogIndex.defaultProps = {};
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query($langKey: String!, $skip: Int!, $limit: Int!) {
+  query ($langKey: String!, $skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title

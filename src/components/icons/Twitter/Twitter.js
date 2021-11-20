@@ -6,7 +6,7 @@ import dark from './dark.png';
 import light from './light.png';
 import withThemeFlag from '../../../utils/withThemeFlag';
 
-const Twitter = function({ username, size, isLightTheme }) {
+const Twitter = function ({ username, size, isLightTheme }) {
   if (!username) return null;
 
   return (
@@ -14,9 +14,10 @@ const Twitter = function({ username, size, isLightTheme }) {
       href={`https://twitter.com/${username}`}
       src={isLightTheme ? dark : light}
       size={size}
+      aria-label="twitter link"
     />
   );
-}
+};
 
 Twitter.propTypes = {
   username: PropTypes.string,

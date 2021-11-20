@@ -6,7 +6,7 @@ import dark from './dark.png';
 import light from './light.png';
 import withThemeFlag from '../../../utils/withThemeFlag';
 
-const Medium = function({ username, size, isLightTheme }) {
+const Medium = function ({ username, size, isLightTheme }) {
   if (!username) return null;
 
   return (
@@ -14,9 +14,10 @@ const Medium = function({ username, size, isLightTheme }) {
       href={`https://medium.com/@${username}`}
       src={isLightTheme ? dark : light}
       size={size}
+      aria-label="medium link"
     />
   );
-}
+};
 
 Medium.propTypes = {
   username: PropTypes.string,

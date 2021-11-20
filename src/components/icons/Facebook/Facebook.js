@@ -6,7 +6,7 @@ import dark from './dark.png';
 import light from './light.png';
 import withThemeFlag from '../../../utils/withThemeFlag';
 
-const Facebook = function({ username, size, isLightTheme }) {
+const Facebook = function ({ username, size, isLightTheme }) {
   if (!username) return null;
 
   return (
@@ -14,9 +14,10 @@ const Facebook = function({ username, size, isLightTheme }) {
       href={`https://facebook.com/${username}`}
       src={isLightTheme ? dark : light}
       size={size}
+      aria-label="facebook link"
     />
   );
-}
+};
 
 Facebook.propTypes = {
   username: PropTypes.string,
