@@ -18,6 +18,8 @@ __This project is migrated to Gatsby@v4__
 
 [Netlify](https://gatsby-simple-blog.thundermiracle.com/)
 
+[Gatsby Cloud](https://gatsbysimpleblog1.gtsb.io/)
+
 ## How to use
 
 ```sh
