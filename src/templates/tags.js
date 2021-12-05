@@ -21,7 +21,7 @@ const styles = {
   },
 };
 
-const TagsPage = function({
+const TagsPage = function ({
   data: {
     allMarkdownRemark: { group },
     site: {
@@ -54,7 +54,7 @@ const TagsPage = function({
       </div>
     </Layout>
   );
-}
+};
 
 TagsPage.propTypes = {
   data: PropTypes.shape({

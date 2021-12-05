@@ -15,7 +15,7 @@ import { formatDate } from 'utils/i18n';
 import { rhythm, scale } from 'utils/typography';
 import { useLang } from 'context/LanguageContext';
 
-const BlogPostTemplate = function({ data, pageContext, location }) {
+const BlogPostTemplate = function ({ data, pageContext, location }) {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next, previousInSameTag, nextInSameTag, translationsLink } = pageContext;
@@ -93,7 +93,7 @@ const BlogPostTemplate = function({ data, pageContext, location }) {
       <Disqus identifier={post.id} show={post.frontmatter.disqus} title={post.frontmatter.title} />
     </Layout>
   );
-}
+};
 
 BlogPostTemplate.propTypes = {
   data: PropTypes.object.isRequired,
