@@ -10,7 +10,7 @@
     "@styled-icons/fa-solid": "^10.32.0",
     "algoliasearch": "^4.9.0",
     "disqus-react": "^1.0.11",
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.0.0",
     "escape-string-regexp": "^4.0.0",
     "eslint-webpack-plugin": "^3.1.1",
     "gatsby": "^4.9.0",
