@@ -7570,6 +7570,11 @@ gatsby-remark-images@^6.9.0:
     unist-util-select "^3.0.4"
     unist-util-visit-parents "^3.1.1"
 
+gatsby-remark-prismjs-copy-button@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs-copy-button/-/gatsby-remark-prismjs-copy-button-0.3.0.tgz#d974d675445dcd786ce1af866b9229b47f477115"
+  integrity sha512-CeYkDHgfsJRyNlVPSJoXhVSX33bDSU5YFPyjZlbEl1Pwb0y26XnyTsVEg5e/NZDYkwCAJE6QUVCUlI4zFrDUvg==
+
 gatsby-remark-prismjs@^6.9.0:
   version "6.9.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-6.9.0.tgz#deebda74c244adc20ea8e524983221c38a326e72"
