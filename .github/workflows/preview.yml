@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: deploy to preview mode
-        uses: thundermiracle/netlify-deploy@v1
+        uses: thundermiracle/netlify-deploy@v2
         env:
           ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
           GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID}}
@@ -23,9 +23,9 @@ jobs:
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN}}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID}}
-          deploy_dir: "./public"
-          build_command: yarn build
-          cache_path: |
+          deploy-dir: "./public"
+          build-command: yarn build
+          cache-path: |
             .cache
             public
             node_modules
