@@ -9,6 +9,7 @@
     "docker:disable"
   ],
   "rebaseWhen": "conflicted",
+  "automerge": true,
   "labels": [
     "dependencies"
   ],
