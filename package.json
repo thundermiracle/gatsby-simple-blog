@@ -52,7 +52,7 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.17.9",
     "@babel/eslint-parser": "^7.17.0",
     "@types/jest": "^27.0.2",
     "babel-jest": "^27.3.1",
