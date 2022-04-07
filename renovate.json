@@ -13,7 +13,26 @@
     "dependencies"
   ],
   "rangeStrategy": "bump",
-  "packageRules": [],
+  "packageRules": [
+    {
+      "extends": "monorepo:babel",
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "groupName": "babel monorepo",
+      "automerge": true
+    },
+    {
+      "extends": "packages:linters",
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "groupName": "linters",
+      "automerge": true
+    }
+  ],
   "ignoreDeps": [
     "node"
   ]
