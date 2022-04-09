@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: deploy to production mode
-        uses: thundermiracle/netlify-deploy@v2
+        uses: thundermiracle/netlify-deploy@v3
         env:
           ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
           GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID}}
@@ -26,8 +26,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID}}
           deploy-dir: "./public"
           build-command: yarn build
-          cache-path: |
+          extra-cache-path: |
             .cache
             public
-            node_modules
           production: true
