@@ -9,11 +9,13 @@
     "docker:disable"
   ],
   "rebaseWhen": "conflicted",
-  "automerge": false,
   "labels": [
     "dependencies"
   ],
   "rangeStrategy": "bump",
+  "platformCommit": true,
+  "platformAutomerge": true,
+  "automerge": false,
   "packageRules": [
     {
       "extends": "monorepo:babel",
