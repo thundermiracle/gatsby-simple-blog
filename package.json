@@ -74,6 +74,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "gatsby-plugin-eslint": "^4.0.2",
     "jest": "^28.1.2",
+    "jest-environment-jsdom": "^28.1.2",
     "prettier": "^2.7.1"
   },
   "resolutions": {
