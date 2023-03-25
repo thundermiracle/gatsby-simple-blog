@@ -8174,13 +8174,12 @@ gatsby-parcel-config@0.15.0:
     "@parcel/runtime-js" "2.6.2"
     "@parcel/transformer-js" "2.6.2"
 
-gatsby-plugin-algolia@^0.26.0:
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-algolia/-/gatsby-plugin-algolia-0.26.0.tgz#9ed2869f51f82fcff4cb815872e679b8e2502c30"
-  integrity sha512-rBYTAPjg+NZA6JL2m6kaNwo2NlnUnSkF8LeL8ImMhvTJBor7w/NTUJh+/GPCI8Su0RbLfj98DE7C0Q4usNgQtg==
+gatsby-plugin-algolia@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-algolia/-/gatsby-plugin-algolia-1.0.3.tgz#d90335f7d962bc212620a7b9629a298199f54dd7"
+  integrity sha512-fM+Kmk0O5/m8/40I2AiILdTkn8YYRsKACpgdS5z/AwE9zXZ2uCKDadWljLZ5iynmFn84f/gNNvZsuyKlOtjOtw==
   dependencies:
     algoliasearch "^4.9.1"
-    deep-equal "^2.0.5"
     lodash.chunk "^4.2.0"
 
 gatsby-plugin-eslint@^4.0.2:
