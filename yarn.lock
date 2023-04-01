@@ -3618,10 +3618,10 @@
     "@types/estree" "*"
     "@types/json-schema" "*"
 
-"@types/eslint@^7.29.0 || ^8.4.1":
-  version "8.4.5"
-  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.4.5.tgz#acdfb7dd36b91cc5d812d7c093811a8f3d9b31e4"
-  integrity sha512-dhsC09y1gpJWnK+Ff4SGvCuSnk9DaU0BJZSzOwa6GVSg65XtTugLBITDAAzRU5duGBoXBHpdR/9jHGxJjNflJQ==
+"@types/eslint@^8.4.10":
+  version "8.37.0"
+  resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.37.0.tgz#29cebc6c2a3ac7fea7113207bf5a828fdf4d7ef1"
+  integrity sha512-Piet7dG2JBuDIfohBngQ3rCt7MgO9xCO4xIMKxBThCq5PNRB91IjlJ10eJVwfoNtvTErmxLzwBZ7rHZtbOMmFQ==
   dependencies:
     "@types/estree" "*"
     "@types/json-schema" "*"
@@ -7284,13 +7284,13 @@ eslint-webpack-plugin@^2.7.0:
     normalize-path "^3.0.0"
     schema-utils "^3.1.1"
 
-eslint-webpack-plugin@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-webpack-plugin/-/eslint-webpack-plugin-3.2.0.tgz#1978cdb9edc461e4b0195a20da950cf57988347c"
-  integrity sha512-avrKcGncpPbPSUHX6B3stNGzkKFto3eL+DKM4+VyMrVnhPc3vRczVlCq3uhuFOdRvDHTVXuzwk1ZKUrqDQHQ9w==
+eslint-webpack-plugin@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-webpack-plugin/-/eslint-webpack-plugin-4.0.0.tgz#f77f37b2bbb8ad5c4197b5e55f5f2a49365a1a81"
+  integrity sha512-eM9ccGRWkU+btBSVfABRn8CjT7jZ2Q+UV/RfErMDVCFXpihEbvajNrLltZpwTAcEoXSqESGlEPIUxl7PoDlLWw==
   dependencies:
-    "@types/eslint" "^7.29.0 || ^8.4.1"
-    jest-worker "^28.0.2"
+    "@types/eslint" "^8.4.10"
+    jest-worker "^29.4.1"
     micromatch "^4.0.5"
     normalize-path "^3.0.0"
     schema-utils "^4.0.0"
@@ -10638,15 +10638,6 @@ jest-worker@^27.4.5, jest-worker@^27.5.1:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jest-worker@^28.0.2:
-  version "28.1.1"
-  resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-28.1.1.tgz#3480c73247171dfd01eda77200f0063ab6a3bf28"
-  integrity sha512-Au7slXB08C6h+xbJPp7VIb6U0XX5Kc9uel/WFc6/rcTzGiaVCBRngBExSYuXSLFPULPSYU3cJ3ybS988lNFQhQ==
-  dependencies:
-    "@types/node" "*"
-    merge-stream "^2.0.0"
-    supports-color "^8.0.0"
-
 jest-worker@^29.1.2:
   version "29.1.2"
   resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-29.1.2.tgz#a68302af61bce82b42a9a57285ca7499d29b2afc"
@@ -10657,7 +10648,7 @@ jest-worker@^29.1.2:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jest-worker@^29.5.0:
+jest-worker@^29.4.1, jest-worker@^29.5.0:
   version "29.5.0"
   resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-29.5.0.tgz#bdaefb06811bd3384d93f009755014d8acb4615d"
   integrity sha512-NcrQnevGoSp4b5kg+akIpthoAFHxPBcb5P6mYPY0fUNT+sSvmtu6jlkEle3anczUKIKEbMxFimk9oTP/tpIPgA==
